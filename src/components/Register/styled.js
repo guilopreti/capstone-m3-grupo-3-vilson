@@ -10,9 +10,7 @@ const RegisterContainer = styled.section`
   border-radius: 4px;
   box-shadow: 0 4px 34px -20px #6c757d;
 
-  @media (max-width: 650px) {
-    margin-top: 155px;
-  }
+  margin-top: 155px;
 
   h2 {
     margin: 0 0 15px 0;
