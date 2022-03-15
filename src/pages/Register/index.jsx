@@ -1,9 +1,10 @@
+import RegisterContainer from "./styled";
+
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import RegisterContainer from "./styled";
 
-import ButtonStyle from "../Button/styled";
+import Button from "../../components/Button/index";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -13,10 +14,19 @@ const Register = () => {
   const schema = yup.object().shape({
     name: yup
       .string()
-      .required("Por favor, degite seu nome")
+      .required("Insira seu nome seu nome")
+      .min(2, "Sobrenome deve ter 2 ou mais caracteres")
       .matches(
         "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
-        "Por favor, digite apenas caracteres nesse campo"
+        "Digite apenas caracteres"
+      ),
+    lastname: yup
+      .string()
+      .required("Insira seu nome seu sobrenome")
+      .min(2, "Sobrenome deve ter 2 ou mais caracteres")
+      .matches(
+        "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
+        "Digite apenas caracteres"
       ),
     email: yup
       .string()
@@ -24,15 +34,12 @@ const Register = () => {
       .email("Esse e-mail é inválido"),
     password: yup
       .string()
-      .min(6, "Por favor, sua senha deve conter no mínimo 6 dígitos")
-      .required("Por favor, digite sua senha"),
+      .required("Insira uma senha válida")
+      .min(8, "Mínimo de 8 caracteres"),
     confirmPassword: yup
       .string()
-      .required("Por favor, confirme sua senha")
-      .oneOf(
-        [yup.ref("password"), null],
-        "Por favor, digite a mesma senha do campo acima"
-      ),
+      .required("Insira sua senha")
+      .oneOf([yup.ref("password"), null], "Senha incorreta"),
   });
 
   const {
@@ -45,8 +52,8 @@ const Register = () => {
 
   const history = useHistory();
 
-  const onSubmit = ({ name, email, password }) => {
-    const userData = { name, email, password };
+  const onSubmit = ({ name, lastname, email, password }) => {
+    const userData = { name, lastname, email, password };
     // localStorage.setItem("CapstoneM3:user", JSON.stringify(userData));
     console.log(userData);
 
@@ -71,6 +78,14 @@ const Register = () => {
             {...register("name")}
           />
           <p>{errors.name?.message}</p>
+          <TextField
+            className="register-input"
+            size="small"
+            label="Sobrenome"
+            placeholder="Digite seu nome"
+            {...register("lastname")}
+          />
+          <p>{errors.lastname?.message}</p>
           <TextField
             className="register-input"
             size="small"
@@ -107,7 +122,7 @@ const Register = () => {
             Faça o login
           </h3>
         </div>
-        <ButtonStyle type="submit">Cadastrar</ButtonStyle>
+        <Button type="submit">Cadastrar</Button>
       </Box>
     </RegisterContainer>
   );
