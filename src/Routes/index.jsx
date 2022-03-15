@@ -1,9 +1,7 @@
 import { Switch, Route } from "react-router-dom";
-import LoginContainer from "../pages/Login";
-// import Login from "../components/Login";
-import Register from "../pages/Register";
-
-//Coloquei algumas rotas que acho que serão necessarias, mas podem mudar caso seja preciso.
+import Register from "../pages/Register/index";
+// import Login from "../pages/login/index";
+import Login from "../pages/Login/index";
 
 const Routes = () => {
   return (
@@ -18,7 +16,7 @@ const Routes = () => {
       </Route>
       <Route path={"/login"}>
         {/* Rota de Login */}
-        <LoginContainer />
+        <Login />
       </Route>
       <Route path={"/user"}>
         User
