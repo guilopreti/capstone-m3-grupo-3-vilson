@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import RegisterContainer from "./styled";
 
-import ButtonStyle from "../Button/styled";
+import ButtonStyle from "../../components/Button/styled.js";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
