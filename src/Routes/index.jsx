@@ -6,11 +6,25 @@ import Login from "../pages/Login/index";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/register">
+      <Route exact path="/">
+        {/* Rota inicial com os cards de noticias */}
+        Home
+      </Route>
+      <Route path={"/register"}>
+        {/* Rota de Cadastro */}
         <Register />
       </Route>
-      <Route path="/login">
+      <Route path={"/login"}>
+        {/* Rota de Login */}
         <Login />
+      </Route>
+      <Route path={"/user"}>
+        User
+        {/* Rota mostrando perfil de um user com suas noticias */}
+      </Route>
+      <Route path={"/post"}>
+        Post
+        {/* Rota mostrando uma noticia */}
       </Route>
     </Switch>
   );
