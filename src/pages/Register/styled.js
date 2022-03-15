@@ -4,13 +4,11 @@ const RegisterContainer = styled.section`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  margin-top: 110px;
+  margin-top: 80px;
   padding: 25px 15px 25px 15px;
   width: 300px;
   border-radius: 4px;
   box-shadow: 0 4px 34px -20px #6c757d;
-
-  margin-top: 155px;
 
   h2 {
     margin: 0 0 15px 0;

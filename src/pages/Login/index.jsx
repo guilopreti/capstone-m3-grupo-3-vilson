@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import ButtonStyle from "../Button/styled";
+import Button from "../../components/Button/index";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -14,12 +14,12 @@ const Login = () => {
   const schema = yup.object().shape({
     email: yup
       .string()
-      .required("Por favor. digite seu e-mail")
-      .email("Esse e-mail é inválido"),
+      .required("Insira um e-mail válido")
+      .email("Insira um e-mail válido"),
     password: yup
       .string()
-      .min(6, "Por favor, sua senha deve conter no mínimo 6 dígitos")
-      .required("Por favor, digite sua senha"),
+      .min(6, "Insira uma senha de no mínimo 6 dígitos")
+      .required("Insira sua senha sua senha"),
   });
 
   const {
@@ -34,9 +34,8 @@ const Login = () => {
 
   const onSubmit = (data) => {
     // localStorage.setItem("CapstoneM3:userLogin", JSON.stringify(data));
+    // history.push("/dashboard");
     console.log(data);
-
-    // history.push("/");
   };
 
   return (
@@ -49,7 +48,6 @@ const Login = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>
-          <h5>teste</h5>
           <TextField
             className="register-input"
             size="small"
@@ -69,12 +67,15 @@ const Login = () => {
           <p>{errors.password?.message}</p>
         </div>
         <div className="login-div-warning">
-          <h3>Já possui uma conta?</h3>
-          <h3 className="login-h3-border" onClick={() => history.push("/")}>
-            cadastre-se aqui
+          <h3>Não tem uma conta?</h3>
+          <h3
+            className="login-h3-border"
+            onClick={() => history.push("/register")}
+          >
+            Crie uma conta
           </h3>
         </div>
-        <ButtonStyle type="submit">Login</ButtonStyle>
+        <Button type="submit">Login</Button>
       </Box>
     </LoginContainer>
   );
