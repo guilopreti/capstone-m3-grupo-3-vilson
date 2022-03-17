@@ -18,8 +18,8 @@ const Login = () => {
       .email("Insira um e-mail válido"),
     password: yup
       .string()
-      .min(6, "Insira uma senha de no mínimo 6 dígitos")
-      .required("Insira sua senha sua senha"),
+      .required("Insira sua senha")
+      .min(8, "Insira uma senha de no mínimo 8 dígitos"),
   });
 
   const {
