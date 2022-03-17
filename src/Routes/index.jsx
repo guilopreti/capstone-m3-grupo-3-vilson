@@ -4,6 +4,7 @@ import Login from '../pages/Login/index'
 import ArticlePage from '../pages/ArticlePage'
 import Home from '../pages/Home'
 import User from '../pages/User'
+import TermsArticlePage from '../pages/TermsArticlePage'
 
 const Routes = () => {
   return (
@@ -19,6 +20,9 @@ const Routes = () => {
       </Route>
       <Route path={'/user'}>
         <User />
+      </Route>
+      <Route path='/terms'>
+        <TermsArticlePage />
       </Route>
       <Route exact path='/post'>
         <ArticlePage />
