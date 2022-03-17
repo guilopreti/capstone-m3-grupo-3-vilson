@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const MenuConteiner = styled.section`
   display: flex;
@@ -48,7 +48,7 @@ const MenuConteiner = styled.section`
       width: 1380px;
     }
     div {
-      display: flex;
+      display: ${(props) => (props.isSearch ? 'flex' : 'none')};
       align-items: center;
       width: 220px;
       input {
@@ -98,6 +98,6 @@ const MenuConteiner = styled.section`
       display: none;
     }
   }
-`;
+`
 
-export default MenuConteiner;
+export default MenuConteiner
