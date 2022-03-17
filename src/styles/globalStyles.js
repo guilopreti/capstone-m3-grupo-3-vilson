@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -12,12 +12,6 @@ const GlobalStyle = createGlobalStyle`
 
 body, html {
  font-family: 'Roboto', sans-serif;
-}
-
-
-main{
-    display: flex;
-    justify-content: center;
 }
 
 li {
@@ -37,5 +31,5 @@ li {
     }
 
 
-`
-export default GlobalStyle
+`;
+export default GlobalStyle;
