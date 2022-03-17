@@ -4,7 +4,6 @@ const RegisterContainer = styled.section`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  margin-top: 80px;
   padding: 25px 15px 25px 15px;
   width: 300px;
   border-radius: 4px;
