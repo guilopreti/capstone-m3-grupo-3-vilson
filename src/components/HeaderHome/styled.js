@@ -10,26 +10,18 @@ export const HeaderHomeContainer = styled.header`
   height: 75px;
   box-sizing: border-box;
   background-color: #343a40;
-  @media (min-width: 460px) {
+  @media (min-width: 768px) {
     padding: 0;
   }
   .header-div-parent {
     display: flex;
     justify-content: space-between;
     height: 100%;
-    width: 640px;
+    width: 100%;
     align-items: center;
-
-    @media (min-width: 460px) {
-      width: 440px;
+    @media (min-width: 768px) {
+      width: 760px;
     }
-    @media (min-width: 560px) {
-      width: 540px;
-    }
-    @media (min-width: 660px) {
-      width: 640px;
-    }
-
     @media (min-width: 880px) {
       width: 880px;
     }
@@ -52,7 +44,7 @@ export const HeaderHomeContainer = styled.header`
       font-weight: 700;
       font-family: "Poppins";
       color: white;
-      @media (max-width: 460px) {
+      @media (max-width: 768px) {
         margin-left: -50px;
       }
       span {
@@ -67,7 +59,7 @@ export const HeaderHomeContainer = styled.header`
   ul {
     display: flex;
     align-items: center;
-    @media (max-width: 460px) {
+    @media (max-width: 768px) {
       display: none;
     }
   }
@@ -90,7 +82,10 @@ export const HeaderHomeContainer = styled.header`
       transition: 0.3s;
     }
   }
-  li + li {
+  .Link {
+    text-decoration: none;
+  }
+  .Link + .Link {
     margin-left: 40px;
     @media (max-width: 410px) {
       margin-left: 20px;
@@ -107,12 +102,12 @@ export const HeaderHomeContainer = styled.header`
   .header-icons-dash {
     width: 26px;
     height: 26px;
-    @media (min-width: 460px) {
+    @media (min-width: 768px) {
       display: none;
     }
   }
   .header-div-fake {
-    @media (min-width: 460px) {
+    @media (min-width: 768px) {
       display: none;
     }
   }

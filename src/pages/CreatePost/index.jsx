@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { useContext, useState } from "react";
-import { UserContext } from "../../providers/user";
+import { UserContext } from "../../Providers/user";
 import { Container } from "./styles";
 
 const CreatePost = () => {

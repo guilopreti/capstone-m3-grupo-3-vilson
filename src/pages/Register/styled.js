@@ -32,12 +32,13 @@ const RegisterContainer = styled.section`
     font-size: 9px;
     font-weight: 500;
     margin: 0;
-    color: #a47e1b;
+    color: #263238;
   }
   .login-h3-border {
     margin-top: -1px;
-    border-bottom: 1px solid #a47e1b;
     cursor: pointer;
+    color: #dd2738;
+
     :hover {
       filter: brightness(75%);
       transition: 0.3s;
@@ -46,6 +47,9 @@ const RegisterContainer = styled.section`
       filter: brightness(1.6);
       transition: 0.3s;
     }
+  }
+  .Link {
+    color: #dd2738;
   }
 `;
 
