@@ -36,6 +36,12 @@ li {
 
     }
 
+  :root {
+    --primary-color: #1768AC;
+    --white-color: #fff;
+    --gray-color: #c5c5c5;
+  }
+
 
 `
 export default GlobalStyle
