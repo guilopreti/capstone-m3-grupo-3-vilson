@@ -3,14 +3,25 @@ import { FiLogIn } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 import { RiHome4Line } from "react-icons/ri";
 import { useHistory } from "react-router-dom";
+import { FiX } from 'react-icons/fi'
 
-const HeaderHome = () => {
+const HeaderHome = ({ setMenuHamb, hambMenu }) => {
   const history = useHistory();
+
+  const handleToggleMenu = () => {
+      if (hambMenu === true) {
+        setMenuHamb(false)
+      }
+      if (hambMenu === false) {
+        setMenuHamb(true)
+      }
+  };
+
   return (
     <>
       <HeaderHomeContainer>
         <div className="header-div-parent">
-          <FiMenu className="header-icons header-icons-dash" />
+          {hambMenu ? <FiX onClick={() => handleToggleMenu()} className="header-icons header-icons-dash" /> : <FiMenu onClick={() => handleToggleMenu()} className="header-icons header-icons-dash" />}
           <div className="header-div-logo">
             <h2>
               Opnion<span>!</span>
