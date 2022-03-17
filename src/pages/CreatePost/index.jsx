@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { useContext, useState } from "react";
 import { UserContext } from "../../providers/user";
+import { Container } from "./styles";
 
 const CreatePost = () => {
   const { user } = useContext(UserContext);
@@ -40,33 +41,30 @@ const CreatePost = () => {
   };
 
   return (
-    <section>
-      <header>
-        <h2>Crie seu post</h2>
-        <Button onClick={sendPost}>Publicar</Button>
-        <span>{user.user.name}</span>
-      </header>
-      <article>
-        <h1 contentEditable onKeyUp={(evt) => setTitle(evt.target.innerText)}>
-          Titulo
-        </h1>
-        <p contentEditable onKeyUp={(evt) => setText(evt.target.innerText)}>
-          Escreva aqui...
-        </p>
-        <div>
-          <label>Fonte:</label>
-          <input required onChange={(evt) => setFont(evt.target.value)} />
-        </div>
-        <div>
-          <label>Tema:</label>
-          <input required onChange={(evt) => setTheme(evt.target.value)} />
-        </div>
-        <input type={"file"} onChange={(evt) => mostrarImagem(evt)} />
-        <p contentEditable onKeyUp={(evt) => setResume(evt.target.innerText)}>
-          Escreva aqui um breve resumo...
-        </p>
-      </article>
-    </section>
+    <Container>
+      <input
+        placeholder="Título"
+        onChange={(evt) => setTitle(evt.target.value)}
+      />
+      <input
+        placeholder="Conte sua história..."
+        onChange={(evt) => setText(evt.target.value)}
+      />
+      <div>
+        <label>Fonte:</label>
+        <input required onChange={(evt) => setFont(evt.target.value)} />
+      </div>
+      <div>
+        <label>Tema:</label>
+        <input required onChange={(evt) => setTheme(evt.target.value)} />
+      </div>
+      <input type={"file"} onChange={(evt) => mostrarImagem(evt)} />
+      <input
+        placeholder="Escreva um breve resumo..."
+        onChange={(evt) => setResume(evt.target.value)}
+      />
+      <Button onClick={sendPost}>Publicar</Button>
+    </Container>
   );
 };
 
