@@ -8,7 +8,7 @@ import Button from "../../components/Button/index";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const schema = yup.object().shape({
@@ -50,14 +50,10 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  const history = useHistory();
-
   const onSubmit = ({ name, lastname, email, password }) => {
     const userData = { name, lastname, email, password };
     // localStorage.setItem("CapstoneM3:user", JSON.stringify(userData));
     console.log(userData);
-
-    history.push("/login");
   };
 
   return (
@@ -115,12 +111,9 @@ const Register = () => {
         </div>
         <div className="login-div-warning">
           <h3>Já possui uma conta?</h3>
-          <h3
-            className="login-h3-border"
-            onClick={() => history.push("/login")}
-          >
-            Faça o login
-          </h3>
+          <Link className="Link" to="/login">
+            <h3 className="login-h3-border">Faça o login</h3>
+          </Link>
         </div>
         <Button type="submit">Cadastrar</Button>
       </Box>

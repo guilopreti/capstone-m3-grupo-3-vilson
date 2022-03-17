@@ -8,30 +8,17 @@ const MenuConteiner = styled.section`
   margin-bottom: 30px;
   background-color: #1768ac;
   box-shadow: 0 4px 34px -11px #343a40;
-  @media (max-width: 460px) {
-    padding-left: 10px;
-  }
 
   ul {
     display: flex;
     justify-content: center;
     height: 100%;
-    width: 640px;
+    width: 100%;
     align-items: center;
-
-    @media (min-width: 460px) {
+    @media (min-width: 768px) {
       justify-content: space-between;
-      width: 440px;
+      width: 760px;
     }
-    @media (min-width: 560px) {
-      width: 540px;
-    }
-    @media (min-width: 660px) {
-      display: flex;
-      justify-content: space-between;
-      width: 640px;
-    }
-
     @media (min-width: 880px) {
       width: 880px;
     }
@@ -47,10 +34,20 @@ const MenuConteiner = styled.section`
     @media (min-width: 1700px) {
       width: 1380px;
     }
-    div {
+    .menu-nave-div-menu {
+      display: flex;
+    }
+    .menu-nave-div-input {
+      margin-left: 12px;
       display: flex;
       align-items: center;
       width: 220px;
+      @media (min-width: 768px) {
+        margin-left: -152px;
+      }
+      @media (min-width: 880px) {
+        margin-left: -173px;
+      }
       input {
         height: 22px;
         width: 100%;
@@ -78,9 +75,8 @@ const MenuConteiner = styled.section`
     display: flex;
     cursor: pointer;
     font-size: 11px;
-    color: #343a40;
     color: #ffffff;
-    @media (max-width: 460px) {
+    @media (max-width: 768px) {
       display: none;
     }
     :hover {
@@ -90,6 +86,15 @@ const MenuConteiner = styled.section`
     :active {
       filter: brightness(1.6);
       transition: 0.3s;
+    }
+  }
+  .Link {
+    text-decoration: none;
+  }
+  .Link + .Link {
+    margin-left: 20px;
+    @media (max-width: 880px) {
+      margin-left: 13px;
     }
   }
   .menu-nav-icons {
