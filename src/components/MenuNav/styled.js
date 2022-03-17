@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const MenuConteiner = styled.section`
   display: flex;
@@ -34,12 +34,17 @@ const MenuConteiner = styled.section`
     @media (min-width: 1700px) {
       width: 1380px;
     }
+<<<<<<< HEAD
     .menu-nave-div-menu {
       display: flex;
     }
     .menu-nave-div-input {
       margin-left: 12px;
       display: flex;
+=======
+    div {
+      display: ${(props) => (props.isSearch ? 'flex' : 'none')};
+>>>>>>> fabb9fef7ad1364e2ec3e1e05c769e9a9687f9f2
       align-items: center;
       width: 220px;
       @media (min-width: 768px) {
@@ -103,6 +108,6 @@ const MenuConteiner = styled.section`
       display: none;
     }
   }
-`;
+`
 
-export default MenuConteiner;
+export default MenuConteiner
