@@ -5,6 +5,13 @@ main{
     display: flex;
     justify-content: center;
 }
+ul {
+    margin: 0;
+    padding: 0;
+  }
+li {
+    list-style: none;
+  }
     button{
         cursor: pointer;
         :hover {

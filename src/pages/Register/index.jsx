@@ -14,15 +14,15 @@ const Register = () => {
   const schema = yup.object().shape({
     name: yup
       .string()
-      .required("Insira seu nome seu nome")
-      .min(2, "Sobrenome deve ter 2 ou mais caracteres")
+      .required("Insira seu nome")
+      .min(2, "Nome deve ter 2 ou mais caracteres")
       .matches(
         "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
         "Digite apenas caracteres"
       ),
     lastname: yup
       .string()
-      .required("Insira seu nome seu sobrenome")
+      .required("Insira seu sobrenome")
       .min(2, "Sobrenome deve ter 2 ou mais caracteres")
       .matches(
         "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
@@ -30,7 +30,7 @@ const Register = () => {
       ),
     email: yup
       .string()
-      .required("Por favor. digite seu e-mail")
+      .required("Insira seu e-mail")
       .email("Esse e-mail é inválido"),
     password: yup
       .string()
@@ -38,7 +38,7 @@ const Register = () => {
       .min(8, "Mínimo de 8 caracteres"),
     confirmPassword: yup
       .string()
-      .required("Insira sua senha")
+      .required("Confirme sua senha")
       .oneOf([yup.ref("password"), null], "Senha incorreta"),
   });
 
@@ -106,7 +106,7 @@ const Register = () => {
           <TextField
             size="small"
             className="register-input"
-            label="Senha"
+            label="Confirme sua senha"
             placeholder="Confirme sua senha"
             {...register("confirmPassword")}
             type="password"
