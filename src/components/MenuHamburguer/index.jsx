@@ -13,6 +13,16 @@ const MenuHamburguer = ({setMenuHamb}) => {
     setMenuHamb(false)
   }
 
+  const goCreateArticle = () => {
+    history.push('/create')
+    setMenuHamb(false)
+  }
+
+  const goMyAccount = () => {
+    history.push('/user')
+    setMenuHamb(false)
+  }
+
   return (
     <Container>
       <div className="search-container">
@@ -39,12 +49,12 @@ const MenuHamburguer = ({setMenuHamb}) => {
                   <IoIosArrowForward  className="list-item-link"/>
               </li>
               <li className="list-item">
-                  <span className="list-item-link" >Escrever artigo</span>
-                  <IoIosArrowForward className="list-item-link" />
+                  <span onClick={() => goCreateArticle()} className="list-item-link" >Escrever artigo</span>
+                  <IoIosArrowForward onClick={() => goCreateArticle()} className="list-item-link" />
               </li>
               <li className="list-item">
-                  <span className="list-item-link" >Minha conta</span>
-                  <IoIosArrowForward className="list-item-link" />
+                  <span onClick={() => goMyAccount()} className="list-item-link" >Minha conta</span>
+                  <IoIosArrowForward onClick={() => goMyAccount()} className="list-item-link" />
               </li>
           </ul>
       </div>
