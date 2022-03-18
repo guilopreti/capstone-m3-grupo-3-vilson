@@ -1,6 +1,6 @@
-import HeaderHome from '../../components/HeaderHome'
-import MenuNav from '../../components/MenuNav'
-import Paisagem from '../../assets/image/paisagem.jpg'
+import HeaderHome from "../../components/HeaderHome";
+import MenuNav from "../../components/MenuNav";
+import Paisagem from "../../assets/image/paisagem.jpg";
 import {
   Container,
   DateTemaContainer,
@@ -12,8 +12,8 @@ import {
   TextContainer,
   TitleContainer,
   UserVoteContainer,
-} from './style'
-import { AiFillDislike, AiFillLike } from 'react-icons/ai'
+} from "./style";
+import { AiFillDislike, AiFillLike } from "react-icons/ai";
 
 const ArticlePage = () => {
   return (
@@ -35,7 +35,7 @@ const ArticlePage = () => {
         </HeaderPost>
         <ImgTextContainer>
           <ImgContainer>
-            <img src={Paisagem} alt='image' />
+            <img src={Paisagem} alt="image" />
           </ImgContainer>
           <TextContainer>
             has been the industry's standard dummy text ever since the 1500s,
@@ -62,14 +62,14 @@ const ArticlePage = () => {
           <div>
             <span>Esse artigo foi útil?</span>
             <div>
-              <AiFillLike size={'40px'} />
-              <AiFillDislike size={'40px'} />
+              <AiFillLike size={"40px"} />
+              <AiFillDislike size={"40px"} />
             </div>
           </div>
         </UserVoteContainer>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default ArticlePage
+export default ArticlePage;
