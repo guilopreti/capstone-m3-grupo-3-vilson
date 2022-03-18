@@ -9,25 +9,25 @@ const MenuNav = () => {
   return (
     <MenuConteiner>
       <ul>
-        <div className="menu-nave-div-menu">
+        <div className="menu-nav-div-menu">
           <Link className="Link" to="/">
             <li>
-              <RiHome4Line className="header-icons" /> Home
+              <RiHome4Line className="menu-nav-icons" /> Home
             </li>
           </Link>
-          <Link className="Link">
+          <Link className="Link" to="/">
             <li>Sobre</li>
           </Link>
-          <Link className="Link">
+          <Link className="Link" to="/">
             <li>Patrocine</li>
           </Link>
-          <Link className="Link">
+          <Link className="Link" to="/">
             <li>
               <BsPencilSquare className="menu-nav-icons" /> Escrever artigo
             </li>
           </Link>
         </div>
-        <div className="menu-nave-div-input">
+        <div className="menu-nav-div-input">
           <input placeholder="Digite aqui sua pesquisa" />
           <BsSearch className="menu-nav-icons-search" />
         </div>

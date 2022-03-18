@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-const RegisterContainer = styled.section`
+export const RegisterMain = styled.main`
+  display: flex;
+  justify-content: center;
+`;
+
+export const RegisterContainer = styled.section`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,9 +15,11 @@ const RegisterContainer = styled.section`
   box-shadow: 0 4px 34px -20px #6c757d;
 
   h2 {
+    text-align: center;
     margin: 0 0 15px 0;
     font-size: 18px;
     color: #6c757d;
+    text-align: center;
   }
   p {
     margin: -9px 0 5px 3px;
@@ -52,5 +59,3 @@ const RegisterContainer = styled.section`
     color: #dd2738;
   }
 `;
-
-export default RegisterContainer;

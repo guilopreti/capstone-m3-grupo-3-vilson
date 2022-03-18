@@ -1,11 +1,11 @@
-import styled from 'styled-components'
-import { up, down, between, only } from 'styled-breakpoints'
+import styled from "styled-components";
+import { up, down, between, only } from "styled-breakpoints";
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
   padding: 10px 20px;
-`
+`;
 
 export const HeaderPost = styled.div`
   display: flex;
@@ -13,10 +13,10 @@ export const HeaderPost = styled.div`
   flex-direction: column;
   padding: 10px 0;
 
-  ${up('md')} {
+  ${up("md")} {
     max-width: 768px;
   }
-`
+`;
 
 export const DateTemaContainer = styled.div`
   width: 100%;
@@ -28,7 +28,7 @@ export const DateTemaContainer = styled.div`
     font-size: 12px;
     color: var(--grey-color);
   }
-`
+`;
 
 export const TemaContainer = styled.div`
   width: 65px;
@@ -44,7 +44,7 @@ export const TemaContainer = styled.div`
     font-size: 12px;
     color: var(--white-color);
   }
-`
+`;
 
 export const TitleContainer = styled.div`
   width: 100%;
@@ -62,14 +62,14 @@ export const TitleContainer = styled.div`
     font-weight: regular;
     margin-top: 10px;
   }
-`
+`;
 
 export const ImgTextContainer = styled.div`
   width: 100%;
   padding: 10px 0;
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const ImgContainer = styled.div`
   width: 100%;
@@ -84,7 +84,7 @@ export const ImgContainer = styled.div`
     display: inline-block;
     border-radius: 5px;
   }
-`
+`;
 
 export const TextContainer = styled.div`
   width: 100%;
@@ -92,7 +92,7 @@ export const TextContainer = styled.div`
   text-align: justify;
   font-size: 16px;
   font-weight: regular;
-`
+`;
 
 export const FontContainer = styled.div`
   width: 100%;
@@ -110,7 +110,7 @@ export const FontContainer = styled.div`
       text-decoration: underline;
     }
   }
-`
+`;
 
 export const UserVoteContainer = styled.div`
   width: 100%;
@@ -137,4 +137,4 @@ export const UserVoteContainer = styled.div`
       padding: 0 10px;
     }
   }
-`
+`;
