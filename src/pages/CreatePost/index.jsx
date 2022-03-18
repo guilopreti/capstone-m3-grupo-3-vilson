@@ -1,70 +1,152 @@
 import { Button } from "@mui/material";
 import { useContext, useState } from "react";
-import { UserContext } from "../../Providers/user";
-import { Container } from "./styles";
+import { UserContext } from "../../Providers/users";
+import { Container, DivContent, SectionImages, SectionTexts } from "./styles";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import api from "../../services/api.js";
 
 const CreatePost = () => {
   const { user } = useContext(UserContext);
 
-  const [title, setTitle] = useState("Titulo");
-  const [text, setText] = useState("Escreva aqui...");
-  const [font, setFont] = useState("");
-  const [theme, setTheme] = useState("");
-  const [image, setImage] = useState([]);
-  const [resume, setResume] = useState("Escreva aqui um breve resumo...");
+  const formSchema = yup.object().shape({
+    text: yup.string().required("Texto obrigatório"),
+    font: yup.string(),
+    theme: yup.string(),
+    resume: yup.string().required("Resumo obrigatório"),
+  });
 
-  const sendPost = () => {
-    const post = {
-      title,
-      text,
-      font,
-      date: `${new Date().getDate()}/${
-        new Date().getMonth() + 1
-      }/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
-      image,
-      theme,
-      resume,
-      votes: [],
-      media: null,
-      userId: user.user.id,
-    };
-    console.log(post);
-  };
+  const [title, setTitle] = useState("Sem Título");
+  const [primaryImage, setPrimaryImage] = useState("");
+  const [secondaryImages, setSecondaryImages] = useState([]);
 
-  const mostrarImagem = (evt) => {
+  const selectFirstImage = (evt) => {
     const reader = new FileReader();
     reader.addEventListener("load", () => {
       let newImage = reader.result;
-      setImage([...image, newImage]);
+      setPrimaryImage(newImage);
     });
     reader.readAsDataURL(evt.target.files[0]);
   };
 
+  const selectOthersImages = (evt) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      let newImage = reader.result;
+      setSecondaryImages([...secondaryImages, newImage]);
+    });
+    reader.readAsDataURL(evt.target.files[0]);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(formSchema) });
+
+  const onSubmit = (data) => {
+    const post = {
+      title,
+      text: data.text,
+      font: data.font,
+      theme: data.theme,
+      resume: data.resume,
+      date: `${new Date().getDate()}/${
+        new Date().getMonth() + 1
+      }/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+      primaryImage,
+      secondaryImages,
+      votes: [],
+      media: null,
+      userId: user.user.id,
+    };
+
+    api
+      .post("/posts", post, {
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        },
+      })
+      .then((resp) => console.log(resp.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <Container>
-      <input
-        placeholder="Título"
-        onChange={(evt) => setTitle(evt.target.value)}
-      />
-      <input
-        placeholder="Conte sua história..."
-        onChange={(evt) => setText(evt.target.value)}
-      />
-      <div>
-        <label>Fonte:</label>
-        <input required onChange={(evt) => setFont(evt.target.value)} />
-      </div>
-      <div>
-        <label>Tema:</label>
-        <input required onChange={(evt) => setTheme(evt.target.value)} />
-      </div>
-      <input type={"file"} onChange={(evt) => mostrarImagem(evt)} />
-      <input
-        placeholder="Escreva um breve resumo..."
-        onChange={(evt) => setResume(evt.target.value)}
-      />
-      <Button onClick={sendPost}>Publicar</Button>
-    </Container>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Container>
+        <h1 contentEditable onBlur={(evt) => setTitle(evt.target.innerText)}>
+          Título
+        </h1>
+
+        <SectionTexts>
+          <div>
+            <textarea
+              placeholder="Conte sua história..."
+              {...register("text")}
+            />
+            <span>{errors.text?.message}</span>
+          </div>
+
+          <div>
+            <textarea
+              placeholder="Escreva um breve resumo..."
+              {...register("resume")}
+              className="resume-textarea"
+            />
+            <span>{errors.resume?.message}</span>
+          </div>
+        </SectionTexts>
+
+        <DivContent>
+          <label>
+            Fonte: <span>*IMPORTANTE</span>
+          </label>
+          <input {...register("font")} />
+        </DivContent>
+
+        <DivContent>
+          <label>
+            Tema: <span>*IMPORTANTE</span>
+          </label>
+          <input {...register("theme")} />
+        </DivContent>
+
+        <SectionImages>
+          <div>
+            <h4>Selecione uma imagem principal.</h4>
+            <label for="selecao-foto-principal">Selecionar imagem</label>
+            <input
+              type={"file"}
+              id="selecao-foto-principal"
+              onChange={(evt) => selectFirstImage(evt)}
+            />
+            {primaryImage && <span>Imagem selecionada</span>}
+          </div>
+
+          <div>
+            <h4>Selecione imagens secundárias</h4>
+            <label for="selecao-fotos-secundárias">Selecionar imagem</label>
+            <input
+              type={"file"}
+              id="selecao-fotos-secundárias"
+              onChange={(evt) => selectOthersImages(evt)}
+            />
+            <span>
+              {secondaryImages.length > 1
+                ? `${secondaryImages.length} imagens foram selecionadas`
+                : secondaryImages.length === 1
+                ? `${secondaryImages.length} imagem foi selecionada`
+                : ""}
+            </span>
+          </div>
+
+          <Button>Limpar imagens</Button>
+        </SectionImages>
+
+        <Button type="submit">Publicar</Button>
+      </Container>
+    </form>
   );
 };
 

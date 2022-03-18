@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import User from "../pages/User";
 import TermsArticlePage from "../pages/TermsArticlePage";
 import CreatePost from "../pages/CreatePost";
+import HeaderHome from "../components/HeaderHome";
 
 const Routes = () => {
   return (
@@ -29,6 +30,7 @@ const Routes = () => {
         <ArticlePage />
       </Route>
       <Route path={"/create"}>
+        <HeaderHome />
         <CreatePost />
       </Route>
     </Switch>
