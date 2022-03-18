@@ -3,8 +3,12 @@ import { FiLogIn } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import MenuHamburguer from "../MenuHamburguer";
+import { useState } from "react";
 
-const HeaderHome = ({ menuHamb, setMenuHamb }) => {
+const HeaderHome = () => {
+  const [menuHamb, setMenuHamb] = useState(false);
+
   const toggleMenu = () => {
     menuHamb ? setMenuHamb(false) : setMenuHamb(true);
   };
@@ -14,7 +18,10 @@ const HeaderHome = ({ menuHamb, setMenuHamb }) => {
       <HeaderHomeContainer>
         <div className="header-div-parent">
           {menuHamb ? (
-            <FiX onClick={() => toggleMenu()} className="header-icons header-icons-dash" />
+            <FiX
+              onClick={() => toggleMenu()}
+              className="header-icons header-icons-dash"
+            />
           ) : (
             <FiMenu
               onClick={() => toggleMenu()}
@@ -40,6 +47,7 @@ const HeaderHome = ({ menuHamb, setMenuHamb }) => {
           </ul>
         </div>
       </HeaderHomeContainer>
+      {menuHamb && <MenuHamburguer setMenuHamb={setMenuHamb} />}
     </>
   );
 };
