@@ -1,14 +1,27 @@
 import { HeaderHomeContainer } from "./styled";
 import { FiLogIn } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
-const HeaderHome = () => {
+const HeaderHome = ({ menuHamb, setMenuHamb }) => {
+  const toggleMenu = () => {
+    menuHamb ? setMenuHamb(false) : setMenuHamb(true);
+  };
+
   return (
     <>
       <HeaderHomeContainer>
         <div className="header-div-parent">
-          <FiMenu className="header-icons header-icons-dash" />
+          {menuHamb ? (
+            <FiX onClick={() => toggleMenu()} className="header-icons header-icons-dash" />
+          ) : (
+            <FiMenu
+              onClick={() => toggleMenu()}
+              className="header-icons header-icons-dash"
+            />
+          )}
+
           <div className="header-div-logo">
             <h2>
               Opnion<span>!</span>
