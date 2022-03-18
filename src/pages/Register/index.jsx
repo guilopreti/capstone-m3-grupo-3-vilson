@@ -1,4 +1,7 @@
-import RegisterContainer from "./styled";
+import { RegisterContainer, RegisterMain } from "./styled";
+
+import HeaderHome from "../../components/HeaderHome";
+import MenuNav from "../../components/MenuNav";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -57,67 +60,75 @@ const Register = () => {
   };
 
   return (
-    <RegisterContainer>
-      <h2>Cadastre-se aqui</h2>
-      <Box
-        component="form"
-        noValidate
-        autoComplete="off"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div>
-          <TextField
-            className="register-input"
-            size="small"
-            label="Name"
-            placeholder="Digite seu nome"
-            {...register("name")}
-          />
-          <p>{errors.name?.message}</p>
-          <TextField
-            className="register-input"
-            size="small"
-            label="Sobrenome"
-            placeholder="Digite seu nome"
-            {...register("lastname")}
-          />
-          <p>{errors.lastname?.message}</p>
-          <TextField
-            className="register-input"
-            size="small"
-            label="E-mail"
-            placeholder="Digite seu nome"
-            {...register("email")}
-          />
-          <p>{errors.email?.message}</p>
-          <TextField
-            size="small"
-            className="register-input"
-            label="Senha"
-            placeholder="Digite sua senha"
-            {...register("password")}
-            type="password"
-          />
-          <p>{errors.password?.message}</p>
-          <TextField
-            size="small"
-            className="register-input"
-            label="Confirme sua senha"
-            placeholder="Confirme sua senha"
-            {...register("confirmPassword")}
-            type="password"
-          />
-          <p>{errors.confirmPassword?.message}</p>
-        </div>
-        <div className="login-div-warning">
-          <h3>Já possui uma conta?</h3>
-          <Link className="Link" to="/login">
-            <h3 className="login-h3-border">Faça o login</h3>
-          </Link>
-        </div>
-        <Button type="submit">Cadastrar</Button>
-      </Box>
-    </RegisterContainer>
+    <>
+      <HeaderHome />
+      <MenuNav />
+      <RegisterMain>
+        <RegisterMain>
+          <RegisterContainer>
+            <h2>Cadastre-se aqui</h2>
+            <Box
+              component="form"
+              noValidate
+              autoComplete="off"
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <div>
+                <TextField
+                  className="register-input"
+                  size="small"
+                  label="Name"
+                  placeholder="Digite seu nome"
+                  {...register("name")}
+                />
+                <p>{errors.name?.message}</p>
+                <TextField
+                  className="register-input"
+                  size="small"
+                  label="Sobrenome"
+                  placeholder="Digite seu nome"
+                  {...register("lastname")}
+                />
+                <p>{errors.lastname?.message}</p>
+                <TextField
+                  className="register-input"
+                  size="small"
+                  label="E-mail"
+                  placeholder="Digite seu nome"
+                  {...register("email")}
+                />
+                <p>{errors.email?.message}</p>
+                <TextField
+                  size="small"
+                  className="register-input"
+                  label="Senha"
+                  placeholder="Digite sua senha"
+                  {...register("password")}
+                  type="password"
+                />
+                <p>{errors.password?.message}</p>
+                <TextField
+                  size="small"
+                  className="register-input"
+                  label="Confirme sua senha"
+                  placeholder="Confirme sua senha"
+                  {...register("confirmPassword")}
+                  type="password"
+                />
+                <p>{errors.confirmPassword?.message}</p>
+              </div>
+              <div className="login-div-warning">
+                <h3>Já possui uma conta?</h3>
+                <Link className="Link" to="/login">
+                  <h3 className="login-h3-border">Faça o login</h3>
+                </Link>
+              </div>
+              <Button type="submit">Cadastrar</Button>
+            </Box>
+          </RegisterContainer>
+        </RegisterMain>
+      </RegisterMain>
+    </>
   );
 };
 
