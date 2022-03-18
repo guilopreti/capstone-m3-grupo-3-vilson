@@ -1,31 +1,39 @@
 import styled from "styled-components";
 
-export const Container = styled.article`
+export const Container = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  article {
+    width: 84%;
+    max-width: 1070px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   h1 {
-    width: 268px;
+    width: 100%;
     text-align: center;
     margin: 35px 0px;
   }
 
   textarea {
     margin-bottom: 5px;
-    width: 269px;
+    width: 100%;
     border: none;
     height: 365px;
     font-size: 17px;
     font-family: Inter, sans-serif;
   }
 
-  .resume-textarea {
-    height: 50px;
-    border: 1px solid black;
-    padding: 5px;
-    width: 269px;
-    font-family: Inter, sans-serif;
+  button {
+    color: white;
+    background-color: #117788;
+    margin-bottom: 15px;
+    width: 32%;
+    max-width: 161px;
   }
 `;
 
@@ -33,12 +41,14 @@ export const SectionTexts = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   div {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 15px;
+    width: 100%;
   }
 
   span {
@@ -50,7 +60,7 @@ export const SectionTexts = styled.section`
 export const DivContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: 269px;
+  width: 100%;
   height: 65px;
   margin-bottom: 15px;
 
@@ -80,7 +90,8 @@ export const SectionImages = styled.section`
   border-radius: 10px;
   padding: 5px;
   margin-bottom: 20px;
-  width: 269px;
+  width: 100%;
+  max-width: 362px;
 
   div {
     display: flex;
@@ -94,11 +105,18 @@ export const SectionImages = styled.section`
   }
 
   label {
-    background-color: #3498db;
+    background-color: #117788;
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
     margin: 10px;
     padding: 6px 20px;
+  }
+
+  button {
+    color: white;
+    background-color: #117788;
+    margin-bottom: 15px;
+    width: 136px;
   }
 `;

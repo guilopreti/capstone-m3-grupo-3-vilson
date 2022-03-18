@@ -11,10 +11,13 @@ const CreatePost = () => {
   const { user } = useContext(UserContext);
 
   const formSchema = yup.object().shape({
-    text: yup.string().required("Texto obrigatório"),
+    text: yup
+      .string()
+      .min(2500, "Mínimo de 2500 caracteres!")
+      .max(9000, "Máximo de 9000 caracteres!")
+      .required("Texto Obrigatório!"),
     font: yup.string(),
     theme: yup.string(),
-    resume: yup.string().required("Resumo obrigatório"),
   });
 
   const [title, setTitle] = useState("Sem Título");
@@ -39,6 +42,11 @@ const CreatePost = () => {
     reader.readAsDataURL(evt.target.files[0]);
   };
 
+  const cleanImages = () => {
+    setPrimaryImage("");
+    setSecondaryImages([]);
+  };
+
   const {
     register,
     handleSubmit,
@@ -51,7 +59,6 @@ const CreatePost = () => {
       text: data.text,
       font: data.font,
       theme: data.theme,
-      resume: data.resume,
       date: `${new Date().getDate()}/${
         new Date().getMonth() + 1
       }/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
@@ -61,7 +68,6 @@ const CreatePost = () => {
       media: null,
       userId: user.user.id,
     };
-
     api
       .post("/posts", post, {
         headers: {
@@ -73,10 +79,10 @@ const CreatePost = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Container>
+    <Container onSubmit={handleSubmit(onSubmit)}>
+      <article>
         <h1 contentEditable onBlur={(evt) => setTitle(evt.target.innerText)}>
-          Título
+          Título...
         </h1>
 
         <SectionTexts>
@@ -86,15 +92,6 @@ const CreatePost = () => {
               {...register("text")}
             />
             <span>{errors.text?.message}</span>
-          </div>
-
-          <div>
-            <textarea
-              placeholder="Escreva um breve resumo..."
-              {...register("resume")}
-              className="resume-textarea"
-            />
-            <span>{errors.resume?.message}</span>
           </div>
         </SectionTexts>
 
@@ -141,12 +138,12 @@ const CreatePost = () => {
             </span>
           </div>
 
-          <Button>Limpar imagens</Button>
+          <Button onClick={cleanImages}>Limpar imagens</Button>
         </SectionImages>
 
         <Button type="submit">Publicar</Button>
-      </Container>
-    </form>
+      </article>
+    </Container>
   );
 };
 
