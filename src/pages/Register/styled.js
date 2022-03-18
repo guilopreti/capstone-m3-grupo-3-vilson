@@ -19,6 +19,7 @@ export const RegisterContainer = styled.section`
     margin: 0 0 15px 0;
     font-size: 18px;
     color: #6c757d;
+    text-align: center;
   }
   p {
     margin: -9px 0 5px 3px;

@@ -15,13 +15,13 @@ const MenuNav = () => {
               <RiHome4Line className="menu-nav-icons" /> Home
             </li>
           </Link>
-          <Link className="Link">
+          <Link className="Link" to="/">
             <li>Sobre</li>
           </Link>
-          <Link className="Link">
+          <Link className="Link" to="/">
             <li>Patrocine</li>
           </Link>
-          <Link className="Link">
+          <Link className="Link" to="/">
             <li>
               <BsPencilSquare className="menu-nav-icons" /> Escrever artigo
             </li>

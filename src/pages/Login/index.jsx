@@ -1,8 +1,5 @@
 import { LoginMain, LoginContainer } from "./styled";
 
-import HeaderHome from "../../components/HeaderHome/index";
-import MenuNav from "../../components/MenuNav/index";
-
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,6 +9,12 @@ import Button from "../../components/Button/index";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
+
+import { useContext } from "react";
+import { UserContext } from "../../Providers/users";
+
+import HeaderHome from "../../components/HeaderHome";
+import MenuNav from "../../components/MenuNav";
 
 const Login = () => {
   const schema = yup.object().shape({
@@ -33,10 +36,10 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
+  const { userCurrentLogin } = useContext(UserContext);
+
   const onSubmit = (data) => {
-    // localStorage.setItem("CapstoneM3:userLogin", JSON.stringify(data));
-    // history.push("/dashboard");
-    console.log(data);
+    userCurrentLogin(data);
   };
 
   return (

@@ -1,8 +1,5 @@
 import { RegisterContainer, RegisterMain } from "./styled";
 
-import HeaderHome from "../../components/HeaderHome";
-import MenuNav from "../../components/MenuNav";
-
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,6 +9,11 @@ import Button from "../../components/Button/index";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
+import api from "../../services/api";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import HeaderHome from "../../components/HeaderHome";
+import MenuNav from "../../components/MenuNav";
 
 const Register = () => {
   const schema = yup.object().shape({
@@ -53,10 +55,19 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
+  const history = useHistory();
+
   const onSubmit = ({ name, lastname, email, password }) => {
     const userData = { name, lastname, email, password };
-    // localStorage.setItem("CapstoneM3:user", JSON.stringify(userData));
-    console.log(userData);
+    api
+      .post("/users", userData)
+      .then((_) => {
+        toast.success("Cadastro realizado com sucesso");
+        history.push("/login");
+      })
+      .catch((_) => {
+        toast.error("Falha ao tentar realizar o cadastro");
+      });
   };
 
   return (
