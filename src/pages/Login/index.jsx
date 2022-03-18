@@ -1,4 +1,4 @@
-import LoginContainer, { LoginMain } from "./styled";
+import { LoginMain, LoginContainer } from "./styled";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <>
       <HeaderHome />
-      <MenuNav />
+      <MenuNav hiddenSearch />
       <LoginMain>
         <LoginContainer>
           <h2>Entrar na sua conta</h2>

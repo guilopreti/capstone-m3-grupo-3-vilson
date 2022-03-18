@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 const MenuConteiner = styled.section`
   display: flex;
   justify-content: center;
@@ -34,14 +33,15 @@ const MenuConteiner = styled.section`
     @media (min-width: 1700px) {
       width: 1380px;
     }
-    .menu-nave-div-menu {
+    .menu-nav-div-menu {
       display: flex;
     }
-    .menu-nave-div-input {
-      margin-left: 12px;
+    .menu-nav-div-input {
       display: flex;
+      margin-left: -29px;
       align-items: center;
       width: 220px;
+      display: ${(props) => (props.hiddenSearch ? "none" : "flex")};
       @media (min-width: 768px) {
         margin-left: -152px;
       }
