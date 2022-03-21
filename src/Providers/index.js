@@ -1,11 +1,14 @@
-import { UserProvider } from "./users";
-import { PostsProvider } from "./posts";
+import { UserProvider } from './users'
+import { PostsProvider } from './posts'
+import { AuthProvider } from './auth'
 
 const Providers = ({ children }) => {
   return (
-    <PostsProvider>
-      <UserProvider>{children}</UserProvider>
-    </PostsProvider>
-  );
-};
-export default Providers;
+    <AuthProvider>
+      <PostsProvider>
+        <UserProvider>{children}</UserProvider>
+      </PostsProvider>
+    </AuthProvider>
+  )
+}
+export default Providers
