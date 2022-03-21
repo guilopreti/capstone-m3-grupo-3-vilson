@@ -7,11 +7,18 @@ import { AuthContext } from '../../Providers/auth'
 import jwt_decode from 'jwt-decode'
 import api from '../../services/api'
 import { useState, useEffect } from 'react'
+import { FiX } from 'react-icons/fi'
+import MenuHamburguer from '../MenuHamburguer'
 
 const HeaderHome = () => {
+  const [menuHamb, setMenuHamb] = useState(false)
   const [users, setUsers] = useState([])
   const [findUser, setFindUser] = useState()
   const { authenticated } = useContext(AuthContext)
+
+  const toggleMenu = () => {
+    menuHamb ? setMenuHamb(false) : setMenuHamb(true)
+  }
 
   const authorizedUser = async () => {
     await api.get('/users').then((response) => {
@@ -33,7 +40,18 @@ const HeaderHome = () => {
     <>
       <HeaderHomeContainer>
         <div className='header-div-parent'>
-          <FiMenu className='header-icons header-icons-dash' />
+          {menuHamb ? (
+            <FiX
+              onClick={() => toggleMenu()}
+              className='header-icons header-icons-dash'
+            />
+          ) : (
+            <FiMenu
+              onClick={() => toggleMenu()}
+              className='header-icons header-icons-dash'
+            />
+          )}
+
           <div className='header-div-logo'>
             <h2>
               Opnion<span>!</span>
@@ -64,6 +82,7 @@ const HeaderHome = () => {
           )}
         </div>
       </HeaderHomeContainer>
+      {menuHamb && <MenuHamburguer setMenuHamb={setMenuHamb} />}
     </>
   )
 }
