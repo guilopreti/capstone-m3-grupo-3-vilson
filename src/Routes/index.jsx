@@ -1,40 +1,25 @@
-import { Switch, Route } from "react-router-dom";
-import Register from "../pages/Register/index";
-import Login from "../pages/Login/index";
-import ArticlePage from "../pages/ArticlePage";
-import Home from "../pages/Home";
-import User from "../pages/User";
-import TermsArticlePage from "../pages/TermsArticlePage";
-import CreatePost from "../pages/CreatePost";
-import HeaderHome from "../components/HeaderHome";
+import { Switch } from 'react-router-dom'
+import Register from '../pages/Register/index'
+import Login from '../pages/Login/index'
+import ArticlePage from '../pages/ArticlePage'
+import Home from '../pages/Home'
+import User from '../pages/User'
+import TermsArticlePage from '../pages/TermsArticlePage'
+import CreatePost from '../pages/CreatePost'
+import Route from './route'
 
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path={"/register"}>
-        <Register />
-      </Route>
-      <Route path={"/login"}>
-        <Login />
-      </Route>
-      <Route path={"/user"}>
-        <User />
-      </Route>
-      <Route path="/terms">
-        <TermsArticlePage />
-      </Route>
-      <Route exact path="/post">
-        <ArticlePage />
-      </Route>
-      <Route path={"/create"}>
-        <HeaderHome />
-        <CreatePost />
-      </Route>
+      <Route isPublic component={Home} exact path='/' />
+      <Route component={Login} exact path='/login' />
+      <Route component={Register} exact path='/register' />
+      <Route component={ArticlePage} exact path='/post' />
+      <Route isPrivate component={User} exact path='/user' />
+      <Route isPrivate component={TermsArticlePage} exact path='/terms' />
+      <Route isPrivate component={CreatePost} exact path='/create' />
     </Switch>
-  );
-};
+  )
+}
 
-export default Routes;
+export default Routes
