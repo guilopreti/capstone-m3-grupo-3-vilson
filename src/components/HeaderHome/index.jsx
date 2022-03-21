@@ -15,7 +15,6 @@ const HeaderHome = () => {
 
   const authorizedUser = async () => {
     await api.get('/users').then((response) => {
-      console.log(response.data)
       return setUsers(response.data)
     })
   }
@@ -25,13 +24,10 @@ const HeaderHome = () => {
       JSON.parse(localStorage.getItem('@CapstoneM3:userLogin')) || {}
     const decoded = jwt_decode(token)
     const findedUser = users.find((user) => {
-      console.log(user.id, Number(decoded.sub))
       return user.id === Number(decoded.sub)
     })
     setFindUser(findedUser)
-    console.log(decoded)
-    console.log(findUser, findedUser, users)
-  }, [findUser, users])
+  }, [])
 
   return (
     <>
