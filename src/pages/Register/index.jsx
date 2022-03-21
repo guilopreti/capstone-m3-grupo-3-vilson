@@ -5,6 +5,7 @@ import { UserContext } from '../../Providers/users'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useHistory } from 'react-router-dom'
 
 import Button from '../../components/Button/index'
 
@@ -56,10 +57,11 @@ const Register = () => {
   })
 
   const { handleUserRegister } = useContext(UserContext)
+  const history = useHistory()
 
   const onSubmit = ({ name, lastname, email, password }) => {
     const userData = { name, lastname, email, password, img: userImage }
-    handleUserRegister(userData)
+    handleUserRegister(userData, history)
   }
 
   return (

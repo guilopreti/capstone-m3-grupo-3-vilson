@@ -10,7 +10,7 @@ import Route from './route'
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path='/' isPublic component={Home} />
+      <Route isPublic component={Home} exact path='/' />
       <Route component={Login} exact path='/login' />
       <Route component={Register} exact path='/register' />
       <Route component={ArticlePage} exact path='/post' />

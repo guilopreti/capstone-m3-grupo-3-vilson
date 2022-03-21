@@ -1,5 +1,4 @@
 import { createContext, useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { toast } from 'react-toastify'
 import api from '../../services/api'
 import { AuthContext } from '../auth'
@@ -36,6 +35,18 @@ export const UserProvider = ({ children }) => {
     history.push('/')
     setAuthenticated(true)
   }
+
+  /*const findUserJwtDecode = async () => {
+    const response = await api.get('/users')
+    const token = JSON.parse(localStorage.getItem('@CapstoneM3:userLogin'))
+    const decoded = jwt_decode(token)
+
+    const findedUser = response.data.find((user) => {
+      return user.email === decoded.email
+    })
+    console.log(findedUser)
+    return findedUser
+  }*/
 
   return (
     <UserContext.Provider
