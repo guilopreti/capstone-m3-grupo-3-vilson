@@ -7,6 +7,7 @@ import User from "../pages/User";
 import TermsArticlePage from "../pages/TermsArticlePage";
 import CreatePost from "../pages/CreatePost";
 import HeaderHome from "../components/HeaderHome";
+import Aboutus from "../pages/About-us";
 
 const Routes = () => {
   return (
@@ -32,6 +33,9 @@ const Routes = () => {
       <Route path={"/create"}>
         <HeaderHome />
         <CreatePost />
+      </Route>
+      <Route path={'/aboutus'}>
+        <Aboutus />
       </Route>
     </Switch>
   );

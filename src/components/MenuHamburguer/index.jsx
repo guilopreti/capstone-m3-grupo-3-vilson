@@ -23,6 +23,11 @@ const MenuHamburguer = ({setMenuHamb}) => {
     setMenuHamb(false)
   }
 
+  const goAboutus = () => {
+    history.push('/aboutus')
+    setMenuHamb(false)
+  }
+
   return (
     <Container>
       <div className="search-container">
@@ -45,8 +50,8 @@ const MenuHamburguer = ({setMenuHamb}) => {
                   <IoIosArrowForward onClick={() => goHome()} className="list-item-link" />
               </li>
               <li className="list-item">
-                  <span className="list-item-link">Sobre</span>
-                  <IoIosArrowForward  className="list-item-link"/>
+                  <span onClick={() => goAboutus()} className="list-item-link">Sobre</span>
+                  <IoIosArrowForward onClick={() => goAboutus()} className="list-item-link"/>
               </li>
               <li className="list-item">
                   <span onClick={() => goCreateArticle()} className="list-item-link" >Escrever artigo</span>
