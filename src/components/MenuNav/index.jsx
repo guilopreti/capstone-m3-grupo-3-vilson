@@ -21,7 +21,7 @@ const MenuNav = () => {
           <Link className="Link" to="/">
             <li>Patrocine</li>
           </Link>
-          <Link className="Link" to="/">
+          <Link className="Link" to="/create">
             <li>
               <BsPencilSquare className="menu-nav-icons" /> Escrever artigo
             </li>

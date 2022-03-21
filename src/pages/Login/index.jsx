@@ -22,10 +22,8 @@ const Login = () => {
       .string()
       .required("Insira um e-mail válido")
       .email("Insira um e-mail válido"),
-    password: yup
-      .string()
-      .required("Insira sua senha")
-      .min(8, "Insira uma senha de no mínimo 8 dígitos"),
+    password: yup.string().required("Insira sua senha"),
+    // .min(8, "Insira uma senha de no mínimo 8 dígitos"),
   });
 
   const {
