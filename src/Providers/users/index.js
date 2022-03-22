@@ -1,12 +1,14 @@
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
+import { AuthContext } from "../auth";
 import { ProfileContext } from "../differentStates/index";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const { setShowChangeInformation } = useContext(ProfileContext);
+  const { setAuthenticated } = useContext(AuthContext);
 
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || []
@@ -23,7 +25,10 @@ export const UserProvider = ({ children }) => {
           "@CapstoneM3:userLogin",
           JSON.stringify(response.data)
         );
+
+        setAuthenticated(true);
         setUser([response.data.user]);
+
         history.push("/");
       })
       .catch((err) => {

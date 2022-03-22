@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.main`
   width: 100%;
@@ -13,14 +13,14 @@ export const Container = styled.main`
     max-width: 515px;
     padding: 15px;
   }
-`
+`;
 
 export const HeaderPost = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
   padding: 10px 0;
-`
+`;
 
 export const DateTemaContainer = styled.div`
   width: 100%;
@@ -32,7 +32,7 @@ export const DateTemaContainer = styled.div`
     font-size: 12px;
     color: var(--grey-color);
   }
-`
+`;
 
 export const TemaContainer = styled.div`
   width: 65px;
@@ -48,7 +48,7 @@ export const TemaContainer = styled.div`
     font-size: 12px;
     color: var(--white-color);
   }
-`
+`;
 
 export const TitleContainer = styled.div`
   width: 100%;
@@ -66,14 +66,14 @@ export const TitleContainer = styled.div`
     font-weight: regular;
     margin-top: 10px;
   }
-`
+`;
 
 export const ImgTextContainer = styled.div`
   width: 100%;
   padding: 10px 0;
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const ImgContainer = styled.div`
   width: 100%;
@@ -88,7 +88,7 @@ export const ImgContainer = styled.div`
     display: inline-block;
     border-radius: 5px;
   }
-`
+`;
 
 export const TextContainer = styled.div`
   width: 100%;
@@ -96,7 +96,12 @@ export const TextContainer = styled.div`
   text-align: justify;
   font-size: 16px;
   font-weight: regular;
-`
+
+  p {
+    text-indent: 35px;
+    margin-bottom: 10px;
+  }
+`;
 
 export const FontContainer = styled.div`
   width: 100%;
@@ -114,7 +119,7 @@ export const FontContainer = styled.div`
       text-decoration: underline;
     }
   }
-`
+`;
 
 export const UserVoteContainer = styled.div`
   width: 100%;
@@ -132,6 +137,7 @@ export const UserVoteContainer = styled.div`
     span {
       font-size: 14px;
       color: black;
+      cursor: pointer;
     }
 
     > div {
@@ -141,4 +147,38 @@ export const UserVoteContainer = styled.div`
       padding: 0 10px;
     }
   }
-`
+`;
+
+export const CarouselContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 300px;
+
+  figure {
+    width: 80%;
+    max-width: 400px;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+
+    figcaption {
+      display: none;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  div {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 400px;
+  }
+`;
