@@ -8,7 +8,9 @@ import { ModalContext } from "../../Providers/differentStates/index";
 import MenuConteiner from "./styled";
 
 const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false }) => {
-  const { setShowModal } = useContext(ModalContext);
+  const { showModal, setShowModal } = useContext(ModalContext);
+
+  // const [showModal, setShowModal] = useState(false)
 
   const LocalStorage =
     JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || null;
@@ -31,7 +33,7 @@ const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false }) => {
           <Link className="Link" to="/">
             <li>Patrocine</li>
           </Link>
-          <Link className="Link" to="/">
+          <Link className="Link" to="/terms">
             <li>
               <BsPencilSquare className="menu-nav-icons" /> Escrever artigo
             </li>

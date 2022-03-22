@@ -7,6 +7,7 @@ import MenuNav from "../../../components/MenuNav";
 
 const Profile = () => {
   const { showChangeInformation } = useContext(ProfileContext);
+  console.log(showChangeInformation);
 
   return (
     <>

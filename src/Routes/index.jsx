@@ -8,35 +8,24 @@ import TermsArticlePage from "../pages/TermsArticlePage";
 import ModalProfile from "../components/Modals/ModalProfile";
 import { useContext } from "react";
 import { ModalContext } from "../Providers/differentStates/index";
+import Aboutus from "../pages/AboutUs/index";
+import CreatePost from "../pages/CreatePost/index";
 
 import Profile from "../pages/Profile/Profile/index";
 
 const Routes = () => {
-  const { showModal } = useContext(ModalContext);
+  // const { showModal } = useContext(ModalContext);
   return (
     <Switch>
-      <Route exact path="/">
-        <Home />
-        {showModal && <ModalProfile />}
-      </Route>
-      <Route path="/profile">
-        <Profile />
-      </Route>
-      <Route path="/register">
-        <Register />
-      </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/user">
-        <User />
-      </Route>
-      <Route path="/terms">
-        <TermsArticlePage />
-      </Route>
-      <Route exact path="/post">
-        <ArticlePage />
-      </Route>
+      <Route isPublic component={Home} exact path="/" />
+      <Route isPublic component={Aboutus} path="/aboutus" />
+      <Route component={Login} path="/login" />
+      <Route component={Register} path="/register" />
+      <Route component={ArticlePage} path="/post" />
+      <Route isPrivate component={User} path="/user" />
+      <Route isPrivate component={Profile} path="/Profile" />
+      <Route isPrivate component={TermsArticlePage} path="/terms" />
+      <Route isPrivate component={CreatePost} path="/create" />
     </Switch>
   );
 };

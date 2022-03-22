@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { UserContext } from "../../Providers/users";
 import HeaderHome from "../../components/HeaderHome";
 import MenuNav from "../../components/MenuNav";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const schema = yup.object().shape({
@@ -22,7 +23,7 @@ const Login = () => {
       .required("Insira sua senha")
       .min(6, "Insira uma senha de no mínimo 6 dígitos"),
   });
-
+  const history = useHistory();
   const {
     register,
     handleSubmit,
@@ -34,7 +35,7 @@ const Login = () => {
   const { userCurrentLogin } = useContext(UserContext);
 
   const onSubmit = (data) => {
-    userCurrentLogin(data);
+    userCurrentLogin(data, history);
   };
 
   return (

@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 
@@ -10,14 +9,13 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const { setShowChangeInformation } = useContext(ProfileContext);
 
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || []
+  );
   const userLocal =
     JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || "";
 
-  const [user, setUser] = useState([userLocal.user]);
-
-  const history = useHistory();
-
-  const userCurrentLogin = (data) => {
+  const userCurrentLogin = (data, history) => {
     api
       .post("/login", data)
       .then((response) => {
@@ -34,7 +32,7 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-  const changeUserInformation = (userDataUpdate) => {
+  const changeUserInformation = (userDataUpdate, history) => {
     api
       .patch(`/users/${userLocal.user.id}`, userDataUpdate, {
         headers: {
@@ -56,14 +54,63 @@ export const UserProvider = ({ children }) => {
         setShowChangeInformation(false);
         history.push("/");
       })
-      .catch((err) => {
+
+      .catch((_) => {
         toast.error("Falha ao tentar atualizar seus dados");
       });
   };
 
+  const handleUserRegister = (data, history) => {
+    api
+      .post("/users", data)
+
+      .then((response) => {
+        toast.success("Cadastro realizado com sucesso");
+
+        console.log(response);
+        history.push("/login");
+      })
+
+      .catch((err) => {
+        toast.error("Falha ao tentar realizar o cadastro");
+        console.log(err);
+      });
+  };
+
+  // const userCurrentLogin = async (data, history) => {
+  //   const response = await api.post("/login", data).catch((err) => {
+  //     toast.error("Algo deu errado, e-mail ou senha incorretos");
+  //   });
+
+  //   localStorage.setItem(
+  //     "@CapstoneM3:userLogin",
+  //     JSON.stringify(response.data)
+  //   );
+  //   history.push("/");
+  //   setAuthenticated(true);
+  // };
+
+  /*const findUserJwtDecode = async () => {
+    const response = await api.get('/users')
+    const token = JSON.parse(localStorage.getItem('@CapstoneM3:userLogin'))
+    const decoded = jwt_decode(token)
+
+    const findedUser = response.data.find((user) => {
+      return user.email === decoded.email
+    })
+    console.log(findedUser)
+    return findedUser
+  }*/
+
   return (
     <UserContext.Provider
-      value={{ user, setUser, userCurrentLogin, changeUserInformation }}
+      value={{
+        user,
+        setUser,
+        userCurrentLogin,
+        changeUserInformation,
+        handleUserRegister,
+      }}
     >
       {children}
     </UserContext.Provider>

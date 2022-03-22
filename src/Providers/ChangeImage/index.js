@@ -10,7 +10,6 @@ export const ChangeImageProvider = ({ children }) => {
   console.log(image);
 
   const userLocal = JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"));
-  console.log(userLocal.user.id);
 
   const sendUserImage = () => {
     api

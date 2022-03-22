@@ -23,7 +23,7 @@ const ModalChangeImage = () => {
       <div className="changeImage-div-img">
         <form>
           <div className="change-div-input">
-            <label for="changeImage">Escolher arquivo</label>
+            <label htmlFor="changeImage">Escolher arquivo</label>
 
             <input
               type="file"

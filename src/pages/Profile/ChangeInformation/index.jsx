@@ -15,6 +15,7 @@ import { ChangeImageContext } from "../../../Providers/ChangeImage";
 import { ChangeOpacityContext } from "../../../Providers/differentStates/index";
 
 import ModalChangeImage from "../ModalChangeImage/index";
+import { useHistory } from "react-router-dom";
 
 const ChangeInformation = () => {
   const { changeUserInformation } = useContext(UserContext);
@@ -60,8 +61,10 @@ const ChangeInformation = () => {
   const userLocal = JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"));
   // const userLocalImg = JSON.parse(localStorage.getItem("@CapstoneM3:userImg"));
 
+  const history = useHistory();
+
   const onSubmit = (userDataUpdate) => {
-    changeUserInformation(userDataUpdate);
+    changeUserInformation(userDataUpdate, history);
   };
 
   return (
@@ -98,7 +101,6 @@ const ChangeInformation = () => {
           >
             <div>
               <TextField
-                id="outlined-helperText"
                 className="register-input"
                 size="small"
                 label="Nome completo"
@@ -107,7 +109,6 @@ const ChangeInformation = () => {
               />
               <p>{errors.name?.message}</p>
               <TextField
-                id="outlined-helperText"
                 className="register-input"
                 label="Biografia"
                 defaultValue={userLocal.user.biography}
@@ -117,7 +118,6 @@ const ChangeInformation = () => {
               />
               <p>{errors.biography?.message}</p>
               <TextField
-                id="outlined-helperText"
                 className="register-input"
                 size="small"
                 label="Username"
@@ -126,7 +126,6 @@ const ChangeInformation = () => {
               />
               <p>{errors.username?.message}</p>
               <TextField
-                id="outlined-helperText"
                 className="register-input"
                 size="small"
                 label="E-mail"
@@ -135,7 +134,6 @@ const ChangeInformation = () => {
               />
               <p>{errors.email?.message}</p>
               <TextField
-                id="outlined-helperText"
                 className="register-input"
                 size="small"
                 label="Senha"

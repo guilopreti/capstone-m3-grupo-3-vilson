@@ -4,17 +4,42 @@ import { MdWavingHand } from "react-icons/md";
 import { Link } from "react-router-dom";
 import ImageUser from "../../assets/image/elon-musk.jpg";
 import { HeaderHomeContainer } from "./styled";
+// import { useContext } from "react";
+import { useState } from "react";
+import { FiX } from "react-icons/fi";
+import MenuHamburguer from "../MenuHamburguer";
 
 const HeaderHome = () => {
+  const [menuHamb, setMenuHamb] = useState(false);
   const userLocal = JSON.parse(
     localStorage.getItem("@CapstoneM3:userLogin") || null
   );
+
+  const toggleMenu = () => {
+    menuHamb ? setMenuHamb(false) : setMenuHamb(true);
+  };
+
+  // useEffect(() => {
+  //   const token =
+  //     JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || [];
+  // })
 
   return (
     <>
       <HeaderHomeContainer>
         <div className="header-div-parent">
-          <FiMenu className="header-icons header-icons-dash" />
+          {menuHamb ? (
+            <FiX
+              onClick={() => toggleMenu()}
+              className="header-icons header-icons-dash"
+            />
+          ) : (
+            <FiMenu
+              onClick={() => toggleMenu()}
+              className="header-icons header-icons-dash"
+            />
+          )}
+
           <div className="header-div-logo">
             <h2>
               Opnion<span>!</span>
@@ -47,6 +72,7 @@ const HeaderHome = () => {
           )}
         </div>
       </HeaderHomeContainer>
+      {menuHamb && <MenuHamburguer setMenuHamb={setMenuHamb} />}
     </>
   );
 };

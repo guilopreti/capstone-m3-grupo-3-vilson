@@ -1,4 +1,6 @@
 import { RegisterContainer, RegisterMain } from "./styled";
+import { useContext } from "react";
+import { UserContext } from "../../Providers/users";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -9,11 +11,9 @@ import Button from "../../components/Button/index";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
-import api from "../../services/api";
-import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
 import HeaderHome from "../../components/HeaderHome";
 import MenuNav from "../../components/MenuNav";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
   const schema = yup.object().shape({
@@ -26,15 +26,6 @@ const Register = () => {
         "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
         "Digite apenas caracteres"
       ),
-    // lastname: yup
-    //   .string()
-    //   .required("Insira seu sobrenome")
-    //   .min(2, "Sobrenome deve ter no mínimo 2 caracteres")
-    //   .max(25, "Sobrenome deve ter no máximo 25 caracteres")
-    //   .matches(
-    //     "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
-    //     "Digite apenas caracteres"
-    //   ),
     username: yup
       .string()
       .required("Insira seu nome de usuário")
@@ -64,17 +55,11 @@ const Register = () => {
 
   const history = useHistory();
 
-  const onSubmit = ({ name, lastname, username, email, password }) => {
-    const userData = { name, lastname, username, email, password };
-    api
-      .post("/users", userData)
-      .then((_) => {
-        toast.success("Cadastro realizado com sucesso");
-        history.push("/login");
-      })
-      .catch((_) => {
-        toast.error("Falha ao tentar realizar o cadastro");
-      });
+  const { handleUserRegister } = useContext(UserContext);
+
+  const onSubmit = ({ name, username, email, password }) => {
+    const userData = { name, username, email, password };
+    handleUserRegister(userData, history);
   };
 
   return (
@@ -108,14 +93,6 @@ const Register = () => {
                   {...register("username")}
                 />
                 <p>{errors.username?.message}</p>
-                {/* <TextField
-                  className="register-input"
-                  size="small"
-                  label="Username"
-                  placeholder="Digite seu nome de usuário"
-                  {...register("username")}
-                />
-                <p>{errors.username?.message}</p> */}
                 <TextField
                   className="register-input"
                   size="small"
@@ -159,3 +136,16 @@ const Register = () => {
 };
 
 export default Register;
+
+// const onSubmit = ({ name, lastname, username, email, password }) => {
+//   const userData = { name, lastname, username, email, password };
+//   api
+//     .post("/users", userData)
+//     .then((_) => {
+//       toast.success("Cadastro realizado com sucesso");
+//       history.push("/login");
+//     })
+//     .catch((_) => {
+//       toast.error("Falha ao tentar realizar o cadastro");
+//     });
+// };

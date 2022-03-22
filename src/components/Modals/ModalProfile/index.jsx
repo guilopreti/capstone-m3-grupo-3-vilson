@@ -9,6 +9,7 @@ import { ModalContext } from "../../../Providers/differentStates/index";
 const ModalProfile = () => {
   const { setShowModal } = useContext(ModalContext);
   const { setUser } = useContext(UserContext);
+  // const { setShowChangeInformation } = useContext(showChangeInformation);
 
   const userLocal = JSON.parse(
     localStorage.getItem("@CapstoneM3:userLogin") || null
