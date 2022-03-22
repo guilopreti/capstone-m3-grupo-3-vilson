@@ -11,10 +11,6 @@ export const CurrentPostProvider = ({ children }) => {
   const openCurrentPost = (postId) => {
     api.get(`/posts/${postId}`).then((resp) => {
       setCurrentPost(resp.data);
-      localStorage.setItem(
-        "@CapstoneM3:currentPost",
-        JSON.stringify(resp.data)
-      );
     });
   };
 

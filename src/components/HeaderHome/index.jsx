@@ -1,29 +1,28 @@
-import { HeaderHomeContainer } from "./styled";
 import { FiLogIn } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
+import { MdWavingHand } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/auth";
-import { useState, useEffect } from "react";
+import ImageUser from "../../assets/image/elon-musk.jpg";
+import { HeaderHomeContainer } from "./styled";
+// import { useContext } from "react";
+import { useState } from "react";
 import { FiX } from "react-icons/fi";
 import MenuHamburguer from "../MenuHamburguer";
 
 const HeaderHome = () => {
   const [menuHamb, setMenuHamb] = useState(false);
-
-  const [findUser, setFindUser] = useState();
-  const { authenticated } = useContext(AuthContext);
+  const userLocal = JSON.parse(
+    localStorage.getItem("@CapstoneM3:userLogin") || null
+  );
 
   const toggleMenu = () => {
     menuHamb ? setMenuHamb(false) : setMenuHamb(true);
   };
 
-  useEffect(() => {
-    const token =
-      JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || [];
-
-    setFindUser(token.user);
-  }, []);
+  // useEffect(() => {
+  //   const token =
+  //     JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || [];
+  // })
 
   return (
     <>
@@ -47,16 +46,18 @@ const HeaderHome = () => {
             </h2>
           </div>
           <div className="header-div-fake"></div>
-          {authenticated ? (
-            <ul>
-              <li>
-                <img src={findUser?.img} alt="" /> {findUser?.name}
-              </li>
-
-              <li>
-                <FiLogIn className="header-icons" /> Sair
-              </li>
-            </ul>
+          {userLocal !== null ? (
+            <div className="header-div-userLogged">
+              <div className="header-div-greeting">
+                <span>
+                  {userLocal !== null && `Olá, ${userLocal.user.username}`}
+                  <MdWavingHand className="icon-hand" />
+                </span>
+              </div>
+              <div className="header-div-img">
+                <img src={ImageUser} alt="Imagem de usuário" />
+              </div>
+            </div>
           ) : (
             <ul>
               <Link className="Link" to="/register">

@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -7,7 +6,6 @@ export const AuthProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [token] = useState(localStorage.getItem("@CapstoneM3:userLogin"));
   const [loading, setLoading] = useState(true);
-  const history = useHistory();
 
   useEffect(() => {
     if (token) {
@@ -16,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, [token]);
 
-  const handleLogout = () => {
+  const handleLogout = (history) => {
     localStorage.clear();
     setAuthenticated(false);
     history.push("/");
