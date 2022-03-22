@@ -1,14 +1,13 @@
 import styled from 'styled-components'
+import { up, down, between, only } from 'styled-breakpoints'
 
 export const Container = styled.main`
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
 
   > div {
-    margin-top: 50px;
     width: 100%;
     max-width: 515px;
     padding: 15px;
@@ -19,7 +18,6 @@ export const HeaderPost = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  padding: 10px 0;
 `
 
 export const DateTemaContainer = styled.div`
@@ -116,29 +114,40 @@ export const FontContainer = styled.div`
   }
 `
 
-export const UserVoteContainer = styled.div`
+export const FeedBackContainer = styled.div`
   width: 100%;
-  margin-top: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  > h3 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  > textarea {
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    height: 140px;
+    resize: none;
+    padding: 5px;
+  }
 
   > div {
-    width: 120px;
-    height: 90px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-
-    span {
-      font-size: 14px;
-      color: black;
-    }
-
-    > div {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 10px;
-    }
+    justify-content: center;
+    align-items: center;
   }
+`
+
+export const Button = styled.button`
+  width: 100%;
+  max-width: 240px;
+  padding: 5px;
+  height: 40px;
+  background-color: ${(props) => (props.approved ? '#11f56c' : '#f50a0a')};
+  color: #fff;
+  border: none;
+  margin-top: 15px;
+  border-radius: 5px;
 `

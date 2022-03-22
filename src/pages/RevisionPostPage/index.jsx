@@ -2,8 +2,10 @@ import HeaderHome from '../../components/HeaderHome'
 import MenuNav from '../../components/MenuNav'
 import Paisagem from '../../assets/image/paisagem.jpg'
 import {
+  Button,
   Container,
   DateTemaContainer,
+  FeedBackContainer,
   FontContainer,
   HeaderPost,
   ImgContainer,
@@ -15,7 +17,7 @@ import {
 } from './style'
 import { AiFillDislike, AiFillLike } from 'react-icons/ai'
 
-const ArticlePage = () => {
+const RevisionPostPage = () => {
   return (
     <>
       <HeaderHome />
@@ -60,19 +62,18 @@ const ArticlePage = () => {
               Fonte: <span>link</span>
             </span>
           </FontContainer>
-          <UserVoteContainer>
+          <FeedBackContainer>
+            <h3>Digite o feedback para o usúario:</h3>
+            <textarea placeholder='Digite seu feedback aqui'></textarea>
             <div>
-              <span>Esse artigo foi útil?</span>
-              <div>
-                <AiFillLike size={'40px'} />
-                <AiFillDislike size={'40px'} />
-              </div>
+              <Button approved>Aprovar</Button>
+              <Button>Recusar</Button>
             </div>
-          </UserVoteContainer>
+          </FeedBackContainer>
         </div>
       </Container>
     </>
   )
 }
 
-export default ArticlePage
+export default RevisionPostPage
