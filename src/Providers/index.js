@@ -1,13 +1,27 @@
 import { UserProvider } from "./users";
 import { PostsProvider } from "./posts";
-import { AuthProvider } from "./auth";
+import { ChangeImageProvider } from "./ChangeImage/index";
+import { AuthProvider } from "./auth/index";
+import {
+  ModalProvider,
+  ProfileProvider,
+  ChangeOpacityProvider,
+} from "./differentStates/index";
 
 const Providers = ({ children }) => {
   return (
     <AuthProvider>
-      <PostsProvider>
-        <UserProvider>{children}</UserProvider>
-      </PostsProvider>
+      <ChangeOpacityProvider>
+        <ChangeImageProvider>
+          <ProfileProvider>
+            <ModalProvider>
+              <PostsProvider>
+                <UserProvider>{children}</UserProvider>
+              </PostsProvider>
+            </ModalProvider>
+          </ProfileProvider>
+        </ChangeImageProvider>
+      </ChangeOpacityProvider>
     </AuthProvider>
   );
 };

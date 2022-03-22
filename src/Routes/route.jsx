@@ -1,7 +1,7 @@
-import { useContext } from 'react'
-import { AuthContext } from '../Providers/auth'
-import { Route as RouteDOM } from 'react-router-dom'
-import { Redirect } from 'react-router-dom'
+import { useContext } from "react";
+import { AuthContext } from "../Providers/auth/index";
+import { Route as RouteDOM } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const Route = ({
   isPrivate = false,
@@ -9,7 +9,7 @@ const Route = ({
   component: Component,
   ...rest
 }) => {
-  const { authenticated } = useContext(AuthContext)
+  const { authenticated } = useContext(AuthContext);
   return (
     <RouteDOM
       {...rest}
@@ -19,11 +19,11 @@ const Route = ({
         ) : isPublic === true ? (
           <Component />
         ) : (
-          <Redirect to={isPrivate ? '/login' : '/'} />
-        )
+          <Redirect to={isPrivate ? "/login" : "/"} />
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default Route
+export default Route;
