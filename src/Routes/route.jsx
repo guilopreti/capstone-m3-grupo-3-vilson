@@ -10,7 +10,6 @@ const Route = ({
   ...rest
 }) => {
   const { authenticated } = useContext(AuthContext)
-  console.log(authenticated)
   return (
     <RouteDOM
       {...rest}
