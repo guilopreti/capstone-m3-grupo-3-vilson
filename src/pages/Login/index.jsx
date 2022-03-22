@@ -1,18 +1,13 @@
-import { LoginMain, LoginContainer } from "./styled";
-
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-import Button from "../../components/Button/index";
-
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
-
+import { LoginMain, LoginContainer } from "./styled";
+import Button from "../../components/Button/index";
 import { useContext } from "react";
 import { UserContext } from "../../Providers/users";
-
 import HeaderHome from "../../components/HeaderHome";
 import MenuNav from "../../components/MenuNav";
 
@@ -25,7 +20,7 @@ const Login = () => {
     password: yup
       .string()
       .required("Insira sua senha")
-      .min(8, "Insira uma senha de no mínimo 8 dígitos"),
+      .min(6, "Insira uma senha de no mínimo 6 dígitos"),
   });
 
   const {
@@ -45,7 +40,7 @@ const Login = () => {
   return (
     <>
       <HeaderHome />
-      <MenuNav hiddenSearch />
+      <MenuNav hiddenSearch hiddenMyAccount />
       <LoginMain>
         <LoginContainer>
           <h2>Entrar na sua conta</h2>

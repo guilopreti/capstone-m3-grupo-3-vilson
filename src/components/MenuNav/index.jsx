@@ -1,13 +1,23 @@
-import MenuConteiner from "./styled";
 import { BsSearch } from "react-icons/bs";
 import { BsPencilSquare } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import { RiHome4Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ModalContext } from "../../Providers/differentStates/index";
+import MenuConteiner from "./styled";
 
-const MenuNav = () => {
+const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false }) => {
+  const { setShowModal } = useContext(ModalContext);
+
+  const LocalStorage =
+    JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || null;
+
   return (
-    <MenuConteiner>
+    <MenuConteiner
+      hiddenSearch={hiddenSearch}
+      hiddenMyAccount={hiddenMyAccount}
+    >
       <ul>
         <div className="menu-nav-div-menu">
           <Link className="Link" to="/">
@@ -31,8 +41,13 @@ const MenuNav = () => {
           <input placeholder="Digite aqui sua pesquisa" />
           <BsSearch className="menu-nav-icons-search" />
         </div>
-        <li>
-          <FiUser className="menu-nav-icons" /> Minha conta
+        <li className="menu-nav-li-hidden" onClick={() => setShowModal(true)}>
+          {LocalStorage !== null && (
+            <div>
+              <FiUser className="menu-nav-icons menu-nav-icons-hidden" />
+              Minha conta
+            </div>
+          )}
         </li>
       </ul>
     </MenuConteiner>

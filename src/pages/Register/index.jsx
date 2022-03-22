@@ -11,7 +11,7 @@ import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 import HeaderHome from "../../components/HeaderHome";
 import MenuNav from "../../components/MenuNav";
 
@@ -19,20 +19,27 @@ const Register = () => {
   const schema = yup.object().shape({
     name: yup
       .string()
-      .required("Insira seu nome")
-      .min(2, "Nome deve ter 2 ou mais caracteres")
+      .required("Insira seu nome completo")
+      .min(2, "Nome deve ter no mínimo 2 caracteres")
+      .max(35, "Nome deve ter no máximo 35 caracteres")
       .matches(
         "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
         "Digite apenas caracteres"
       ),
-    lastname: yup
+    // lastname: yup
+    //   .string()
+    //   .required("Insira seu sobrenome")
+    //   .min(2, "Sobrenome deve ter no mínimo 2 caracteres")
+    //   .max(25, "Sobrenome deve ter no máximo 25 caracteres")
+    //   .matches(
+    //     "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
+    //     "Digite apenas caracteres"
+    //   ),
+    username: yup
       .string()
-      .required("Insira seu sobrenome")
-      .min(2, "Sobrenome deve ter 2 ou mais caracteres")
-      .matches(
-        "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
-        "Digite apenas caracteres"
-      ),
+      .required("Insira seu nome de usuário")
+      .min(2, "Nome de usuário deve ter no mínimo 2 caracteres")
+      .max(25, "Nome de usuário deve ter no máximo 25 caracteres"),
     email: yup
       .string()
       .required("Insira seu e-mail")
@@ -40,7 +47,7 @@ const Register = () => {
     password: yup
       .string()
       .required("Insira uma senha válida")
-      .min(8, "Mínimo de 8 caracteres"),
+      .min(6, "Mínimo de 6 caracteres"),
     confirmPassword: yup
       .string()
       .required("Confirme sua senha")
@@ -57,8 +64,8 @@ const Register = () => {
 
   const history = useHistory();
 
-  const onSubmit = ({ name, lastname, email, password }) => {
-    const userData = { name, lastname, email, password };
+  const onSubmit = ({ name, lastname, username, email, password }) => {
+    const userData = { name, lastname, username, email, password };
     api
       .post("/users", userData)
       .then((_) => {
@@ -73,7 +80,7 @@ const Register = () => {
   return (
     <>
       <HeaderHome />
-      <MenuNav />
+      <MenuNav hiddenSearch hiddenMyAccount />
       <RegisterMain>
         <RegisterMain>
           <RegisterContainer>
@@ -88,24 +95,32 @@ const Register = () => {
                 <TextField
                   className="register-input"
                   size="small"
-                  label="Name"
-                  placeholder="Digite seu nome"
+                  label="Nome completo"
+                  placeholder="Digite seu nome e sobrenome"
                   {...register("name")}
                 />
                 <p>{errors.name?.message}</p>
                 <TextField
                   className="register-input"
                   size="small"
-                  label="Sobrenome"
-                  placeholder="Digite seu nome"
-                  {...register("lastname")}
+                  label="Username"
+                  placeholder="Digite seu nome de usuário"
+                  {...register("username")}
                 />
-                <p>{errors.lastname?.message}</p>
+                <p>{errors.username?.message}</p>
+                {/* <TextField
+                  className="register-input"
+                  size="small"
+                  label="Username"
+                  placeholder="Digite seu nome de usuário"
+                  {...register("username")}
+                />
+                <p>{errors.username?.message}</p> */}
                 <TextField
                   className="register-input"
                   size="small"
                   label="E-mail"
-                  placeholder="Digite seu nome"
+                  placeholder="Digite seu e-mail"
                   {...register("email")}
                 />
                 <p>{errors.email?.message}</p>
