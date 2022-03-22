@@ -1,17 +1,29 @@
 import { HeaderHomeContainer } from "./styled";
 import { FiLogIn } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
-import { FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/auth";
+import { useState, useEffect } from "react";
+import { FiX } from "react-icons/fi";
 import MenuHamburguer from "../MenuHamburguer";
-import { useState } from "react";
 
 const HeaderHome = () => {
   const [menuHamb, setMenuHamb] = useState(false);
 
+  const [findUser, setFindUser] = useState();
+  const { authenticated } = useContext(AuthContext);
+
   const toggleMenu = () => {
     menuHamb ? setMenuHamb(false) : setMenuHamb(true);
   };
+
+  useEffect(() => {
+    const token =
+      JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || [];
+
+    setFindUser(token.user);
+  }, []);
 
   return (
     <>
@@ -35,16 +47,28 @@ const HeaderHome = () => {
             </h2>
           </div>
           <div className="header-div-fake"></div>
-          <ul>
-            <Link className="Link" to="/register">
-              <li>Criar conta</li>
-            </Link>
-            <Link className="Link" to="/login">
+          {authenticated ? (
+            <ul>
               <li>
-                <FiLogIn className="header-icons" /> Entrar
+                <img src={findUser?.img} alt="" /> {findUser?.name}
               </li>
-            </Link>
-          </ul>
+
+              <li>
+                <FiLogIn className="header-icons" /> Sair
+              </li>
+            </ul>
+          ) : (
+            <ul>
+              <Link className="Link" to="/register">
+                <li>Criar conta</li>
+              </Link>
+              <Link className="Link" to="/login">
+                <li>
+                  <FiLogIn className="header-icons" /> Entrar
+                </li>
+              </Link>
+            </ul>
+          )}
         </div>
       </HeaderHomeContainer>
       {menuHamb && <MenuHamburguer setMenuHamb={setMenuHamb} />}

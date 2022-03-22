@@ -5,6 +5,10 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   padding: 10px 20px;
+
+  img {
+    max-height: 420px;
+  }
 `;
 
 export const HeaderPost = styled.div`
@@ -92,6 +96,11 @@ export const TextContainer = styled.div`
   text-align: justify;
   font-size: 16px;
   font-weight: regular;
+
+  p {
+    text-indent: 35px;
+    margin-bottom: 10px;
+  }
 `;
 
 export const FontContainer = styled.div`
@@ -136,5 +145,39 @@ export const UserVoteContainer = styled.div`
       justify-content: space-between;
       padding: 0 10px;
     }
+  }
+`;
+
+export const CarouselContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 300px;
+
+  figure {
+    width: 80%;
+    max-width: 400px;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+
+    figcaption {
+      display: none;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  div {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 400px;
   }
 `;

@@ -112,7 +112,7 @@ const CreatePost = () => {
         <SectionImages>
           <div>
             <h4>Selecione uma imagem principal.</h4>
-            <label for="selecao-foto-principal">Selecionar imagem</label>
+            <label htmlFor="selecao-foto-principal">Selecionar imagem</label>
             <input
               type={"file"}
               id="selecao-foto-principal"
@@ -123,7 +123,7 @@ const CreatePost = () => {
 
           <div>
             <h4>Selecione imagens secundárias</h4>
-            <label for="selecao-fotos-secundárias">Selecionar imagem</label>
+            <label htmlFor="selecao-fotos-secundárias">Selecionar imagem</label>
             <input
               type={"file"}
               id="selecao-fotos-secundárias"

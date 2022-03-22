@@ -21,7 +21,7 @@ const MenuNav = () => {
           <Link className="Link" to="/">
             <li>Patrocine</li>
           </Link>
-          <Link className="Link" to="/create">
+          <Link className="Link" to="/terms">
             <li>
               <BsPencilSquare className="menu-nav-icons" /> Escrever artigo
             </li>
@@ -31,9 +31,11 @@ const MenuNav = () => {
           <input placeholder="Digite aqui sua pesquisa" />
           <BsSearch className="menu-nav-icons-search" />
         </div>
-        <li>
-          <FiUser className="menu-nav-icons" /> Minha conta
-        </li>
+        <Link to="/user">
+          <li>
+            <FiUser className="menu-nav-icons" /> Minha conta
+          </li>
+        </Link>
       </ul>
     </MenuConteiner>
   );
