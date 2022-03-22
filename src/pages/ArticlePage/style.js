@@ -137,6 +137,7 @@ export const UserVoteContainer = styled.div`
     span {
       font-size: 14px;
       color: black;
+      cursor: pointer;
     }
 
     > div {

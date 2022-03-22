@@ -13,7 +13,6 @@ import {
   UserVoteContainer,
   CarouselContent,
 } from "./style";
-import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import { useContext, useEffect, useState } from "react";
 import { CurrentPostContext } from "../../Providers/currentPost";
 import api from "../../services/api";
@@ -66,7 +65,67 @@ const ArticlePage = () => {
   const stars = [1, 2, 3, 4, 5];
 
   const registerVote = async (index) => {
-    console.log(index + 1);
+    const currentValue = await api
+      .get(`/posts/${currentPost.id}`)
+      .then((resp) => resp.data);
+
+    await api
+      .patch(
+        `/posts/${currentPost.id}`,
+        {
+          votes: [...currentValue.votes, index + 1],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
+                .accessToken
+            }`,
+          },
+        }
+      )
+      .then((resp) => {
+        const sumVotes = resp.data.votes.reduce((acc, value) => (acc += value));
+        console.log();
+        api
+          .patch(
+            `/posts/${currentPost.id}`,
+            { media: parseInt(sumVotes / resp.data.votes.length) },
+            {
+              headers: {
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
+                    .accessToken
+                }`,
+              },
+            }
+          )
+          .then((resp) => console.log(resp.data))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+
+    const userPosts = await api
+      .get(`/users/${currentPost.userId}/posts`)
+      .then((resp) => resp.data);
+
+    const userPostsSum = userPosts.reduce(
+      (acc, { media }) => (acc += media),
+      0
+    );
+    const userNote = { note: parseInt(userPostsSum / userPosts.length) };
+
+    api
+      .patch(`/users/${currentPost.userId}`, userNote, {
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
+              .accessToken
+          }`,
+        },
+      })
+      .then((resp) => console.log(resp.data))
+      .catch((err) => console.log(err));
   };
 
   return (

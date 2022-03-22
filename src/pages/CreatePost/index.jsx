@@ -74,7 +74,9 @@ const CreatePost = () => {
           Authorization: `Bearer ${user.accessToken}`,
         },
       })
-      .then((resp) => console.log(resp.data))
+      .then((resp) => {
+        console.log(resp.data);
+      })
       .catch((err) => console.log(err));
   };
 
