@@ -1,6 +1,7 @@
 import { UserProvider } from "./users";
 import { PostsProvider } from "./posts";
 import { ChangeImageProvider } from "./ChangeImage/index";
+import { AuthProvider } from "./auth/index";
 import {
   ModalProvider,
   ProfileProvider,
@@ -9,17 +10,19 @@ import {
 
 const Providers = ({ children }) => {
   return (
-    <ChangeOpacityProvider>
-      <ChangeImageProvider>
-        <ProfileProvider>
-          <ModalProvider>
-            <PostsProvider>
-              <UserProvider>{children}</UserProvider>
-            </PostsProvider>
-          </ModalProvider>
-        </ProfileProvider>
-      </ChangeImageProvider>
-    </ChangeOpacityProvider>
+    <AuthProvider>
+      <ChangeOpacityProvider>
+        <ChangeImageProvider>
+          <ProfileProvider>
+            <ModalProvider>
+              <PostsProvider>
+                <UserProvider>{children}</UserProvider>
+              </PostsProvider>
+            </ModalProvider>
+          </ProfileProvider>
+        </ChangeImageProvider>
+      </ChangeOpacityProvider>
+    </AuthProvider>
   );
 };
 export default Providers;

@@ -17,8 +17,6 @@ export const ProfileContext = createContext();
 export const ProfileProvider = ({ children }) => {
   const [showChangeInformation, setShowChangeInformation] = useState(false);
 
-  console.log(showChangeInformation);
-
   return (
     <ProfileContext.Provider
       value={{ showChangeInformation, setShowChangeInformation }}
@@ -32,7 +30,6 @@ export const ChangeOpacityContext = createContext();
 
 export const ChangeOpacityProvider = ({ children }) => {
   const [isOpacity, setOpacity] = useState(false);
-  console.log(isOpacity);
 
   return (
     <ChangeOpacityContext.Provider value={{ isOpacity, setOpacity }}>

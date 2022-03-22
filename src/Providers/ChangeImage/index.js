@@ -7,7 +7,6 @@ export const ChangeImageContext = createContext();
 export const ChangeImageProvider = ({ children }) => {
   const [showChangeImage, setShowChangeImage] = useState(false);
   const [image, setImage] = useState(null);
-  console.log(image);
 
   const userLocal = JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"));
 
@@ -24,7 +23,6 @@ export const ChangeImageProvider = ({ children }) => {
       )
       .then((response) => {
         const { accessToken } = userLocal;
-        console.log(response);
         localStorage.setItem(
           "@CapstoneM3:userLogin",
           JSON.stringify({ accessToken, user: response.data })
