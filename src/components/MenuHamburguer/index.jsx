@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { Container } from "./styled";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/auth";
 
 const MenuHamburguer = ({ setMenuHamb }) => {
 
   const history = useHistory();
+
+  const { handleLogout } = useContext(AuthContext)
 
   const userLocal = JSON.parse(
     localStorage.getItem("@CapstoneM3:userLogin") || null
@@ -32,6 +36,11 @@ const MenuHamburguer = ({ setMenuHamb }) => {
     history.push("/aboutus");
     setMenuHamb(false);
   };
+
+  const logout = (history) => {
+    handleLogout(history)
+    setMenuHamb(false)
+  }
 
   return (
     <Container>
@@ -94,6 +103,15 @@ const MenuHamburguer = ({ setMenuHamb }) => {
             </span>
             <IoIosArrowForward
               onClick={() => goMyAccount()}
+              className="list-item-link"
+            />
+          </li>
+          <li className="list-item">
+            <span onClick={() => logout(history)} className="list-item-link">
+              Sair
+            </span>
+            <IoIosArrowForward
+              onClick={() => logout(history)}
               className="list-item-link"
             />
           </li>
