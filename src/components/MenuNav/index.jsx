@@ -1,11 +1,11 @@
-import { BsSearch } from "react-icons/bs";
-import { BsPencilSquare } from "react-icons/bs";
-import { FiUser } from "react-icons/fi";
-import { RiHome4Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { ModalContext } from "../../Providers/differentStates/index";
-import MenuConteiner from "./styled";
+import { BsSearch } from 'react-icons/bs'
+import { BsPencilSquare } from 'react-icons/bs'
+import { FiUser } from 'react-icons/fi'
+import { RiHome4Line } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { ModalContext } from '../../Providers/differentStates/index'
+import MenuConteiner from './styled'
 
 const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false, setInputValue}) => {
   const { showModal, setShowModal } = useContext(ModalContext);
@@ -13,7 +13,7 @@ const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false, setInputValue}
   // const [showModal, setShowModal] = useState(false)
 
   const LocalStorage =
-    JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || null;
+    JSON.parse(localStorage.getItem('@CapstoneM3:userLogin')) || null
 
   return (
     <MenuConteiner
@@ -21,21 +21,26 @@ const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false, setInputValue}
       hiddenMyAccount={hiddenMyAccount}
     >
       <ul>
-        <div className="menu-nav-div-menu">
-          <Link className="Link" to="/">
+        <div className='menu-nav-div-menu'>
+          <Link className='Link' to='/'>
             <li>
-              <RiHome4Line className="menu-nav-icons" /> Home
+              <RiHome4Line className='menu-nav-icons' /> Home
             </li>
           </Link>
-          <Link className="Link" to="/">
+          <Link className="Link" to="/aboutus">
             <li>Sobre</li>
           </Link>
-          <Link className="Link" to="/">
+          <Link className='Link' to='/'>
             <li>Patrocine</li>
           </Link>
-          <Link className="Link" to="/terms">
+          <Link className='Link' to='/terms'>
             <li>
-              <BsPencilSquare className="menu-nav-icons" /> Escrever artigo
+              <BsPencilSquare className='menu-nav-icons' /> Escrever artigo
+            </li>
+          </Link>
+          <Link className='Link' to='/revision'>
+            <li>
+              <BsPencilSquare className='menu-nav-icons' /> Revisar Artigo
             </li>
           </Link>
         </div>
@@ -43,16 +48,16 @@ const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false, setInputValue}
           <input onChange={event => setInputValue(event.target.value)} placeholder="Digite aqui sua pesquisa" />
           <BsSearch className="menu-nav-icons-search" />
         </div>
-        <li className="menu-nav-li-hidden" onClick={() => setShowModal(true)}>
+        <li className='menu-nav-li-hidden' onClick={() => setShowModal(true)}>
           {LocalStorage !== null && (
             <div>
-              <FiUser className="menu-nav-icons menu-nav-icons-hidden" />
+              <FiUser className='menu-nav-icons menu-nav-icons-hidden' />
               Minha conta
             </div>
           )}
         </li>
       </ul>
     </MenuConteiner>
-  );
-};
-export default MenuNav;
+  )
+}
+export default MenuNav

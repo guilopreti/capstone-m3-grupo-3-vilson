@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.li`
   width: 100%;
+  height: 120px;
   display: flex;
   border: 1px solid #dddfe2;
   margin-top: 20px;
