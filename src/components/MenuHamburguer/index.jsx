@@ -19,7 +19,7 @@ const MenuHamburguer = ({setMenuHamb}) => {
   }
 
   const goMyAccount = () => {
-    history.push('/user')
+    history.push('/profile')
     setMenuHamb(false)
   }
 
