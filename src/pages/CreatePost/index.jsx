@@ -71,7 +71,7 @@ const CreatePost = () => {
       userId: user.user.id,
     };
     api
-      .post("/posts", post, {
+      .post("/accept", post, {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
@@ -123,6 +123,7 @@ const CreatePost = () => {
               <input
                 type={"file"}
                 id="selecao-foto-principal"
+                accept="image/png, image/jpg"
                 onChange={(evt) => selectFirstImage(evt)}
               />
               {primaryImage && <span>Imagem selecionada</span>}
@@ -136,6 +137,7 @@ const CreatePost = () => {
               <input
                 type={"file"}
                 id="selecao-fotos-secundárias"
+                accept="image/png, image/jpg"
                 onChange={(evt) => selectOthersImages(evt)}
               />
               <span>
