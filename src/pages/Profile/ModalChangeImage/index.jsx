@@ -1,17 +1,26 @@
 import ChangeImageContainer from "./styled";
 import Button from "../../../components/Button/index";
-import { useContext, useState } from "react";
-import ImageProfile from "../../../assets/image/elon-musk.jpg";
+import { useContext } from "react";
+
 import { ChangeImageContext } from "../../../Providers/ChangeImage";
 
 import { ChangeOpacityContext } from "../../../Providers/differentStates/index";
 
 const ModalChangeImage = () => {
-  // const [endImg] = useState();
-
   const { setShowChangeImage, image, setImage, sendUserImage } =
     useContext(ChangeImageContext);
   const { setOpacity } = useContext(ChangeOpacityContext);
+
+  const userLocal = JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"));
+
+  const selectNewImage = (evt) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      let newImage = reader.result;
+      setImage(newImage);
+    });
+    reader.readAsDataURL(evt.target.files[0]);
+  };
 
   return (
     <ChangeImageContainer>
@@ -29,14 +38,14 @@ const ModalChangeImage = () => {
               type="file"
               id="changeImage"
               name="changeImage"
-              onChange={(e) => setImage(e.target.files[0])}
+              onChange={(evt) => selectNewImage(evt)}
             />
           </div>
         </form>
         {image ? (
           <img
             className="changeImage-img"
-            src={URL.createObjectURL(image)}
+            src={image}
             alt="Imagem"
             width="110"
             height="110"
@@ -44,7 +53,7 @@ const ModalChangeImage = () => {
         ) : (
           <img
             className="changeImage-img"
-            src={ImageProfile}
+            src={userLocal.user.img}
             alt="Imagem"
             width="110"
             height="110"
@@ -67,6 +76,7 @@ const ModalChangeImage = () => {
           onClick={() => {
             setShowChangeImage(false);
             setOpacity(false);
+            setImage("");
           }}
         >
           Cancelar

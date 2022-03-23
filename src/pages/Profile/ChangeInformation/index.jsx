@@ -74,7 +74,7 @@ const ChangeInformation = () => {
         <div className="profile-div-img-parent">
           <div className="profile-div-img">
             <img
-              src={image !== null ? URL.createObjectURL(image) : ImageProfile}
+              src={image ? image : userLocal.user.img}
               alt="Imagem de perfil"
               onClick={() => {
                 setShowChangeImage(true);
