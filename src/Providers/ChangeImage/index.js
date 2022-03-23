@@ -1,14 +1,14 @@
 import { createContext, useState } from "react";
-// import DefaultImage from "../../assets/image/elon-musk.jpg";
 import api from "../../services/api";
 
 export const ChangeImageContext = createContext();
 
 export const ChangeImageProvider = ({ children }) => {
   const [showChangeImage, setShowChangeImage] = useState(false);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
 
-  const userLocal = JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"));
+  const userLocal =
+    JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || "";
 
   const sendUserImage = () => {
     api
@@ -27,6 +27,7 @@ export const ChangeImageProvider = ({ children }) => {
           "@CapstoneM3:userLogin",
           JSON.stringify({ accessToken, user: response.data })
         );
+        setImage("");
       })
       .catch((err) => console.log(err));
   };
