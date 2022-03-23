@@ -6,7 +6,7 @@ import Home from "../pages/Home/Home/index";
 import User from "../pages/User";
 import TermsArticlePage from "../pages/TermsArticlePage";
 import CreatePost from "../pages/CreatePost";
-import Aboutus from "../pages/AboutUs/";
+import Aboutus from "../pages/Aboutus";
 import Route from "./route";
 import RevisionPage from "../pages/RevisionPage";
 import RevisionPostPage from "../pages/RevisionPostPage";
