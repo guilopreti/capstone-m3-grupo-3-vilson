@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import api from "../../services/api";
 import { AuthContext } from "../auth";
 import { ProfileContext } from "../differentStates/index";
+import DefaultImage from "../../assets/image/user-padrao.png";
 
 export const UserContext = createContext();
 
@@ -64,8 +65,9 @@ export const UserProvider = ({ children }) => {
   };
 
   const handleUserRegister = (data, history) => {
+    const infosUser = { ...data, biography: "", img: DefaultImage, note: null };
     api
-      .post("/users", data)
+      .post("/users", infosUser)
 
       .then((response) => {
         toast.success("Cadastro realizado com sucesso");
