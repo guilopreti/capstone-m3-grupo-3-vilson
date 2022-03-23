@@ -35,7 +35,7 @@ const ModalProfile = () => {
           <hr></hr>
           <li className="modal-perfil-li-container">
             <div className="modal-perfil-div-img">
-              <img src={ImageProfile} alt="Imagem perfil"></img>
+              <img src={userLocal.user.img} alt="Imagem perfil"></img>
             </div>
             <div className="modal-perfil-div-name">
               <span className="modal-perfil-span-name">
