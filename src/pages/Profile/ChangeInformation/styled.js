@@ -11,7 +11,6 @@ export const MainProfile = styled.main`
   }
   .profile-div-img {
     opacity: ${(props) => (props.isOpacity ? "0.3" : "unset")};
-
     width: 110px;
     height: 110px;
     border-radius: 20px;

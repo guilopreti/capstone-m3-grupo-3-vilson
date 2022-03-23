@@ -34,9 +34,6 @@ export const HeaderHomeContainer = styled.header`
     @media (min-width: 1600px) {
       width: 1280px;
     }
-    @media (min-width: 1700px) {
-      width: 1380px;
-    }
   }
   .header-div-logo {
     h2 {
