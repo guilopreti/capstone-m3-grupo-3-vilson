@@ -30,9 +30,6 @@ const MenuConteiner = styled.section`
     @media (min-width: 1600px) {
       width: 1280px;
     }
-    @media (min-width: 1700px) {
-      width: 1380px;
-    }
     .menu-nav-div-menu {
       display: flex;
     }

@@ -2,7 +2,7 @@ import { Switch } from "react-router-dom";
 import Register from "../pages/Register/index";
 import Login from "../pages/Login/index";
 import ArticlePage from "../pages/ArticlePage";
-import Home from "../pages/Home";
+import Home from "../pages/Home/Home/index";
 import User from "../pages/User";
 import TermsArticlePage from "../pages/TermsArticlePage";
 import CreatePost from "../pages/CreatePost";
