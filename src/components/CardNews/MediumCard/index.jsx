@@ -8,16 +8,18 @@ const MediumCard = ({ current }) => {
         <img src={current.img} alt="Ilustração da notícia" />
       </div>
       <div className="mediumCard-div-main">
-        <div className="mediumCard-div-theme">
-          <div>
-            <span>{current.theme}</span>
+        <div className="mediumCard-div-theme-title-paragraph">
+          <div className="mediumCard-div-theme">
+            <div>
+              <span>{current.theme}</span>
+            </div>
+            <span>{current.time_read}</span>
           </div>
-          <span>{current.time_read}</span>
+          <div className="mediumCard-div-title">
+            <h2>{current.title}</h2>
+          </div>
+          <p>{current.article}</p>
         </div>
-        <div className="mediumCard-div-title">
-          <h2>{current.title}</h2>
-        </div>
-        <p>{current.article}</p>
         <div className="mediumCard-div-user">
           <div>
             <div className="mediumCard-div-imgUser">

@@ -23,18 +23,24 @@ const MediumCardContainer = styled.li`
 
   .mediumCard-div-img {
     width: 100%;
-    height: 230px;
+    height: 200px;
     @media (max-width: 1100px) {
-      height: 190px;
+      height: 180px;
     }
     @media (max-width: 880px) {
-      height: 343px;
+      height: 320px;
+    }
+    @media (max-width: 640px) {
+      height: 290px;
     }
     @media (max-width: 500px) {
       height: 210px;
     }
     @media (max-width: 410px) {
       height: 200px;
+    }
+    @media (max-width: 370px) {
+      height: 180px;
     }
 
     img {
@@ -54,6 +60,25 @@ const MediumCardContainer = styled.li`
     }
     @media (max-width: 500px) {
       padding: 15px;
+    }
+    @media (max-width: 410px) {
+      padding: 10px;
+    }
+  }
+  .mediumCard-div-theme-title-paragraph {
+    height: 178px;
+    margin-bottom: 5px;
+    @media (max-width: 1100px) {
+      height: 175px;
+    }
+    @media (max-width: 880px) {
+      height: 240px;
+    }
+    @media (max-width: 500px) {
+      height: 210px;
+    }
+    @media (max-width: 410px) {
+      height: 174px;
     }
   }
   .mediumCard-div-theme {
@@ -90,20 +115,12 @@ const MediumCardContainer = styled.li`
       }
     }
   }
-  .mediumCard-div-title {
-    height: 88px;
-    display: flex;
-    align-items: center;
-    @media (max-width: 1100px) {
-      height: 73px;
-    }
-  }
   h2 {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-family: "Poppins", sans-serif;
     color: rgba(25, 25, 25, 1);
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 25px;
     font-weight: 700;
 
     overflow: hidden;
@@ -112,7 +129,7 @@ const MediumCardContainer = styled.li`
     -webkit-box-orient: vertical;
     @media (max-width: 1100px) {
       font-size: 18px;
-      line-height: 23px;
+      line-height: 24px;
     }
     @media (max-width: 880px) {
       font-size: 27px;
@@ -131,7 +148,6 @@ const MediumCardContainer = styled.li`
     }
   }
   p {
-    margin-bottom: 10px;
     font-family: "Poppins", serif;
     font-family: "Times New Roman", Times, serif;
     color: rgba(41, 41, 41, 1);
@@ -148,17 +164,12 @@ const MediumCardContainer = styled.li`
       line-height: 20px;
     }
     @media (max-width: 880px) {
-      font-size: 18px;
+      font-size: 20px;
       line-height: 26px;
-      margin-bottom: 20px;
-    }
-    @media (max-width: 500px) {
-      -webkit-line-clamp: 1;
-      margin-bottom: 10px;
     }
     @media (max-width: 410px) {
       font-size: 15px;
-      margin-bottom: 5px;
+      line-height: 22px;
     }
   }
   .mediumCard-div-user {
