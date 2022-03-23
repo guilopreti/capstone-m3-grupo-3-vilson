@@ -6,7 +6,12 @@ import { Container } from "./styled";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const MenuHamburguer = ({ setMenuHamb }) => {
+
   const history = useHistory();
+
+  const userLocal = JSON.parse(
+    localStorage.getItem("@CapstoneM3:userLogin") || null
+  );
 
   const goHome = () => {
     history.push("/");
@@ -35,7 +40,15 @@ const MenuHamburguer = ({ setMenuHamb }) => {
         <input type="text" placeholder="Buscar..." className="search-input" />
       </div>
       <div className="profile-container">
-        <CgProfile className="profile-icon" />
+        {userLocal !== null ? (
+          <img
+            className="profile-icon"
+            src={userLocal.user.img}
+            alt="Foto de usuário"
+          />
+        ) : (
+          <CgProfile className="profile-icon" />
+        )}
         <div className="profile-links">
           <Link className="profile-link-login" to="/login">
             Acesse sua conta
