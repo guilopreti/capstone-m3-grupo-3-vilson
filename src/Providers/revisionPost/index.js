@@ -1,26 +1,13 @@
-import { createContext, useEffect, useState } from 'react'
-import api from '../../services/api'
+import { createContext, useState } from "react";
 
-export const RevisionPostContext = createContext()
+export const RevisionPostContext = createContext();
 
 export const RevisionPostProvider = ({ children }) => {
-  const [revisionPosts, setRevisionPosts] = useState([])
-  const token = JSON.parse(localStorage.getItem('@CapstoneM3:userLogin')) || ''
-
-  useEffect(() => {
-    api
-      .get('/accept', {
-        headers: {
-          Authorization: `Bearer ${token.accessToken}`,
-        },
-      })
-      .then((response) => setRevisionPosts(...revisionPosts, response.data))
-      .catch((err) => console.log(err))
-  }, [])
+  const [revisionPosts, setRevisionPosts] = useState([]);
 
   return (
-    <RevisionPostContext.Provider value={{ revisionPosts }}>
+    <RevisionPostContext.Provider value={{ revisionPosts, setRevisionPosts }}>
       {children}
     </RevisionPostContext.Provider>
-  )
-}
+  );
+};
