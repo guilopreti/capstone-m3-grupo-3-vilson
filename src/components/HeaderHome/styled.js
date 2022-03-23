@@ -34,9 +34,6 @@ export const HeaderHomeContainer = styled.header`
     @media (min-width: 1600px) {
       width: 1280px;
     }
-    @media (min-width: 1700px) {
-      width: 1380px;
-    }
   }
   .header-div-logo {
     h2 {
@@ -54,6 +51,38 @@ export const HeaderHomeContainer = styled.header`
         margin-left: 2px;
       }
     }
+  }
+  .header-div-userLogged {
+    display: flex;
+    @media (max-width: 768px) {
+      display: none;
+    }
+    span {
+      color: white;
+      font-size: 10px;
+    }
+  }
+  .header-div-img {
+    margin: 0 0 0 12px;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-size: cover;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  .header-div-greeting {
+    margin-top: 6px;
+  }
+  .icon-hand {
+    margin-left: 5px;
+    color: #ffd100;
+
+    font-size: 12px;
   }
 
   ul {

@@ -1,10 +1,18 @@
 import styled from "styled-components";
-import { up, down, between, only } from "styled-breakpoints";
 
-export const Container = styled.div`
+export const Container = styled.main`
   width: 100%;
   height: 100vh;
-  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > div {
+    margin-top: 50px;
+    width: 100%;
+    max-width: 515px;
+    padding: 15px;
+  }
 `;
 
 export const HeaderPost = styled.div`
@@ -12,10 +20,6 @@ export const HeaderPost = styled.div`
   width: 100%;
   flex-direction: column;
   padding: 10px 0;
-
-  ${up("md")} {
-    max-width: 768px;
-  }
 `;
 
 export const DateTemaContainer = styled.div`
@@ -92,6 +96,11 @@ export const TextContainer = styled.div`
   text-align: justify;
   font-size: 16px;
   font-weight: regular;
+
+  p {
+    text-indent: 35px;
+    margin-bottom: 10px;
+  }
 `;
 
 export const FontContainer = styled.div`
@@ -128,6 +137,7 @@ export const UserVoteContainer = styled.div`
     span {
       font-size: 14px;
       color: black;
+      cursor: pointer;
     }
 
     > div {
@@ -136,5 +146,39 @@ export const UserVoteContainer = styled.div`
       justify-content: space-between;
       padding: 0 10px;
     }
+  }
+`;
+
+export const CarouselContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 300px;
+
+  figure {
+    width: 80%;
+    max-width: 400px;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+
+    figcaption {
+      display: none;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  div {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 400px;
   }
 `;

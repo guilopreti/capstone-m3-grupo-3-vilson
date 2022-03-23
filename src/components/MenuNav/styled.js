@@ -3,7 +3,7 @@ const MenuConteiner = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 35px;
+  height: 43px;
   margin-bottom: 30px;
   background-color: #1768ac;
   box-shadow: 0 4px 34px -11px #343a40;
@@ -30,17 +30,15 @@ const MenuConteiner = styled.section`
     @media (min-width: 1600px) {
       width: 1280px;
     }
-    @media (min-width: 1700px) {
-      width: 1380px;
-    }
     .menu-nav-div-menu {
       display: flex;
     }
     .menu-nav-div-input {
       display: flex;
-      margin-left: -29px;
+      margin-left: -22px;
       align-items: center;
-      width: 220px;
+      width: 270px;
+      height: 30px;
       display: ${(props) => (props.hiddenSearch ? "none" : "flex")};
       @media (min-width: 768px) {
         margin-left: -152px;
@@ -49,8 +47,8 @@ const MenuConteiner = styled.section`
         margin-left: -173px;
       }
       input {
-        height: 22px;
         width: 100%;
+        height: 100%;
         border: none;
         border-radius: 4px;
         padding-left: 5px;
@@ -60,7 +58,7 @@ const MenuConteiner = styled.section`
           color: #343a40;
         }
         ::placeholder {
-          font-size: 10px;
+          font-size: 13px;
         }
       }
       .menu-nav-icons-search {
@@ -68,6 +66,14 @@ const MenuConteiner = styled.section`
         position: relative;
         right: 20px;
         color: #343a40;
+        :hover {
+          filter: brightness(75%);
+          transition: 0.3s;
+        }
+        :active {
+          filter: brightness(1.6);
+          transition: 0.3s;
+        }
       }
     }
   }
@@ -102,6 +108,18 @@ const MenuConteiner = styled.section`
     @media (max-width: 460px) {
       display: none;
     }
+  }
+  .menu-nav-li-hidden {
+    div {
+      display: flex;
+    }
+    width: 78px;
+    display: ${(props) => (props.hiddenMyAccount ? "none" : "flex")};
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .menu-nav-icons-hidden {
   }
 `;
 

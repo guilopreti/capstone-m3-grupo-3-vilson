@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import api from "../../services/api.js";
+import MenuNav from "../../components/MenuNav";
+import HeaderHome from "../../components/HeaderHome";
 
 const CreatePost = () => {
   const { user } = useContext(UserContext);
@@ -69,81 +71,91 @@ const CreatePost = () => {
       userId: user.user.id,
     };
     api
-      .post("/posts", post, {
+      .post("/accept", post, {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
       })
-      .then((resp) => console.log(resp.data))
+      .then((resp) => {
+        console.log(resp.data);
+      })
       .catch((err) => console.log(err));
   };
 
   return (
-    <Container onSubmit={handleSubmit(onSubmit)}>
-      <article>
-        <h1 contentEditable onBlur={(evt) => setTitle(evt.target.innerText)}>
-          Título...
-        </h1>
+    <>
+      <HeaderHome />
+      <MenuNav />
+      <Container onSubmit={handleSubmit(onSubmit)}>
+        <article>
+          <h1 contentEditable onBlur={(evt) => setTitle(evt.target.innerText)}>
+            Título...
+          </h1>
 
-        <SectionTexts>
-          <div>
-            <textarea
-              placeholder="Conte sua história..."
-              {...register("text")}
-            />
-            <span>{errors.text?.message}</span>
-          </div>
-        </SectionTexts>
+          <SectionTexts>
+            <div>
+              <textarea
+                placeholder="Conte sua história..."
+                {...register("text")}
+              />
+              <span>{errors.text?.message}</span>
+            </div>
+          </SectionTexts>
 
-        <DivContent>
-          <label>
-            Fonte: <span>*IMPORTANTE</span>
-          </label>
-          <input {...register("font")} />
-        </DivContent>
+          <DivContent>
+            <label>
+              Fonte: <span>*IMPORTANTE</span>
+            </label>
+            <input {...register("font")} />
+          </DivContent>
 
-        <DivContent>
-          <label>
-            Tema: <span>*IMPORTANTE</span>
-          </label>
-          <input {...register("theme")} />
-        </DivContent>
+          <DivContent>
+            <label>
+              Tema: <span>*IMPORTANTE</span>
+            </label>
+            <input {...register("theme")} />
+          </DivContent>
 
-        <SectionImages>
-          <div>
-            <h4>Selecione uma imagem principal.</h4>
-            <label for="selecao-foto-principal">Selecionar imagem</label>
-            <input
-              type={"file"}
-              id="selecao-foto-principal"
-              onChange={(evt) => selectFirstImage(evt)}
-            />
-            {primaryImage && <span>Imagem selecionada</span>}
-          </div>
+          <SectionImages>
+            <div>
+              <h4>Selecione uma imagem principal.</h4>
+              <label htmlFor="selecao-foto-principal">Selecionar imagem</label>
+              <input
+                type={"file"}
+                id="selecao-foto-principal"
+                accept="image/png, image/jpg"
+                onChange={(evt) => selectFirstImage(evt)}
+              />
+              {primaryImage && <span>Imagem selecionada</span>}
+            </div>
 
-          <div>
-            <h4>Selecione imagens secundárias</h4>
-            <label for="selecao-fotos-secundárias">Selecionar imagem</label>
-            <input
-              type={"file"}
-              id="selecao-fotos-secundárias"
-              onChange={(evt) => selectOthersImages(evt)}
-            />
-            <span>
-              {secondaryImages.length > 1
-                ? `${secondaryImages.length} imagens foram selecionadas`
-                : secondaryImages.length === 1
-                ? `${secondaryImages.length} imagem foi selecionada`
-                : ""}
-            </span>
-          </div>
+            <div>
+              <h4>Selecione imagens secundárias</h4>
+              <label htmlFor="selecao-fotos-secundárias">
+                Selecionar imagem
+              </label>
+              <input
+                type={"file"}
+                id="selecao-fotos-secundárias"
+                accept="image/png, image/jpg"
+                onChange={(evt) => selectOthersImages(evt)}
+              />
+              <span>
+                {secondaryImages.length > 1
+                  ? `${secondaryImages.length} imagens foram selecionadas`
+                  : secondaryImages.length === 1
+                  ? `${secondaryImages.length} imagem foi selecionada`
+                  : ""}
+              </span>
+            </div>
 
-          <Button onClick={cleanImages}>Limpar imagens</Button>
-        </SectionImages>
+            <Button onClick={cleanImages}>Limpar imagens</Button>
+          </SectionImages>
 
-        <Button type="submit">Publicar</Button>
-      </article>
-    </Container>
+          <Button type="submit">Publicar</Button>
+        </article>
+      </Container>
+    </>
   );
 };
 
