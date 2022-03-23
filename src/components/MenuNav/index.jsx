@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { ModalContext } from "../../Providers/differentStates/index";
 import MenuConteiner from "./styled";
 
-const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false }) => {
+const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false, setInputValue}) => {
   const { showModal, setShowModal } = useContext(ModalContext);
 
   // const [showModal, setShowModal] = useState(false)
@@ -40,7 +40,7 @@ const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false }) => {
           </Link>
         </div>
         <div className="menu-nav-div-input">
-          <input placeholder="Digite aqui sua pesquisa" />
+          <input onChange={event => setInputValue(event.target.value)} placeholder="Digite aqui sua pesquisa" />
           <BsSearch className="menu-nav-icons-search" />
         </div>
         <li className="menu-nav-li-hidden" onClick={() => setShowModal(true)}>

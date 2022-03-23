@@ -3,14 +3,17 @@ import MenuNav from "../../../components/MenuNav";
 
 import { MainHome } from "./styled";
 import HomeList from "../HomeList/index";
+import { useState } from "react";
 
 const Home = () => {
+  const [inputValue, setInputValue] = useState('')
+
   return (
     <>
       <HeaderHome />
-      <MenuNav />
+      <MenuNav setInputValue={setInputValue}/>
       <MainHome>
-        <HomeList></HomeList>
+        <HomeList inputValue={inputValue}></HomeList>
       </MainHome>
     </>
   );
