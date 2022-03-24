@@ -35,6 +35,7 @@ li {
     --white-color: #fff;
     --gray-color: #c5c5c5;
     --gray-color-2: #999c9f; 
+    --picpay-color: #21c25e;
   }
 
 

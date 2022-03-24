@@ -1,9 +1,9 @@
-import logomarca from '../../assets/image/logomarca.png'
 import HeaderHome from "../../components/HeaderHome"
 import MenuNav from "../../components/MenuNav"
 import { Container } from "./style"
 import { AiFillLinkedin } from 'react-icons/ai'
 import { AiFillGithub } from 'react-icons/ai'
+import { SiPicpay } from 'react-icons/si'
 
 
 const Aboutus = () => {
@@ -18,11 +18,8 @@ const Aboutus = () => {
                 </div>
                 <div>
                     <p>Mussum Ipsum, cacilds vidis litro abertis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.Admodum accumsan disputationi eu sit. Vide electram sadipscing et per.Não sou faixa preta cumpadi, sou preto inteiris, inteiris.</p>
-
                     <p>Manduma pindureta quium dia nois paga.Viva Forevis aptent taciti sociosqu ad litora torquent.Quem num gosta di mim que vai caçá sua turmis!Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.</p>
-
                     <p>Sapien in monti palavris qui num significa nadis i pareci latim.Quem manda na minha terra sou euzis!Admodum accumsan disputationi eu sit. Vide electram sadipscing et per.Si num tem leite então bota uma pinga aí cumpadi!</p>
-
                     <p>Sapien in monti palavris qui num significa nadis i pareci latim.Viva Forevis aptent taciti sociosqu ad litora torquent.Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis.</p>
                     <p>Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.Per aumento de cachacis, eu reclamis.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.Quem num gosta di mé, boa gentis num é.</p>
                 </div>
@@ -71,6 +68,7 @@ const Aboutus = () => {
                         </li>
                     </ul>
                 </div>
+                <div className="sponsorship"><span>Buy-me a coffe <SiPicpay /></span></div>
             </Container>
         </>
     )
