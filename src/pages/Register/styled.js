@@ -6,7 +6,7 @@ export const RegisterMain = styled.main`
 `;
 
 export const RegisterContainer = styled.section`
-  margin: 0;
+  margin: 155px 0 0 0;
   padding: 0;
   box-sizing: border-box;
   padding: 25px 15px 25px 15px;

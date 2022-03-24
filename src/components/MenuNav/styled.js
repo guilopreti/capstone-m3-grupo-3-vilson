@@ -1,5 +1,8 @@
 import styled from "styled-components";
 const MenuConteiner = styled.section`
+  position: fixed;
+  margin-top: 75px;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
