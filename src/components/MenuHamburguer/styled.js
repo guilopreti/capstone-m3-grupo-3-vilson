@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     position: absolute;
     top: 75px;
-    z-index: 1;
+    z-index: 10;
     width: 100vw;
     height: 350px;
     background-color: white;
@@ -48,6 +48,7 @@ export const Container = styled.div`
         background-color: #CCCCCC;
     }
     .profile-icon {
+        border-radius: 50%;
         width: 40px;
         height: 40px;
     }
@@ -61,6 +62,19 @@ export const Container = styled.div`
         font-family: 'Inter', sans-serif;
         font-weight: 700;
         color: black;
+    }
+    .profile-username {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: black;
+    }
+    .profile-email {
+        font-size: 12px;
+        color: var(--gray-color-2);
     }
     .profile-link-register {
         text-decoration: none;

@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HeaderHomeContainer = styled.header`
-  /* position: fixed; */
+  position: fixed;
   padding-left: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 75px;
   box-sizing: border-box;
   background-color: #343a40;
@@ -34,15 +34,12 @@ export const HeaderHomeContainer = styled.header`
     @media (min-width: 1600px) {
       width: 1280px;
     }
-    @media (min-width: 1700px) {
-      width: 1380px;
-    }
   }
   .header-div-logo {
     h2 {
       font-size: 22px;
       font-weight: 700;
-      font-family: "Poppins";
+      font-family: 'Poppins';
       color: white;
       @media (max-width: 768px) {
         margin-left: -50px;
@@ -50,10 +47,42 @@ export const HeaderHomeContainer = styled.header`
       span {
         font-size: 25px;
         font-weight: 1000;
-        font-family: "Sansita";
+        font-family: 'Sansita';
         margin-left: 2px;
       }
     }
+  }
+  .header-div-userLogged {
+    display: flex;
+    @media (max-width: 768px) {
+      display: none;
+    }
+    span {
+      color: white;
+      font-size: 10px;
+    }
+  }
+  .header-div-img {
+    margin: 0 0 0 12px;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-size: cover;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  .header-div-greeting {
+    margin-top: 6px;
+  }
+  .icon-hand {
+    margin-left: 5px;
+    color: #ffd100;
+
+    font-size: 12px;
   }
 
   ul {
@@ -111,4 +140,4 @@ export const HeaderHomeContainer = styled.header`
       display: none;
     }
   }
-`;
+`

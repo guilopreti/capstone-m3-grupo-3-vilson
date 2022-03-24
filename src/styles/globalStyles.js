@@ -11,13 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
 
 body, html {
- font-family: 'Roboto', sans-serif;
-}
-
-
-main{
-    display: flex;
-    justify-content: center;
+ font-family: 'Roboto', serif;
 }
 
 li {
@@ -40,6 +34,7 @@ li {
     --primary-color: #1768AC;
     --white-color: #fff;
     --gray-color: #c5c5c5;
+    --gray-color-2: #999c9f; 
   }
 
 
