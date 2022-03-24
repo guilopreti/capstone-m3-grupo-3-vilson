@@ -22,7 +22,8 @@ export const Container = styled.div`
         border-left: 3px solid var(--primary-color);
         padding: 0px 10px;
     }
-    img {
+    .developers-ul img {
+      z-index: -1;
         border: 3px solid transparent;
         width: 50%;
         height: 50%;
@@ -39,13 +40,6 @@ export const Container = styled.div`
         gap: 0px;
         justify-content: center;
     }
-  }
-  img {
-    border: 3px solid transparent;
-    width: 50%;
-    height: 50%;
-    opacity: 50%;
-    border-radius: 50%;
   }
   .developers {
     margin-top: 20px;
