@@ -35,22 +35,24 @@ const ProfileInformation = () => {
         </div>
       </ProfileTitleContainer>
       <ProfileInformationContainer>
-        <li>
-          <span>Nome:</span>
-          <p>{userLocal !== null && userLocal.user.name}</p>
-        </li>
-        <li className="profile-li-biography">
-          <span>Biografia:</span>
-          <p>{userLocal !== null && userLocal.user.biography}</p>
-        </li>
-        <li>
-          <span>Nome de exibição:</span>
-          <p>{userLocal !== null && userLocal.user.username}</p>
-        </li>
-        <li>
-          <span>E-mail:</span>
-          <p>{userLocal !== null && userLocal.user.email}</p>
-        </li>
+        <ul>
+          <li>
+            <span>Nome:</span>
+            <p>{userLocal !== null && userLocal.user.name}</p>
+          </li>
+          <li className="profile-li-biography">
+            <span>Biografia:</span>
+            <p>{userLocal !== null && userLocal.user.biography}</p>
+          </li>
+          <li>
+            <span>Nome de exibição:</span>
+            <p>{userLocal !== null && userLocal.user.username}</p>
+          </li>
+          <li>
+            <span>E-mail:</span>
+            <p>{userLocal !== null && userLocal.user.email}</p>
+          </li>
+        </ul>
       </ProfileInformationContainer>
     </MainProfile>
   );
