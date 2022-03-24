@@ -8,6 +8,11 @@ import * as yup from 'yup'
 import api from '../../services/api.js'
 import MenuNav from '../../components/MenuNav'
 import HeaderHome from '../../components/HeaderHome'
+<<<<<<< HEAD
+=======
+import { toast } from 'react-toastify'
+import { useHistory } from 'react-router-dom'
+>>>>>>> affbd6174d3dff76848714797a52b278648107f4
 
 const CreatePost = () => {
   const { user } = useContext(UserContext)
@@ -54,6 +59,11 @@ const CreatePost = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) })
+<<<<<<< HEAD
+=======
+
+  const history = useHistory()
+>>>>>>> affbd6174d3dff76848714797a52b278648107f4
 
   const onSubmit = (data) => {
     const post = {
@@ -77,7 +87,12 @@ const CreatePost = () => {
         },
       })
       .then((resp) => {
+<<<<<<< HEAD
         console.log(resp.data)
+=======
+        toast.success('Artigo enviado para revisão')
+        history.push('/')
+>>>>>>> affbd6174d3dff76848714797a52b278648107f4
       })
       .catch((err) => console.log(err))
   }

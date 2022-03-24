@@ -1,16 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
 
   article {
-    width: 84%;
-    max-width: 1070px;
+    width: 100%;
+    max-width: 795px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 150px;
   }
 
   h1 {
@@ -26,6 +28,7 @@ export const Container = styled.form`
     height: 365px;
     font-size: 17px;
     font-family: Inter, sans-serif;
+    resize: none;
   }
 
   button {
@@ -33,9 +36,9 @@ export const Container = styled.form`
     background-color: #117788;
     margin-bottom: 15px;
     width: 32%;
-    max-width: 161px;
+    max-width: 320px;
   }
-`;
+`
 
 export const SectionTexts = styled.section`
   display: flex;
@@ -53,9 +56,9 @@ export const SectionTexts = styled.section`
 
   span {
     color: red;
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
   }
-`;
+`
 
 export const DivContent = styled.div`
   display: flex;
@@ -78,9 +81,9 @@ export const DivContent = styled.div`
     height: 25px;
     padding: 5px;
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 5px;
   }
-`;
+`
 
 export const SectionImages = styled.section`
   display: flex;
@@ -119,4 +122,4 @@ export const SectionImages = styled.section`
     margin-bottom: 15px;
     width: 136px;
   }
-`;
+`
