@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 90vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 20px;
-  line-height: 1.5;
+  margin-top: 155px;
+  margin-bottom: 100px;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px 20px;
+	line-height: 1.5;
 `;
 
 export const Title = styled.h2`

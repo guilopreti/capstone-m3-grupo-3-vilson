@@ -16,20 +16,15 @@ import { useHistory } from "react-router-dom";
 const TermsArticlePage = () => {
   const [checkedTerms, setCheckedTerms] = useState(false);
   const [checkedConditions, setCheckedConditions] = useState(false);
-  const [disableButton, setDisableButton] = useState(true);
 
   const history = useHistory();
 
   const handleChangeTerms = () => {
-    setCheckedTerms(!checkedTerms);
-    setDisableButton(true);
-    checkedConditions && setDisableButton(false);
+    setCheckedTerms(!checkedTerms)
   };
 
   const handleChangeConditions = () => {
-    setCheckedConditions(!checkedConditions);
-    setDisableButton(true);
-    checkedTerms && setDisableButton(false);
+    setCheckedConditions(!checkedConditions)
   };
 
   const goCreatePost = () => {
@@ -103,23 +98,21 @@ const TermsArticlePage = () => {
           </Item>
         </List>
 
-        <CheckboxContainer>
-          <Checkbox
-            checked={checkedConditions}
-            handleCheckboxChange={handleChangeConditions}
-          ></Checkbox>
-          <StrongText>
-            Estou ciente das condições para publicar no Opnion.
-          </StrongText>
-        </CheckboxContainer>
 
-        <Button disabled={disableButton}>Registrar</Button>
-        <Button onClick={() => goCreatePost()} disabled={disableButton}>
-          Registrar
-        </Button>
-      </Container>
-    </>
-  );
-};
+      <CheckboxContainer>
+        <Checkbox
+          checked={checkedConditions}
+          handleCheckboxChange={handleChangeConditions}>
+        </Checkbox>
+        <StrongText>Estou ciente das condições para publicar no Opnion.</StrongText>
+      </CheckboxContainer>
+      
+      <Button disabled={!(checkedConditions && checkedTerms)}>Registrar</Button>
+  
+    </Container>
+  </>
+  )
+}
+
 
 export default TermsArticlePage;
