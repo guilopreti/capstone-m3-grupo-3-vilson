@@ -31,7 +31,7 @@ const MenuNav = ({
               <RiHome4Line className="menu-nav-icons" /> Home
             </li>
           </Link>
-          <Link className="Link" to="/aboutus">
+          <Link className='Link' to='/aboutus'>
             <li>Sobre</li>
           </Link>
           <Link className="Link" to="/terms">
