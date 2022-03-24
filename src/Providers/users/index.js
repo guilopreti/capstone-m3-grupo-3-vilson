@@ -11,12 +11,20 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem('@CapstoneM3:userLogin')) || []
   )
+  const [listUsers, setListUsers] = useState([])
 
   const { setShowChangeInformation } = useContext(ProfileContext)
   const { setAuthenticated } = useContext(AuthContext)
 
   const userLocal =
     JSON.parse(localStorage.getItem('@CapstoneM3:userLogin')) || ''
+
+  useEffect(() => {
+    api
+      .get('./users')
+      .then((response) => setListUsers(response.data))
+      .catch((err) => console.log(err))
+  }, [])
 
   const userCurrentLogin = (data, history) => {
     api
@@ -91,6 +99,7 @@ export const UserProvider = ({ children }) => {
         userCurrentLogin,
         changeUserInformation,
         handleUserRegister,
+        listUsers,
       }}
     >
       {children}

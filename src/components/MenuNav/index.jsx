@@ -7,8 +7,12 @@ import { useContext } from 'react'
 import { ModalContext } from '../../Providers/differentStates/index'
 import MenuConteiner from './styled'
 
-const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false, setInputValue}) => {
-  const { showModal, setShowModal } = useContext(ModalContext);
+const MenuNav = ({
+  hiddenSearch = false,
+  hiddenMyAccount = false,
+  setInputValue,
+}) => {
+  const { showModal, setShowModal } = useContext(ModalContext)
 
   // const [showModal, setShowModal] = useState(false)
 
@@ -27,11 +31,8 @@ const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false, setInputValue}
               <RiHome4Line className='menu-nav-icons' /> Home
             </li>
           </Link>
-          <Link className="Link" to="/aboutus">
+          <Link className='Link' to='/aboutus'>
             <li>Sobre</li>
-          </Link>
-          <Link className='Link' to='/'>
-            <li>Patrocine</li>
           </Link>
           <Link className='Link' to='/terms'>
             <li>
@@ -44,9 +45,12 @@ const MenuNav = ({ hiddenSearch = false, hiddenMyAccount = false, setInputValue}
             </li>
           </Link>
         </div>
-        <div className="menu-nav-div-input">
-          <input onChange={event => setInputValue(event.target.value)} placeholder="Digite aqui sua pesquisa" />
-          <BsSearch className="menu-nav-icons-search" />
+        <div className='menu-nav-div-input'>
+          <input
+            onChange={(event) => setInputValue(event.target.value)}
+            placeholder='Digite aqui sua pesquisa'
+          />
+          <BsSearch className='menu-nav-icons-search' />
         </div>
         <li className='menu-nav-li-hidden' onClick={() => setShowModal(true)}>
           {LocalStorage !== null && (
