@@ -7,7 +7,7 @@ import { useContext } from "react";
 const HomeList = ({ inputValue }) => {
   const { posts } = useContext(PostsContext);
 
-  const postsDbFiltered = postsDb.filter((current) => {
+  const postsDbFiltered = posts.filter((current) => {
     return current.theme === inputValue;
   });
 
@@ -21,7 +21,7 @@ const HomeList = ({ inputValue }) => {
         </ul>
       ) : (
         <ul>
-          {postsDb.map((current) => (
+          {posts.map((current) => (
             <MediumCard key={current.id} current={current} />
           ))}
         </ul>

@@ -33,6 +33,7 @@ const HomeListContainer = styled.section`
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     @media (max-width: 880px) {
       flex-wrap: wrap;
     }
