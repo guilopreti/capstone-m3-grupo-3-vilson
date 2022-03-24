@@ -5,7 +5,12 @@ export const Container = styled.li`
   height: 120px;
   display: flex;
   border: 1px solid #dddfe2;
+  border-radius: 5px;
   margin-top: 20px;
+
+  :hover {
+    border: 1px solid #ccc;
+  }
 `
 
 export const ImgContainer = styled.div`

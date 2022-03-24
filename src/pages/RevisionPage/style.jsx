@@ -16,6 +16,7 @@ export const Container = styled.main`
     max-width: 505px;
     display: flex;
     flex-direction: column;
+    margin-top: 150px;
   }
 `;
 
@@ -24,6 +25,7 @@ export const TitleContainer = styled.div`
   text-align: left;
 
   > h2 {
+    border-left: 4px solid var(--primary-color);
     font-size: 25px;
     font-weight: bold;
   }

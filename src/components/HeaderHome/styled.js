@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HeaderHomeContainer = styled.header`
   position: fixed;
@@ -39,7 +39,7 @@ export const HeaderHomeContainer = styled.header`
     h2 {
       font-size: 22px;
       font-weight: 700;
-      font-family: "Poppins";
+      font-family: 'Poppins';
       color: white;
       @media (max-width: 768px) {
         margin-left: -50px;
@@ -47,7 +47,7 @@ export const HeaderHomeContainer = styled.header`
       span {
         font-size: 25px;
         font-weight: 1000;
-        font-family: "Sansita";
+        font-family: 'Sansita';
         margin-left: 2px;
       }
     }
@@ -140,4 +140,4 @@ export const HeaderHomeContainer = styled.header`
       display: none;
     }
   }
-`;
+`
