@@ -1,16 +1,23 @@
 import MediumCardContainer from "./styled";
 import Nft from "../../../assets/image/nft.jpg";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../Providers/users";
 import { useHistory } from "react-router-dom";
+import api from "../../../services/api";
 
 const MediumCard = ({ current }) => {
-  const { listUsers } = useContext(UserContext);
+  const [userPost, setUserPost] = useState([]);
   const history = useHistory();
 
-  const findUser = listUsers.find((user) => {
-    return user.id === current.userId;
-  });
+  useEffect(() => {
+    api.get("/users").then((resp) => {
+      setUserPost(
+        resp.data.find((user) => {
+          return user.id === current.userId;
+        })
+      );
+    });
+  }, []);
 
   const openPostPage = (postId) => {
     localStorage.setItem("@CapstoneM3:postId", postId);
@@ -29,7 +36,7 @@ const MediumCard = ({ current }) => {
             <div>
               <span>{current.theme}</span>
             </div>
-            {/* <span>{current.time_read}</span> */}
+            <span>3 minutos de leitura</span>
           </div>
           <div className="mediumCard-div-title">
             <h2>{current.title}</h2>
@@ -39,9 +46,9 @@ const MediumCard = ({ current }) => {
         <div className="mediumCard-div-user">
           <div>
             <div className="mediumCard-div-imgUser">
-              <img src={findUser.img} alt="Imagem do usuário" />
+              <img src={userPost.img} alt="Imagem do usuário" />
             </div>
-            <span>{findUser.username}</span>
+            <span>{userPost.username}</span>
           </div>
           <span className="mediumCard-span-data">{current.date}</span>
         </div>
