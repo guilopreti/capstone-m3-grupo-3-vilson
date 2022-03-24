@@ -5,6 +5,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     h1 {
+        margin-bottom: 10px;
         border-left: 3px solid var(--primary-color);
         padding: 0px 10px;
         color: var(--primary-color);
@@ -14,11 +15,6 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
         gap: 10px;
-    }
-    .imagemlogo {
-        border-radius: 8px;
-        width: 100%;
-        height: 100%;
     }
     div>h2 {
         color: var(--primary-color);;
