@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import ImageUser from "../../assets/image/elon-musk.jpg";
 import { HeaderHomeContainer } from "./styled";
 // import { useContext } from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FiX } from "react-icons/fi";
 import MenuHamburguer from "../MenuHamburguer";
+import { ChangeImageContext } from "../../Providers/ChangeImage";
 
 const HeaderHome = () => {
   const [menuHamb, setMenuHamb] = useState(false);
@@ -18,6 +19,8 @@ const HeaderHome = () => {
   const toggleMenu = () => {
     menuHamb ? setMenuHamb(false) : setMenuHamb(true);
   };
+
+  const { image } = useContext(ChangeImageContext);
 
   // useEffect(() => {
   //   const token =
@@ -55,7 +58,11 @@ const HeaderHome = () => {
                 </span>
               </div>
               <div className="header-div-img">
-                <img src={ImageUser} alt="Imagem de usuário" />
+                {image ? (
+                  <img src={image} alt="Imagem de usuário" />
+                ) : (
+                  <img src={userLocal.user.img} alt="Imagem de usuário" />
+                )}
               </div>
             </div>
           ) : (

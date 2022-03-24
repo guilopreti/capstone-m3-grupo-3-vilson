@@ -48,6 +48,7 @@ export const Container = styled.div`
         background-color: #CCCCCC;
     }
     .profile-icon {
+        border-radius: 50%;
         width: 40px;
         height: 40px;
     }

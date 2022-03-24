@@ -6,24 +6,38 @@ import {
   TitleTextContainer,
   UserDateContainer,
 } from './style'
-import PaisagemImg from '../../assets/image/paisagem.jpg'
+import { useContext } from 'react'
+import { UserContext } from '../../Providers/users'
+import { useHistory } from 'react-router-dom'
 
-const CardsRevision = () => {
+const CardsRevision = ({ post }) => {
+  const { listUsers } = useContext(UserContext)
+  const history = useHistory()
+
+  const findUser = listUsers.find((user) => {
+    return user.id === post.userId
+  })
+
+  const handleOpenPostPage = (postId) => {
+    localStorage.setItem('@Capstone:postIdRevision', postId)
+    history.push('/postRevision')
+  }
+
   return (
-    <Container>
+    <Container onClick={() => handleOpenPostPage(post.id)}>
       <ImgContainer>
-        <img src={PaisagemImg} alt='' />
+        <img src={post.primaryImage} alt={post.theme} />
       </ImgContainer>
       <TextContainer>
         <UserDateContainer>
-          <span>Usuário</span>
-          <p>feb 12</p>
+          <span>{findUser.username}</span>
+          <p>{post.date}</p>
         </UserDateContainer>
         <TitleTextContainer>
-          <h3>Lorem ipsum dolor sit amet</h3>
+          <h3>{post.title}</h3>
         </TitleTextContainer>
         <TemeContainer>
-          <span>Tema</span>
+          <span>{post.theme}</span>
         </TemeContainer>
       </TextContainer>
     </Container>

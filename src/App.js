@@ -1,18 +1,17 @@
-import Routes from "./Routes";
-import GlobalStyles from "./styles/globalStyles";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ModalProfile from "./components/Modals/ModalProfile";
-import { useContext } from "react";
-import { ModalContext } from "./Providers/differentStates/index";
+import Routes from './Routes'
+import GlobalStyles from './styles/globalStyles'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import ModalProfile from './components/Modals/ModalProfile'
+import { useContext } from 'react'
+import { ModalContext } from './Providers/differentStates/index'
 
 function App() {
-  const { showModal } = useContext(ModalContext);
-  console.log(showModal);
+  const { showModal } = useContext(ModalContext)
   return (
     <>
       <ToastContainer
-        position="top-right"
+        position='top-right'
         autoClose={1500}
         hideProgressBar={false}
         newestOnTop={false}
@@ -26,7 +25,7 @@ function App() {
       <Routes />
       {showModal && <ModalProfile />}
     </>
-  );
+  )
 }
 
-export default App;
+export default App

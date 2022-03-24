@@ -4,10 +4,12 @@ import { MainProfile } from "../ChangeInformation/styled";
 import { ProfileTitleContainer } from "./styled";
 import ImageProfile from "../../../assets/image/elon-musk.jpg";
 import { useContext } from "react";
+import { ChangeImageContext } from "../../../Providers/ChangeImage";
 import { ProfileContext } from "../../../Providers/differentStates";
 
 const ProfileInformation = () => {
   const { setShowChangeInformation } = useContext(ProfileContext);
+  const { image } = useContext(ChangeImageContext);
 
   const userLocal = JSON.parse(
     localStorage.getItem("@CapstoneM3:userLogin") || null
@@ -17,7 +19,7 @@ const ProfileInformation = () => {
     <MainProfile>
       <ProfileTitleContainer>
         <div className="profile-div-img">
-          <img src={ImageProfile} alt="Imagem de perfil" />
+          <img src={userLocal.user.img} alt="Imagem de perfil" />
         </div>
         <div className="profile-div-name">
           <div>

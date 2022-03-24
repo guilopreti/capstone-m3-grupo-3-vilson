@@ -11,11 +11,14 @@ import Button, {
 } from "./styled";
 import { useState } from "react";
 import Checkbox from "../../components/Checkbox";
+import { useHistory } from "react-router-dom";
 
 const TermsArticlePage = () => {
   const [checkedTerms, setCheckedTerms] = useState(false);
   const [checkedConditions, setCheckedConditions] = useState(false);
   const [disableButton, setDisableButton] = useState(true);
+
+  const history = useHistory();
 
   const handleChangeTerms = () => {
     setCheckedTerms(!checkedTerms);
@@ -27,6 +30,11 @@ const TermsArticlePage = () => {
     setCheckedConditions(!checkedConditions);
     setDisableButton(true);
     checkedTerms && setDisableButton(false);
+  };
+
+  const goCreatePost = () => {
+    const createpost = disableButton ? null : history.push("/create");
+    return createpost;
   };
 
   return (
@@ -106,6 +114,9 @@ const TermsArticlePage = () => {
         </CheckboxContainer>
 
         <Button disabled={disableButton}>Registrar</Button>
+        <Button onClick={() => goCreatePost()} disabled={disableButton}>
+          Registrar
+        </Button>
       </Container>
     </>
   );

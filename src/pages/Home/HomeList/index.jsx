@@ -4,8 +4,16 @@ import BigCard from "../../../components/CardNews/BigCard";
 import HomeListContainer from "./styled";
 import { HomeListPrimaryContainer, HomeListContainerTop } from "./styled";
 import { postsDb, postsDb2, postsDb3 } from "../../../Providers/posts/postsDb";
+import { PostsContext } from "../../../Providers/posts/index.js";
+import { useContext } from "react";
 
-const HomeList = () => {
+const HomeList = ({ inputValue }) => {
+  const { posts } = useContext(PostsContext);
+
+  const postsDbFiltered = postsDb.filter((current) => {
+    return current.theme === inputValue;
+  });
+
   return (
     <>
       <HomeListContainerTop>
@@ -35,6 +43,21 @@ const HomeList = () => {
         </ul>
       </HomeListContainer>
     </>
+    // <HomeListContainer>
+    //   {postsDbFiltered.length > 0 ? (
+    //     <ul>
+    //       {postsDbFiltered.map((current) => (
+    //         <MediumCard key={current.id} current={current} />
+    //       ))}
+    //     </ul>
+    //   ) : (
+    //     <ul>
+    //       {postsDb.map((current) => (
+    //         <MediumCard key={current.id} current={current} />
+    //       ))}
+    //     </ul>
+    //   )}
+    // </HomeListContainer>
   );
 };
 export default HomeList;
