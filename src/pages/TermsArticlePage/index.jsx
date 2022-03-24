@@ -8,10 +8,7 @@ import Button, {
   List,
   Item,
   CheckboxContainer,
-<<<<<<< HEAD
-=======
   ButtonContainer,
->>>>>>> affbd6174d3dff76848714797a52b278648107f4
 } from './styled'
 import { useState } from 'react'
 import Checkbox from '../../components/Checkbox'
@@ -20,38 +17,19 @@ import { useHistory } from 'react-router-dom'
 const TermsArticlePage = () => {
   const [checkedTerms, setCheckedTerms] = useState(false)
   const [checkedConditions, setCheckedConditions] = useState(false)
-<<<<<<< HEAD
-  const [disableButton, setDisableButton] = useState(true)
-=======
->>>>>>> affbd6174d3dff76848714797a52b278648107f4
 
   const history = useHistory()
 
   const handleChangeTerms = () => {
     setCheckedTerms(!checkedTerms)
-<<<<<<< HEAD
-    setDisableButton(true)
-    checkedConditions && setDisableButton(false)
-=======
->>>>>>> affbd6174d3dff76848714797a52b278648107f4
   }
 
   const handleChangeConditions = () => {
     setCheckedConditions(!checkedConditions)
-<<<<<<< HEAD
-    setDisableButton(true)
-    checkedTerms && setDisableButton(false)
-  }
-
-  const goCreatePost = () => {
-    const createpost = disableButton ? null : history.push('/create')
-    return createpost
-=======
   }
 
   const goCreatePost = () => {
     history.push('/create')
->>>>>>> affbd6174d3dff76848714797a52b278648107f4
   }
 
   return (
