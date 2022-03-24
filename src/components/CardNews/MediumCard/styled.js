@@ -8,6 +8,8 @@ const MediumCardContainer = styled.li`
   border: 1px solid #dddfe2;
   background-color: #fff;
   border-radius: 4px;
+  cursor: pointer;
+
   @media (max-width: 640px) {
     width: 100%;
   }
@@ -217,4 +219,5 @@ const MediumCardContainer = styled.li`
     }
   }
 `;
+
 export default MediumCardContainer;

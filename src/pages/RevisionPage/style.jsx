@@ -4,6 +4,7 @@ import { up } from "styled-breakpoints";
 export const Container = styled.main`
   width: 100%;
   padding: 20px;
+  padding-top: 160px;
 
   ${up("md")} {
     display: flex;

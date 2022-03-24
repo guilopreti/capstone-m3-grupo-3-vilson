@@ -1,10 +1,26 @@
 import BigCardContainer from "./styled";
 
 import Nft from "../../../assets/image/nft.jpg";
+import { useContext } from "react";
+import { UserContext } from "../../../Providers/users";
+import { useHistory } from "react-router-dom";
 
 const BigCard = ({ current }) => {
+  const { listUsers } = useContext(UserContext);
+  const history = useHistory();
+
+  const findUser = listUsers.find((user) => {
+    return user.id === current.userId;
+  });
+
+  const openPostPage = (postId) => {
+    localStorage.setItem("@CapstoneM3:postId", postId);
+
+    history.push("/post");
+  };
+
   return (
-    <BigCardContainer>
+    <BigCardContainer onClick={() => openPostPage(current.id)}>
       <div className="bigCard-div-img">
         <img src={current.primaryImage} alt="Ilustração da notícia" />
       </div>
@@ -14,7 +30,7 @@ const BigCard = ({ current }) => {
             <div>
               <span>{current.theme}</span>
             </div>
-            <span>{current.time_read}</span>
+            <span>3 minutos de leitura</span>
           </div>
           <div className="bigCard-div-title">
             <h2>{current.title}</h2>
@@ -24,9 +40,9 @@ const BigCard = ({ current }) => {
         <div className="bigCard-div-user">
           <div>
             <div className="bigCard-div-imgUser">
-              <img src={Nft} alt="Imagem do usuário" />
+              <img src={findUser.img} alt="Imagem do usuário" />
             </div>
-            <span>{current.author}</span>
+            <span>{findUser.username}</span>
           </div>
           <span className="bigCard-span-data">{current.date}</span>
         </div>

@@ -16,6 +16,7 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { CurrentPostContext } from "../../Providers/currentPost";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 const ArticlePage = () => {
   const [postUser, setPostUser] = useState({});
@@ -34,17 +35,25 @@ const ArticlePage = () => {
     "Nov",
     "Dez",
   ]);
-
-  const { currentPost } = useContext(CurrentPostContext);
+  const [textParagraphs, setTextParagraphs] = useState("");
+  const [idCurrentPost] = useState(
+    JSON.parse(localStorage.getItem("@CapstoneM3:postId"))
+  );
+  const [currentPost, setCurrentPost] = useState("");
 
   useEffect(() => {
     api
-      .get(`/users/${currentPost.userId}`)
-      .then((resp) => setPostUser(resp.data))
+      .get(`/posts/${idCurrentPost}`)
+      .then((response) => {
+        setCurrentPost(response.data);
+        setTextParagraphs(response.data.text.split("\n"));
+        api
+          .get(`/users/${response.data.userId}`)
+          .then((resp) => setPostUser(resp.data))
+          .catch((err) => console.log(err));
+      })
       .catch((err) => console.log(err));
-  }, [currentPost]);
-
-  const textParagraphs = currentPost.text.split("\n");
+  }, []);
 
   const nextImage = () => {
     if (currentImage < currentPost.secondaryImages.length - 1) {
@@ -65,6 +74,15 @@ const ArticlePage = () => {
   const stars = [1, 2, 3, 4, 5];
 
   const registerVote = async (index) => {
+    if (!JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))) {
+      return toast.error("Logue para avaliar um post!");
+    } else if (
+      JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")).user.id ===
+      postUser.id
+    ) {
+      return toast.error("Você não pode avaliar o próprio post!");
+    }
+
     const currentValue = await api
       .get(`/posts/${currentPost.id}`)
       .then((resp) => resp.data);
@@ -105,27 +123,37 @@ const ArticlePage = () => {
       })
       .catch((err) => console.log(err));
 
-    const userPosts = await api
-      .get(`/users/${currentPost.userId}/posts`)
-      .then((resp) => resp.data);
+    setTimeout(async () => {
+      const userPosts = await api
+        .get(`/users/${currentPost.userId}/posts`)
+        .then((resp) => {
+          console.log(resp.data.filter(({ media }) => media !== null));
+          return resp.data.filter(({ media }) => media !== null);
+        });
 
-    const userPostsSum = userPosts.reduce(
-      (acc, { media }) => (acc += media),
-      0
-    );
-    const userNote = { note: parseInt(userPostsSum / userPosts.length) };
+      const userPostsSum = userPosts.reduce((acc, { media }) => {
+        return (acc += media);
+      }, 0);
+      const userNote = { note: parseInt(userPostsSum / userPosts.length) };
 
-    api
-      .patch(`/users/${currentPost.userId}`, userNote, {
-        headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
-              .accessToken
-          }`,
-        },
-      })
-      .then((resp) => console.log(resp.data))
-      .catch((err) => console.log(err));
+      api
+        .patch(`/users/${currentPost.userId}`, userNote, {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
+                .accessToken
+            }`,
+          },
+        })
+        .then((resp) => {
+          console.log(resp.data);
+          toast.success("Obrigado por sua avaliação!");
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Algo deu errado, tente novamente mais tarde!");
+        });
+    }, 1000);
   };
 
   return (
@@ -140,11 +168,12 @@ const ArticlePage = () => {
                 <span>{currentPost.theme}</span>
               </TemaContainer>
             )}
-
-            <span>
-              {months[Number(currentPost.date.split("/")[1]) - 1]}{" "}
-              {currentPost.date.split("/")[0]}
-            </span>
+            {currentPost && (
+              <span>
+                {months[Number(currentPost.date.split("/")[1]) - 1]}{" "}
+                {currentPost.date.split("/")[0]}
+              </span>
+            )}
           </DateTemaContainer>
           <TitleContainer>
             <h3>{currentPost.title}</h3>
@@ -160,13 +189,15 @@ const ArticlePage = () => {
               />
             </ImgContainer>
           )}
-          <TextContainer>
-            {textParagraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </TextContainer>
+          {textParagraphs && (
+            <TextContainer>
+              {textParagraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </TextContainer>
+          )}
         </ImgTextContainer>
-        {currentPost.secondaryImages.length > 0 && (
+        {currentPost && currentPost.secondaryImages.length > 0 && (
           <CarouselContent>
             <figure>
               <img
