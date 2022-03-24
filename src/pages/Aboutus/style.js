@@ -77,6 +77,12 @@ export const Container = styled.div`
     border-radius: 50%;
     border: 3px solid var(--primary-color);
   }
+  .sponsorship {
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--picpay-color);
+  }
   @media screen and (min-width: 768px) {
     .developers-ul {
       margin-top: 20px;

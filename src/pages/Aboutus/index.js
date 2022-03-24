@@ -1,9 +1,9 @@
-import logomarca from '../../assets/image/logomarca.png'
-import HeaderHome from '../../components/HeaderHome'
-import MenuNav from '../../components/MenuNav'
-import { Container } from './style'
+import HeaderHome from "../../components/HeaderHome"
+import MenuNav from "../../components/MenuNav"
+import { Container } from "./style"
 import { AiFillLinkedin } from 'react-icons/ai'
 import { AiFillGithub } from 'react-icons/ai'
+import { SiPicpay } from 'react-icons/si'
 
 const Aboutus = () => {
   return (
