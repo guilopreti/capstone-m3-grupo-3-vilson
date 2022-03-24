@@ -16,38 +16,16 @@ const Aboutus = () => {
         </div>
         <div>
           <p>
-            Mussum Ipsum, cacilds vidis litro abertis. Mais vale um bebadis
-            conhecidiss, que um alcoolatra anonimis.Nec orci ornare consequat.
-            Praesent lacinia ultrices consectetur. Sed non ipsum felis.Admodum
-            accumsan disputationi eu sit. Vide electram sadipscing et per.Não
-            sou faixa preta cumpadi, sou preto inteiris, inteiris.
-          </p>
-
-          <p>
-            Manduma pindureta quium dia nois paga.Viva Forevis aptent taciti
-            sociosqu ad litora torquent.Quem num gosta di mim que vai caçá sua
-            turmis!Posuere libero varius. Nullam a nisl ut ante blandit
-            hendrerit. Aenean sit amet nisi.
-          </p>
-
-          <p>
-            Sapien in monti palavris qui num significa nadis i pareci latim.Quem
-            manda na minha terra sou euzis!Admodum accumsan disputationi eu sit.
-            Vide electram sadipscing et per.Si num tem leite então bota uma
-            pinga aí cumpadi!
-          </p>
-
-          <p>
-            Sapien in monti palavris qui num significa nadis i pareci latim.Viva
-            Forevis aptent taciti sociosqu ad litora torquent.Tá deprimidis, eu
-            conheço uma cachacis que pode alegrar sua vidis.Suco de cevadiss, é
-            um leite divinis, qui tem lupuliz, matis, aguis e fermentis.
+            Com muita visão do que hoje ocorre no mundo, nosso site pode te trazer varias informações de forma acertiva e segura, do que está acontecendo ao nosso redor, com notícias públicadas pelos membros da nossa comunidade.
           </p>
           <p>
-            Nec orci ornare consequat. Praesent lacinia ultrices consectetur.
-            Sed non ipsum felis.Per aumento de cachacis, eu
-            reclamis.Interessantiss quisso pudia ce receita de bolis, mais bolis
-            eu num gostis.Quem num gosta di mé, boa gentis num é.
+            Poderemos trazer aos nossos leitores confiança, devido ao empenho de nossa equipe, para evitar que as famosas "Fake news", sejam espalhadas na nossa plataforma, os nossos admins irão analisar cada postagem que será feita.
+          </p>
+          <p>
+            Visando trazer praticidade para nosso leitor o "opnion!", é totalmente compativel para diversas telas, inclusive de celulares, para que os usuários possam ler nossos artigos mesmo no ônibus indo para o trabalho, ou no uber, da tela do seu celular.
+          </p>
+          <p>
+            Iremos entregar ao leitor qualidade de leitura e informação, mas claro a nossa diferença dos outros sites de notícias é que qualquer leitor podera postar e ler nossos artigos de forma gratuíta.
           </p>
         </div>
         <div className='developers'>
@@ -142,6 +120,7 @@ const Aboutus = () => {
             </li>
           </ul>
         </div>
+        <div className="sponsorship"><span>Buy-me a coffe <SiPicpay/></span></div>
       </Container>
     </>
   )
