@@ -8,10 +8,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/auth";
 
 const MenuHamburguer = ({ setMenuHamb }) => {
-
   const history = useHistory();
 
-  const { handleLogout } = useContext(AuthContext)
+  const { handleLogout } = useContext(AuthContext);
 
   const userLocal = JSON.parse(
     localStorage.getItem("@CapstoneM3:userLogin") || null
@@ -38,9 +37,9 @@ const MenuHamburguer = ({ setMenuHamb }) => {
   };
 
   const logout = (history) => {
-    handleLogout(history)
-    setMenuHamb(false)
-  }
+    handleLogout(history);
+    setMenuHamb(false);
+  };
 
   return (
     <Container>
@@ -106,15 +105,17 @@ const MenuHamburguer = ({ setMenuHamb }) => {
               className="list-item-link"
             />
           </li>
-          <li className="list-item">
-            <span onClick={() => logout(history)} className="list-item-link">
-              Sair
-            </span>
-            <IoIosArrowForward
-              onClick={() => logout(history)}
-              className="list-item-link"
-            />
-          </li>
+          {userLocal !== null && (
+            <li className="list-item">
+              <span onClick={() => logout(history)} className="list-item-link">
+                Sair
+              </span>
+              <IoIosArrowForward
+                onClick={() => logout(history)}
+                className="list-item-link"
+              />
+            </li>
+          )}
         </ul>
       </div>
     </Container>
