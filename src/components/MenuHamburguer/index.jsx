@@ -58,12 +58,25 @@ const MenuHamburguer = ({ setMenuHamb }) => {
           <CgProfile className="profile-icon" />
         )}
         <div className="profile-links">
-          <Link className="profile-link-login" to="/login">
-            Acesse sua conta
-          </Link>
-          <Link className="profile-link-register" to="/register">
-            Ou cadastre-se grátis.
-          </Link>
+          {userLocal !== null ? (
+            <>
+              <span className="profile-username">
+                {userLocal.user.username}
+              </span>
+              <span className="profile-username profile-email">
+                {userLocal.user.email}
+              </span>
+            </>
+          ) : (
+            <>
+              <Link className="profile-link-login" to="/login">
+                Acesse sua conta
+              </Link>
+              <Link className="profile-link-register" to="/register">
+                Ou cadastre-se grátis.
+              </Link>
+            </>
+          )}
         </div>
       </div>
       <div className="profile-line"></div>
