@@ -1,16 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nft from "../../../assets/image/nft.jpg";
 import { UserContext } from "../../../Providers/users";
 import { SmallCardContainer } from "./styled";
+import api from "../../../services/api";
 
 const SmallCard = ({ current }) => {
-  const { listUsers } = useContext(UserContext);
+  const [userPost, setUserPost] = useState([]);
   const history = useHistory();
 
-  const findUser = listUsers.find((user) => {
-    return user.id === current.userId;
-  });
+  useEffect(() => {
+    api.get("/users").then((resp) => {
+      setUserPost(
+        resp.data.find((user) => {
+          return user.id === current.userId;
+        })
+      );
+    });
+  }, []);
 
   const openPostPage = (postId) => {
     localStorage.setItem("@CapstoneM3:postId", postId);
@@ -28,9 +35,9 @@ const SmallCard = ({ current }) => {
           <div className="mediumCard-div-user">
             <div>
               <div className="mediumCard-div-imgUser">
-                <img src={findUser.img} alt="Imagem do usuário" />
+                <img src={userPost.img} alt="Imagem do usuário" />
               </div>
-              <span>{findUser.username}</span>
+              <span>{userPost.username}</span>
             </div>
             <span className="mediumCard-span-data">{current.date}</span>
           </div>
