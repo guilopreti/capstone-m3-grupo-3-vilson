@@ -7,6 +7,7 @@ export const MainProfile = styled.main`
   flex-direction: column;
   align-items: center;
   .profile-div-img-parent {
+    margin-top: 155px;
     display: flex;
   }
   .profile-div-img {
@@ -69,6 +70,7 @@ export const ProfileTitleContainer = styled.div`
 `;
 
 export const ProfileContainer = styled(RegisterContainer)`
+  margin-top: 0;
   opacity: ${(props) => (props.isOpacity ? "0.3" : "unset")};
   box-shadow: 0 0 0 0;
   width: 400px;

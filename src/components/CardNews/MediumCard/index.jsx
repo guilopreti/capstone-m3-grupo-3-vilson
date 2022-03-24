@@ -5,7 +5,7 @@ const MediumCard = ({ current }) => {
   return (
     <MediumCardContainer>
       <div className="mediumCard-div-img">
-        <img src={current.img} alt="Ilustração da notícia" />
+        <img src={current.primaryImage} alt="Ilustração da notícia" />
       </div>
       <div className="mediumCard-div-main">
         <div className="mediumCard-div-theme-title-paragraph">
@@ -18,7 +18,7 @@ const MediumCard = ({ current }) => {
           <div className="mediumCard-div-title">
             <h2>{current.title}</h2>
           </div>
-          <p>{current.article}</p>
+          <p>{current.text}</p>
         </div>
         <div className="mediumCard-div-user">
           <div>
