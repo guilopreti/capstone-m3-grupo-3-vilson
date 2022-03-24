@@ -7,18 +7,13 @@ import Checkbox from "../../components/Checkbox";
 const TermsArticlePage = () => {
   const [checkedTerms, setCheckedTerms] = useState(false);
   const [checkedConditions, setCheckedConditions] = useState(false);
-  const [disableButton, setDisableButton] = useState(true);
 
   const handleChangeTerms = () => {
     setCheckedTerms(!checkedTerms)
-    setDisableButton(true)
-    checkedConditions && setDisableButton(false)
   };
 
   const handleChangeConditions = () => {
     setCheckedConditions(!checkedConditions)
-    setDisableButton(true)
-    checkedTerms && setDisableButton(false)
   };
 
   
@@ -63,8 +58,8 @@ const TermsArticlePage = () => {
         <StrongText>Estou ciente das condições para publicar no Opnion.</StrongText>
       </CheckboxContainer>
       
-      <Button disabled={disableButton} >Registrar</Button>
-
+      <Button disabled={!(checkedConditions && checkedTerms)}>Registrar</Button>
+  
     </Container>
   </>
   )
