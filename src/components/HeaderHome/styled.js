@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderHomeContainer = styled.header`
-  /* position: fixed; */
+  position: fixed;
   padding-left: 10px;
   display: flex;
   justify-content: center;

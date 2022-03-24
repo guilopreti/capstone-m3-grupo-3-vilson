@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const ChangeImageContainer = styled.section`
+  margin-top: 155px;
   font-family: "Inter", sans-serif;
   position: fixed;
   display: flex;

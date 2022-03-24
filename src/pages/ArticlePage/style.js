@@ -3,16 +3,18 @@ import styled from "styled-components";
 export const Container = styled.main`
   width: 100%;
   height: 100vh;
-  display: flex;
+  padding-top: 140px;
+  /* display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 
-  > div {
+  /* div {
     margin-top: 50px;
     width: 100%;
     max-width: 515px;
     padding: 15px;
-  }
+  } */
 `;
 
 export const HeaderPost = styled.div`

@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { Container } from "./styled";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/auth";
 
 const MenuHamburguer = ({ setMenuHamb }) => {
-
   const history = useHistory();
+
+  const { handleLogout } = useContext(AuthContext);
 
   const userLocal = JSON.parse(
     localStorage.getItem("@CapstoneM3:userLogin") || null
@@ -33,6 +36,11 @@ const MenuHamburguer = ({ setMenuHamb }) => {
     setMenuHamb(false);
   };
 
+  const logout = (history) => {
+    handleLogout(history);
+    setMenuHamb(false);
+  };
+
   return (
     <Container>
       <div className="search-container">
@@ -50,12 +58,25 @@ const MenuHamburguer = ({ setMenuHamb }) => {
           <CgProfile className="profile-icon" />
         )}
         <div className="profile-links">
-          <Link className="profile-link-login" to="/login">
-            Acesse sua conta
-          </Link>
-          <Link className="profile-link-register" to="/register">
-            Ou cadastre-se grátis.
-          </Link>
+          {userLocal !== null ? (
+            <>
+              <span className="profile-username">
+                {userLocal.user.username}
+              </span>
+              <span className="profile-username profile-email">
+                {userLocal.user.email}
+              </span>
+            </>
+          ) : (
+            <>
+              <Link className="profile-link-login" to="/login">
+                Acesse sua conta
+              </Link>
+              <Link className="profile-link-register" to="/register">
+                Ou cadastre-se grátis.
+              </Link>
+            </>
+          )}
         </div>
       </div>
       <div className="profile-line"></div>
@@ -97,6 +118,17 @@ const MenuHamburguer = ({ setMenuHamb }) => {
               className="list-item-link"
             />
           </li>
+          {userLocal !== null && (
+            <li className="list-item">
+              <span onClick={() => logout(history)} className="list-item-link">
+                Sair
+              </span>
+              <IoIosArrowForward
+                onClick={() => logout(history)}
+                className="list-item-link"
+              />
+            </li>
+          )}
         </ul>
       </div>
     </Container>
