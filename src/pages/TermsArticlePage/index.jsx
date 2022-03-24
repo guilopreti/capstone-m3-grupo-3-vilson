@@ -17,25 +17,19 @@ import { useHistory } from 'react-router-dom'
 const TermsArticlePage = () => {
   const [checkedTerms, setCheckedTerms] = useState(false)
   const [checkedConditions, setCheckedConditions] = useState(false)
-  const [disableButton, setDisableButton] = useState(true)
 
   const history = useHistory()
 
   const handleChangeTerms = () => {
     setCheckedTerms(!checkedTerms)
-    setDisableButton(true)
-    checkedConditions && setDisableButton(false)
   }
 
   const handleChangeConditions = () => {
     setCheckedConditions(!checkedConditions)
-    setDisableButton(true)
-    checkedTerms && setDisableButton(false)
   }
 
   const goCreatePost = () => {
-    const createpost = disableButton ? null : history.push('/create')
-    return createpost
+    history.push('/create')
   }
 
   return (
@@ -116,7 +110,10 @@ const TermsArticlePage = () => {
             </StrongText>
           </CheckboxContainer>
           <ButtonContainer>
-            <Button onClick={() => goCreatePost()} disabled={disableButton}>
+            <Button
+              disabled={!(checkedConditions && checkedTerms)}
+              onClick={goCreatePost}
+            >
               Registrar
             </Button>
           </ButtonContainer>
