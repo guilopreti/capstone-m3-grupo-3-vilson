@@ -1,9 +1,8 @@
-import MediumCardContainer from "./styled";
-import Nft from "../../../assets/image/nft.jpg";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../Providers/users";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import api from "../../../services/api";
+import MediumCardContainer from "./styled";
 
 const MediumCard = ({ current }) => {
   const [userPost, setUserPost] = useState([]);

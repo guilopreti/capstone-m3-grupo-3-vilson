@@ -2,7 +2,6 @@ import { FaPen } from "react-icons/fa";
 import ProfileInformationContainer from "./styled";
 import { MainProfile } from "../ChangeInformation/styled";
 import { ProfileTitleContainer } from "./styled";
-import ImageProfile from "../../../assets/image/elon-musk.jpg";
 import { useContext } from "react";
 import { ChangeImageContext } from "../../../Providers/ChangeImage";
 import { ProfileContext } from "../../../Providers/differentStates";

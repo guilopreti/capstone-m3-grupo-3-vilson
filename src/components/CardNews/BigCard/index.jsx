@@ -1,9 +1,7 @@
-import BigCardContainer from "./styled";
-
-import Nft from "../../../assets/image/nft.jpg";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../Providers/users";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+
+import BigCardContainer from "./styled";
 import api from "../../../services/api";
 
 const BigCard = ({ current }) => {

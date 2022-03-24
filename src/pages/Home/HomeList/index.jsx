@@ -3,7 +3,6 @@ import SmallCard from "../../../components/CardNews/SmallCard";
 import BigCard from "../../../components/CardNews/BigCard";
 import HomeListContainer from "./styled";
 import { HomeListPrimaryContainer, HomeListContainerTop } from "./styled";
-import { postsDb, postsDb2, postsDb3 } from "../../../Providers/posts/postsDb";
 import { PostsContext } from "../../../Providers/posts/index.js";
 import { useContext } from "react";
 
