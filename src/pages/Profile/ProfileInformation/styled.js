@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const ProfileTitleContainer = styled.div`
+export const ProfileTitleContainer = styled.section`
+  margin-top: 155px;
   margin-bottom: 30px;
   display: flex;
     justify-content: space-between;
@@ -79,13 +80,15 @@ export const ProfileTitleContainer = styled.div`
 
 `;
 
-const ProfileInformationContainer = styled.ul`
-  display: flex;
-  flex-direction: column;
+const ProfileInformationContainer = styled.section`
   width: 500px;
-  font-family: "Inter", sans-serif;
   @media (max-width: 520px) {
     width: 90%;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter", sans-serif;
   }
   li {
     display: flex;

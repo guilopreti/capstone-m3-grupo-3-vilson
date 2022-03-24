@@ -86,6 +86,7 @@ const CreatePost = () => {
     <>
       <HeaderHome />
       <MenuNav />
+
       <Container onSubmit={handleSubmit(onSubmit)}>
         <article>
           <h1 contentEditable onBlur={(evt) => setTitle(evt.target.innerText)}>

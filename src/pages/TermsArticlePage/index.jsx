@@ -33,8 +33,8 @@ const TermsArticlePage = () => {
   };
 
   const goCreatePost = () => {
-    const createpost = disableButton ? null : history.push("/create")
-    return createpost
+    const createpost = disableButton ? null : history.push("/create");
+    return createpost;
   };
 
   return (
@@ -113,6 +113,7 @@ const TermsArticlePage = () => {
           </StrongText>
         </CheckboxContainer>
 
+        <Button disabled={disableButton}>Registrar</Button>
         <Button onClick={() => goCreatePost()} disabled={disableButton}>
           Registrar
         </Button>
