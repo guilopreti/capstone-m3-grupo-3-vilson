@@ -12,7 +12,8 @@ import { toast } from 'react-toastify'
 import { useHistory } from 'react-router-dom'
 
 const CreatePost = () => {
-  const { user } = useContext(UserContext)
+  //const { user } = useContext(UserContext)
+  const user = JSON.parse(localStorage.getItem('@CapstoneM3:userLogin'))
 
   const formSchema = yup.object().shape({
     text: yup
