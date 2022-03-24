@@ -16,6 +16,8 @@ import {
 import { useEffect, useState, useContext } from 'react'
 import api from '../../services/api'
 import { UserContext } from '../../Providers/users'
+import { RevisionPostContext } from '../../Providers/revisionPost'
+import { useHistory } from 'react-router-dom'
 
 const RevisionPostPage = () => {
   const [idPostRevision] = useState(
@@ -25,10 +27,15 @@ const RevisionPostPage = () => {
 
   const token = JSON.parse(localStorage.getItem('@CapstoneM3:userLogin'))
 
+  const { handleDeleteArticleRevision, handleApprovedAticleRevision } =
+    useContext(RevisionPostContext)
+
   const { listUsers } = useContext(UserContext)
   const findUser = listUsers.find((user) => {
     return user.id === postRevision.userId
   })
+
+  const history = useHistory()
 
   useEffect(() => {
     api
@@ -62,7 +69,9 @@ const RevisionPostPage = () => {
             <ImgContainer>
               <img src={postRevision.primaryImage} alt={postRevision.theme} />
             </ImgContainer>
-            <TextContainer>{postRevision.text}</TextContainer>
+            <TextContainer>
+              <p>{postRevision.text}</p>
+            </TextContainer>
           </ImgTextContainer>
           <FontContainer>
             <span>
@@ -70,11 +79,24 @@ const RevisionPostPage = () => {
             </span>
           </FontContainer>
           <FeedBackContainer>
-            <h3>Digite o feedback para o usúario:</h3>
+            <h3>Digite aqui o feedback para o usúario:</h3>
             <textarea placeholder='Digite seu feedback aqui'></textarea>
             <div>
-              <Button approved>Aprovar</Button>
-              <Button>Recusar</Button>
+              <Button
+                approved
+                onClick={() =>
+                  handleApprovedAticleRevision(postRevision, history)
+                }
+              >
+                Aprovar
+              </Button>
+              <Button
+                onClick={() =>
+                  handleDeleteArticleRevision(postRevision.id, history)
+                }
+              >
+                Recusar
+              </Button>
             </div>
           </FeedBackContainer>
         </div>

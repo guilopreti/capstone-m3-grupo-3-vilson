@@ -1,5 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 const MenuConteiner = styled.section`
+  position: fixed;
+  margin-top: 75px;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +42,7 @@ const MenuConteiner = styled.section`
       align-items: center;
       width: 270px;
       height: 30px;
-      display: ${(props) => (props.hiddenSearch ? "none" : "flex")};
+      display: ${(props) => (props.hiddenSearch ? 'none' : 'flex')};
       @media (min-width: 768px) {
         margin-left: -152px;
       }
@@ -114,13 +117,13 @@ const MenuConteiner = styled.section`
       display: flex;
     }
     width: 78px;
-    display: ${(props) => (props.hiddenMyAccount ? "none" : "flex")};
+    display: ${(props) => (props.hiddenMyAccount ? 'none' : 'flex')};
     @media (max-width: 768px) {
       display: none;
     }
   }
   .menu-nav-icons-hidden {
   }
-`;
+`
 
-export default MenuConteiner;
+export default MenuConteiner
