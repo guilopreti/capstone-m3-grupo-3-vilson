@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Nft from "../../../assets/image/nft.jpg";
-import { UserContext } from "../../../Providers/users";
 import { SmallCardContainer } from "./styled";
+
 import api from "../../../services/api";
 
 const SmallCard = ({ current }) => {

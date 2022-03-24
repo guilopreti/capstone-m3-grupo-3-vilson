@@ -1,18 +1,14 @@
 import { Link } from "react-router-dom";
-import ImageProfile from "../../../assets/image/elon-musk.jpg";
 import { useContext } from "react";
-// import { UserContext } from "../../../Providers/users";
-import ModalProfileContainer, { MainModal } from "./styled";
 import { AuthContext } from "../../../Providers/auth";
-
 import { ModalContext } from "../../../Providers/differentStates/index";
 import { useHistory } from "react-router-dom";
 
+import ModalProfileContainer, { MainModal } from "./styled";
+
 const ModalProfile = () => {
   const { setShowModal } = useContext(ModalContext);
-  // const { setUser } = useContext(UserContext);
   const { handleLogout } = useContext(AuthContext);
-  // const { setShowChangeInformation } = useContext(showChangeInformation);
 
   const history = useHistory();
 
