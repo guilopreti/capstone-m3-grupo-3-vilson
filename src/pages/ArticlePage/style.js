@@ -1,28 +1,26 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.main`
   width: 100%;
   height: 100vh;
-  padding-top: 140px;
-  /* display: flex;
-  flex-direction: column;
+  display: flex;
   justify-content: center;
-  align-items: center; */
 
-  /* div {
-    margin-top: 50px;
+  > div {
+    margin-top: 150px;
     width: 100%;
-    max-width: 515px;
-    padding: 15px;
-  } */
-`;
+    max-width: 795px;
+    display: flex;
+    flex-direction: column;
+  }
+`
 
 export const HeaderPost = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
   padding: 10px 0;
-`;
+`
 
 export const DateTemaContainer = styled.div`
   width: 100%;
@@ -34,7 +32,7 @@ export const DateTemaContainer = styled.div`
     font-size: 12px;
     color: var(--grey-color);
   }
-`;
+`
 
 export const TemaContainer = styled.div`
   width: 65px;
@@ -50,7 +48,7 @@ export const TemaContainer = styled.div`
     font-size: 12px;
     color: var(--white-color);
   }
-`;
+`
 
 export const TitleContainer = styled.div`
   width: 100%;
@@ -68,14 +66,14 @@ export const TitleContainer = styled.div`
     font-weight: regular;
     margin-top: 10px;
   }
-`;
+`
 
 export const ImgTextContainer = styled.div`
   width: 100%;
   padding: 10px 0;
   display: flex;
   flex-direction: column;
-`;
+`
 
 export const ImgContainer = styled.div`
   width: 100%;
@@ -90,7 +88,7 @@ export const ImgContainer = styled.div`
     display: inline-block;
     border-radius: 5px;
   }
-`;
+`
 
 export const TextContainer = styled.div`
   width: 100%;
@@ -103,7 +101,7 @@ export const TextContainer = styled.div`
     text-indent: 35px;
     margin-bottom: 10px;
   }
-`;
+`
 
 export const FontContainer = styled.div`
   width: 100%;
@@ -119,9 +117,13 @@ export const FontContainer = styled.div`
     > span {
       color: black;
       text-decoration: underline;
+      cursor: pointer;
+      :hover {
+        color: red;
+      }
     }
   }
-`;
+`
 
 export const UserVoteContainer = styled.div`
   width: 100%;
@@ -149,7 +151,7 @@ export const UserVoteContainer = styled.div`
       padding: 0 10px;
     }
   }
-`;
+`
 
 export const CarouselContent = styled.div`
   display: flex;
@@ -165,7 +167,6 @@ export const CarouselContent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
 
     figcaption {
       display: none;
@@ -182,5 +183,9 @@ export const CarouselContent = styled.div`
     justify-content: space-around;
     width: 80%;
     max-width: 400px;
+
+    > svg {
+      cursor: pointer;
+    }
   }
-`;
+`
