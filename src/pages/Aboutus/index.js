@@ -14,8 +14,7 @@ const Aboutus = () => {
             <MenuNav />
             <Container>
                 <div>
-                    <h1>Sobre nós</h1>
-                    <img src={logomarca} alt="" className="imagemlogo" />
+                    <h1>Sobre</h1>
                 </div>
                 <div>
                     <p>Mussum Ipsum, cacilds vidis litro abertis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.Admodum accumsan disputationi eu sit. Vide electram sadipscing et per.Não sou faixa preta cumpadi, sou preto inteiris, inteiris.</p>
