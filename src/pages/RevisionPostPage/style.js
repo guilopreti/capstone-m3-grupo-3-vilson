@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { up, down, between, only } from 'styled-breakpoints'
 
 export const Container = styled.main`
   width: 100%;
@@ -9,7 +8,8 @@ export const Container = styled.main`
 
   > div {
     width: 100%;
-    max-width: 515px;
+    margin-top: 150px;
+    max-width: 795px;
     padding: 15px;
   }
 `
@@ -83,6 +83,7 @@ export const ImgContainer = styled.div`
   img {
     width: 100%;
     max-width: 488px;
+    max-height: 350px;
     display: inline-block;
     border-radius: 5px;
   }
@@ -91,9 +92,12 @@ export const ImgContainer = styled.div`
 export const TextContainer = styled.div`
   width: 100%;
   margin-top: 20px;
-  text-align: justify;
-  font-size: 16px;
-  font-weight: regular;
+  text-align: left;
+  > p {
+    font-size: 16px;
+    font-weight: regular;
+    line-height: 25px;
+  }
 `
 
 export const FontContainer = styled.div`
@@ -109,6 +113,7 @@ export const FontContainer = styled.div`
 
     > span {
       color: black;
+      cursor: pointer;
       text-decoration: underline;
     }
   }
@@ -129,6 +134,9 @@ export const FeedBackContainer = styled.div`
     height: 140px;
     resize: none;
     padding: 5px;
+    border: 1px solid #dddfe2;
+    border-radius: 5px;
+    font-size: 16px;
   }
 
   > div {
