@@ -8,7 +8,6 @@ import { MainProfile, ProfileContainer } from "./styled";
 import Button from "../../../components/Button/index";
 import { useContext } from "react";
 import { UserContext } from "../../../Providers/users";
-import ImageProfile from "../../../assets/image/elon-musk.jpg";
 import { ProfileContext } from "../../../Providers/differentStates/index";
 import { ChangeImageContext } from "../../../Providers/ChangeImage";
 

@@ -12,9 +12,7 @@ const MenuNav = ({
   hiddenMyAccount = false,
   setInputValue,
 }) => {
-  const { showModal, setShowModal } = useContext(ModalContext);
-
-  // const [showModal, setShowModal] = useState(false)
+  const { setShowModal } = useContext(ModalContext);
 
   const LocalStorage =
     JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || null;
@@ -31,7 +29,7 @@ const MenuNav = ({
               <RiHome4Line className="menu-nav-icons" /> Home
             </li>
           </Link>
-          <Link className='Link' to='/aboutus'>
+          <Link className="Link" to="/aboutus">
             <li>Sobre</li>
           </Link>
           <Link className="Link" to="/terms">

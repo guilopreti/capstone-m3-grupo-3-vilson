@@ -1,7 +1,7 @@
 import { Container } from "./style";
-import CardsRevision from "../CardsRevision";
 import { useContext } from "react";
 import { RevisionPostContext } from "../../Providers/revisionPost";
+import CardsRevision from "../CardsRevision";
 
 const ListCardsRevision = () => {
   const { revisionPosts } = useContext(RevisionPostContext);

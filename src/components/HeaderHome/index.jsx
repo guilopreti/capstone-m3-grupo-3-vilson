@@ -2,13 +2,12 @@ import { FiLogIn } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 import { MdWavingHand } from "react-icons/md";
 import { Link } from "react-router-dom";
-import ImageUser from "../../assets/image/elon-musk.jpg";
 import { HeaderHomeContainer } from "./styled";
-// import { useContext } from "react";
 import { useState, useContext } from "react";
 import { FiX } from "react-icons/fi";
-import MenuHamburguer from "../MenuHamburguer";
 import { ChangeImageContext } from "../../Providers/ChangeImage";
+
+import MenuHamburguer from "../MenuHamburguer";
 
 const HeaderHome = () => {
   const [menuHamb, setMenuHamb] = useState(false);
