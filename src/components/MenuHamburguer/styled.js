@@ -63,6 +63,19 @@ export const Container = styled.div`
         font-weight: 700;
         color: black;
     }
+    .profile-username {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: black;
+    }
+    .profile-email {
+        font-size: 12px;
+        color: var(--gray-color-2);
+    }
     .profile-link-register {
         text-decoration: none;
         color: black;
