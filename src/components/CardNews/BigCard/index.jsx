@@ -6,6 +6,20 @@ import api from "../../../services/api";
 
 const BigCard = ({ current }) => {
   const [userPost, setUserPost] = useState([]);
+  const [months] = useState([
+    "Jan",
+    "Fev",
+    "Mar",
+    "Abr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Set",
+    "Out",
+    "Nov",
+    "Dez",
+  ]);
   const history = useHistory();
 
   useEffect(() => {
@@ -48,8 +62,12 @@ const BigCard = ({ current }) => {
               <img src={userPost.img} alt="Imagem do usuário" />
             </div>
             <span>{userPost.username}</span>
+            {userPost.note && <span>{userPost.note}</span>}
           </div>
-          <span className="bigCard-span-data">{current.date}</span>
+          <span className="bigCard-span-data">
+            {months[Number(current.date.split("/")[1]) - 1]}{" "}
+            {current.date.split("/")[0]}
+          </span>
         </div>
       </div>
     </BigCardContainer>
