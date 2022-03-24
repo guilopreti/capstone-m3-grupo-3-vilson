@@ -1,5 +1,5 @@
-import HeaderHome from "../../components/HeaderHome";
-import MenuNav from "../../components/MenuNav";
+import HeaderHome from '../../components/HeaderHome'
+import MenuNav from '../../components/MenuNav'
 import Button, {
   Container,
   Title,
@@ -8,39 +8,39 @@ import Button, {
   List,
   Item,
   CheckboxContainer,
-} from "./styled";
-import { useState } from "react";
-import Checkbox from "../../components/Checkbox";
-import { useHistory } from "react-router-dom";
+} from './styled'
+import { useState } from 'react'
+import Checkbox from '../../components/Checkbox'
+import { useHistory } from 'react-router-dom'
 
 const TermsArticlePage = () => {
-  const [checkedTerms, setCheckedTerms] = useState(false);
-  const [checkedConditions, setCheckedConditions] = useState(false);
-  const [disableButton, setDisableButton] = useState(true);
+  const [checkedTerms, setCheckedTerms] = useState(false)
+  const [checkedConditions, setCheckedConditions] = useState(false)
+  const [disableButton, setDisableButton] = useState(true)
 
-  const history = useHistory();
+  const history = useHistory()
 
   const handleChangeTerms = () => {
-    setCheckedTerms(!checkedTerms);
-    setDisableButton(true);
-    checkedConditions && setDisableButton(false);
-  };
+    setCheckedTerms(!checkedTerms)
+    setDisableButton(true)
+    checkedConditions && setDisableButton(false)
+  }
 
   const handleChangeConditions = () => {
-    setCheckedConditions(!checkedConditions);
-    setDisableButton(true);
-    checkedTerms && setDisableButton(false);
-  };
+    setCheckedConditions(!checkedConditions)
+    setDisableButton(true)
+    checkedTerms && setDisableButton(false)
+  }
 
   const goCreatePost = () => {
-    const createpost = disableButton ? null : history.push("/create");
-    return createpost;
-  };
+    const createpost = disableButton ? null : history.push('/create')
+    return createpost
+  }
 
   return (
     <>
       <HeaderHome />
-      <MenuNav />
+      <MenuNav hiddenSearch />
       <Container>
         <Title>Termos para o seu cadastro no Opnion</Title>
 
@@ -119,7 +119,7 @@ const TermsArticlePage = () => {
         </Button>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default TermsArticlePage;
+export default TermsArticlePage

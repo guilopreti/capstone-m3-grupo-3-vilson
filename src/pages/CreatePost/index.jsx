@@ -1,59 +1,59 @@
-import { Button } from "@mui/material";
-import { useContext, useState } from "react";
-import { UserContext } from "../../Providers/users";
-import { Container, DivContent, SectionImages, SectionTexts } from "./styles";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import api from "../../services/api.js";
-import MenuNav from "../../components/MenuNav";
-import HeaderHome from "../../components/HeaderHome";
+import { Button } from '@mui/material'
+import { useContext, useState } from 'react'
+import { UserContext } from '../../Providers/users'
+import { Container, DivContent, SectionImages, SectionTexts } from './styles'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import api from '../../services/api.js'
+import MenuNav from '../../components/MenuNav'
+import HeaderHome from '../../components/HeaderHome'
 
 const CreatePost = () => {
-  const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext)
 
   const formSchema = yup.object().shape({
     text: yup
       .string()
-      .min(2500, "Mínimo de 2500 caracteres!")
-      .max(9000, "Máximo de 9000 caracteres!")
-      .required("Texto Obrigatório!"),
+      .min(2500, 'Mínimo de 2500 caracteres!')
+      .max(9000, 'Máximo de 9000 caracteres!')
+      .required('Texto Obrigatório!'),
     font: yup.string(),
     theme: yup.string(),
-  });
+  })
 
-  const [title, setTitle] = useState("Sem Título");
-  const [primaryImage, setPrimaryImage] = useState("");
-  const [secondaryImages, setSecondaryImages] = useState([]);
+  const [title, setTitle] = useState('Sem Título')
+  const [primaryImage, setPrimaryImage] = useState('')
+  const [secondaryImages, setSecondaryImages] = useState([])
 
   const selectFirstImage = (evt) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      let newImage = reader.result;
-      setPrimaryImage(newImage);
-    });
-    reader.readAsDataURL(evt.target.files[0]);
-  };
+    const reader = new FileReader()
+    reader.addEventListener('load', () => {
+      let newImage = reader.result
+      setPrimaryImage(newImage)
+    })
+    reader.readAsDataURL(evt.target.files[0])
+  }
 
   const selectOthersImages = (evt) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      let newImage = reader.result;
-      setSecondaryImages([...secondaryImages, newImage]);
-    });
-    reader.readAsDataURL(evt.target.files[0]);
-  };
+    const reader = new FileReader()
+    reader.addEventListener('load', () => {
+      let newImage = reader.result
+      setSecondaryImages([...secondaryImages, newImage])
+    })
+    reader.readAsDataURL(evt.target.files[0])
+  }
 
   const cleanImages = () => {
-    setPrimaryImage("");
-    setSecondaryImages([]);
-  };
+    setPrimaryImage('')
+    setSecondaryImages([])
+  }
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(formSchema) });
+  } = useForm({ resolver: yupResolver(formSchema) })
 
   const onSubmit = (data) => {
     const post = {
@@ -69,23 +69,23 @@ const CreatePost = () => {
       votes: [],
       media: null,
       userId: user.user.id,
-    };
+    }
     api
-      .post("/accept", post, {
+      .post('/accept', post, {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
       })
       .then((resp) => {
-        console.log(resp.data);
+        console.log(resp.data)
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }
 
   return (
     <>
       <HeaderHome />
-      <MenuNav />
+      <MenuNav hiddenSearch />
 
       <Container onSubmit={handleSubmit(onSubmit)}>
         <article>
@@ -96,8 +96,8 @@ const CreatePost = () => {
           <SectionTexts>
             <div>
               <textarea
-                placeholder="Conte sua história..."
-                {...register("text")}
+                placeholder='Conte sua história...'
+                {...register('text')}
               />
               <span>{errors.text?.message}</span>
             </div>
@@ -107,24 +107,24 @@ const CreatePost = () => {
             <label>
               Fonte: <span>*IMPORTANTE</span>
             </label>
-            <input {...register("font")} />
+            <input {...register('font')} />
           </DivContent>
 
           <DivContent>
             <label>
               Tema: <span>*IMPORTANTE</span>
             </label>
-            <input {...register("theme")} />
+            <input {...register('theme')} />
           </DivContent>
 
           <SectionImages>
             <div>
               <h4>Selecione uma imagem principal.</h4>
-              <label htmlFor="selecao-foto-principal">Selecionar imagem</label>
+              <label htmlFor='selecao-foto-principal'>Selecionar imagem</label>
               <input
-                type={"file"}
-                id="selecao-foto-principal"
-                accept="image/png, image/jpg"
+                type={'file'}
+                id='selecao-foto-principal'
+                accept='image/png, image/jpg'
                 onChange={(evt) => selectFirstImage(evt)}
               />
               {primaryImage && <span>Imagem selecionada</span>}
@@ -132,13 +132,13 @@ const CreatePost = () => {
 
             <div>
               <h4>Selecione imagens secundárias</h4>
-              <label htmlFor="selecao-fotos-secundárias">
+              <label htmlFor='selecao-fotos-secundárias'>
                 Selecionar imagem
               </label>
               <input
-                type={"file"}
-                id="selecao-fotos-secundárias"
-                accept="image/png, image/jpg"
+                type={'file'}
+                id='selecao-fotos-secundárias'
+                accept='image/png, image/jpg'
                 onChange={(evt) => selectOthersImages(evt)}
               />
               <span>
@@ -146,18 +146,18 @@ const CreatePost = () => {
                   ? `${secondaryImages.length} imagens foram selecionadas`
                   : secondaryImages.length === 1
                   ? `${secondaryImages.length} imagem foi selecionada`
-                  : ""}
+                  : ''}
               </span>
             </div>
 
             <Button onClick={cleanImages}>Limpar imagens</Button>
           </SectionImages>
 
-          <Button type="submit">Publicar</Button>
+          <Button type='submit'>Publicar</Button>
         </article>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default CreatePost;
+export default CreatePost
