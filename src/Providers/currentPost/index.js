@@ -9,7 +9,6 @@ export const CurrentPostProvider = ({ children }) => {
   const openCurrentPost = (postId) => {
     api.get(`/posts/${postId}`).then((resp) => {
       setCurrentPost(resp.data);
-      console.log(postId);
     });
   };
 

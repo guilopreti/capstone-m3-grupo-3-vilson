@@ -107,7 +107,7 @@ const ArticlePage = () => {
       )
       .then((resp) => {
         const sumVotes = resp.data.votes.reduce((acc, value) => (acc += value));
-        console.log();
+
         api
           .patch(
             `/posts/${currentPost.id}`,
@@ -121,7 +121,6 @@ const ArticlePage = () => {
               },
             }
           )
-          .then((resp) => console.log(resp.data))
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
@@ -130,7 +129,6 @@ const ArticlePage = () => {
       const userPosts = await api
         .get(`/users/${currentPost.userId}/posts`)
         .then((resp) => {
-          console.log(resp.data.filter(({ media }) => media !== null));
           return resp.data.filter(({ media }) => media !== null);
         });
 
@@ -149,7 +147,6 @@ const ArticlePage = () => {
           },
         })
         .then((resp) => {
-          console.log(resp.data);
           toast.success("Obrigado por sua avaliação!");
         })
         .catch((err) => {
@@ -223,7 +220,7 @@ const ArticlePage = () => {
                   />
 
                   <IoIosArrowDroprightCircle
-                    onClick={previousImage}
+                    onClick={nextImage}
                     size={"40px"}
                     color={"#1768AC"}
                   />

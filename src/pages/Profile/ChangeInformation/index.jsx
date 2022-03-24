@@ -58,7 +58,6 @@ const ChangeInformation = () => {
   });
 
   const userLocal = JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"));
-  // const userLocalImg = JSON.parse(localStorage.getItem("@CapstoneM3:userImg"));
 
   const history = useHistory();
 
