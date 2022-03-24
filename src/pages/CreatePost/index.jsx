@@ -90,7 +90,7 @@ const CreatePost = () => {
   return (
     <>
       <HeaderHome />
-      <MenuNav />
+      <MenuNav hiddenSearch />
 
       <Container onSubmit={handleSubmit(onSubmit)}>
         <article>

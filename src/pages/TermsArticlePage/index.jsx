@@ -35,7 +35,7 @@ const TermsArticlePage = () => {
   return (
     <>
       <HeaderHome />
-      <MenuNav />
+      <MenuNav hiddenSearch />
       <Container>
         <div>
           <Title>Termos para o seu cadastro no Opnion</Title>

@@ -50,7 +50,7 @@ const RevisionPostPage = () => {
   return (
     <>
       <HeaderHome />
-      <MenuNav />
+      <MenuNav hiddenSearch />
       <Container>
         <div>
           <HeaderPost>
