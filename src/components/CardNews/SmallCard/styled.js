@@ -1,5 +1,5 @@
-import MediumCardContainer from "../MediumCard/styled";
-import styled from "styled-components";
+import MediumCardContainer from '../MediumCard/styled'
+import styled from 'styled-components'
 
 export const SmallCardContainer = styled(MediumCardContainer)`
   cursor: pointer;
@@ -105,7 +105,7 @@ export const SmallCardContainer = styled(MediumCardContainer)`
   }
   .mediumCard-div-user {
     margin-bottom: 5px;
-    span {
+    > span {
       font-size: 10.5px;
       @media (max-width: 400px) {
         font-size: 9.5px;
@@ -183,4 +183,4 @@ export const SmallCardContainer = styled(MediumCardContainer)`
       }
     }
   }
-`;
+`

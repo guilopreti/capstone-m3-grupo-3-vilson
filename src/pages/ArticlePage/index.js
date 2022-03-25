@@ -1,5 +1,5 @@
-import HeaderHome from "../../components/HeaderHome";
-import MenuNav from "../../components/MenuNav";
+import HeaderHome from '../../components/HeaderHome'
+import MenuNav from '../../components/MenuNav'
 import {
   Container,
   DateTemaContainer,
@@ -12,83 +12,87 @@ import {
   TitleContainer,
   UserVoteContainer,
   CarouselContent,
-} from "./style";
-import { useEffect, useState } from "react";
-import api from "../../services/api";
-import { toast } from "react-toastify";
+  RatingContainer,
+} from './style'
+import { useEffect, useState } from 'react'
+import api from '../../services/api'
+import { toast } from 'react-toastify'
 import {
   IoIosArrowDroprightCircle,
   IoIosArrowDropleftCircle,
-} from "react-icons/io";
+} from 'react-icons/io'
+import { AiFillStar } from 'react-icons/ai'
+import { NoteContainer } from '../../components/CardNews/BigCard/styled'
 
 const ArticlePage = () => {
-  const [postUser, setPostUser] = useState({});
-  const [currentImage, setCurrentImage] = useState(0);
+  const [postUser, setPostUser] = useState({})
+  const [currentImage, setCurrentImage] = useState(0)
   const [months] = useState([
-    "Jan",
-    "Fev",
-    "Mar",
-    "Abr",
-    "Mai",
-    "Jun",
-    "Jul",
-    "Ago",
-    "Set",
-    "Out",
-    "Nov",
-    "Dez",
-  ]);
-  const [textParagraphs, setTextParagraphs] = useState("");
+    'Jan',
+    'Fev',
+    'Mar',
+    'Abr',
+    'Mai',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Set',
+    'Out',
+    'Nov',
+    'Dez',
+  ])
+  const [textParagraphs, setTextParagraphs] = useState('')
   const [idCurrentPost] = useState(
-    JSON.parse(localStorage.getItem("@CapstoneM3:postId"))
-  );
-  const [currentPost, setCurrentPost] = useState("");
+    JSON.parse(localStorage.getItem('@CapstoneM3:postId'))
+  )
+  const [currentPost, setCurrentPost] = useState('')
+  const [clicked, setClicked] = useState([false, false, false, false, false])
 
   useEffect(() => {
     api
       .get(`/posts/${idCurrentPost}`)
       .then((response) => {
-        setCurrentPost(response.data);
-        setTextParagraphs(response.data.text.split("\n"));
+        setCurrentPost(response.data)
+        setTextParagraphs(response.data.text.split('\n'))
         api
           .get(`/users/${response.data.userId}`)
           .then((resp) => setPostUser(resp.data))
-          .catch((err) => console.log(err));
+          .catch((err) => console.log(err))
       })
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => console.log(err))
+  }, [])
 
   const nextImage = () => {
     if (currentImage < currentPost.secondaryImages.length - 1) {
-      return setCurrentImage(currentImage + 1);
+      return setCurrentImage(currentImage + 1)
     } else {
-      return setCurrentImage(0);
+      return setCurrentImage(0)
     }
-  };
+  }
 
   const previousImage = () => {
     if (currentImage !== 0) {
-      return setCurrentImage(currentImage - 1);
+      return setCurrentImage(currentImage - 1)
     } else {
-      return setCurrentImage(currentPost.secondaryImages.length - 1);
+      return setCurrentImage(currentPost.secondaryImages.length - 1)
     }
-  };
+  }
 
-  const stars = [1, 2, 3, 4, 5];
+  const stars = [1, 2, 3, 4, 5]
 
   const registerVote = async (index) => {
-    if (!JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))) {
-      return toast.error("Logue para avaliar um post!");
+    if (!JSON.parse(localStorage.getItem('@CapstoneM3:userLogin'))) {
+      return toast.error('Logue para avaliar um post!')
     } else if (
-      JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")).user.id ===
+      JSON.parse(localStorage.getItem('@CapstoneM3:userLogin')).user.id ===
       postUser.id
     ) {
-      return toast.error("Você não pode avaliar o próprio post!");
+      return toast.error('Você não pode avaliar o próprio post!')
     }
 
     const currentValue = await api
       .get(`/posts/${currentPost.id}`)
-      .then((resp) => resp.data);
+      .then((resp) => resp.data)
 
     await api
       .patch(
@@ -99,15 +103,20 @@ const ArticlePage = () => {
         {
           headers: {
             Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
+              JSON.parse(localStorage.getItem('@CapstoneM3:userLogin'))
                 .accessToken
             }`,
           },
         }
       )
       .then((resp) => {
+<<<<<<< HEAD
+        const sumVotes = resp.data.votes.reduce((acc, value) => (acc += value))
+        console.log()
+=======
         const sumVotes = resp.data.votes.reduce((acc, value) => (acc += value));
 
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
         api
           .patch(
             `/posts/${currentPost.id}`,
@@ -115,46 +124,75 @@ const ArticlePage = () => {
             {
               headers: {
                 Authorization: `Bearer ${
-                  JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
+                  JSON.parse(localStorage.getItem('@CapstoneM3:userLogin'))
                     .accessToken
                 }`,
               },
             }
           )
+<<<<<<< HEAD
+          .catch((err) => console.log(err))
+=======
           .catch((err) => console.log(err));
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
 
     setTimeout(async () => {
       const userPosts = await api
         .get(`/users/${currentPost.userId}/posts`)
         .then((resp) => {
+<<<<<<< HEAD
+          console.log(resp.data.filter(({ media }) => media !== null))
+          return resp.data.filter(({ media }) => media !== null)
+        })
+=======
           return resp.data.filter(({ media }) => media !== null);
         });
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
 
       const userPostsSum = userPosts.reduce((acc, { media }) => {
-        return (acc += media);
-      }, 0);
-      const userNote = { note: parseInt(userPostsSum / userPosts.length) };
+        return (acc += media)
+      }, 0)
+      const userNote = { note: parseInt(userPostsSum / userPosts.length) }
 
       api
         .patch(`/users/${currentPost.userId}`, userNote, {
           headers: {
             Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
+              JSON.parse(localStorage.getItem('@CapstoneM3:userLogin'))
                 .accessToken
             }`,
           },
         })
         .then((resp) => {
+<<<<<<< HEAD
+          console.log(resp.data)
+          toast.success('Obrigado por sua avaliação!')
+=======
           toast.success("Obrigado por sua avaliação!");
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
         })
         .catch((err) => {
-          console.log(err);
-          toast.error("Algo deu errado, tente novamente mais tarde!");
-        });
-    }, 1000);
-  };
+          console.log(err)
+          toast.error('Algo deu errado, tente novamente mais tarde!')
+        })
+    }, 1000)
+  }
+
+  const handleStarClick = (index) => {
+    let clickStates = [...clicked]
+
+    for (let i = 0; i < 5; i++) {
+      if (i <= index) {
+        clickStates[i] = true
+      } else {
+        clickStates[i] = false
+      }
+    }
+    setClicked(clickStates)
+    registerVote(index)
+  }
 
   return (
     <>
@@ -171,16 +209,18 @@ const ArticlePage = () => {
               )}
               {currentPost && (
                 <span>
-                  {months[Number(currentPost.date.split("/")[1]) - 1]}{" "}
-                  {currentPost.date.split("/")[0]}
+                  {months[Number(currentPost.date.split('/')[1]) - 1]}{' '}
+                  {currentPost.date.split('/')[0]}
                 </span>
               )}
             </DateTemaContainer>
             <TitleContainer>
               <h3>{currentPost.title}</h3>
               <p>
-                Sugerido e escrito por {postUser.name}{" "}
-                {postUser.note && <span>{postUser.note}</span>}
+                Sugerido e escrito por {postUser.name}{' '}
+                {postUser.note && (
+                  <NoteContainer>{postUser.note.toFixed(2)}</NoteContainer>
+                )}
               </p>
             </TitleContainer>
           </HeaderPost>
@@ -206,7 +246,7 @@ const ArticlePage = () => {
               <figure>
                 <img
                   src={currentPost.secondaryImages[currentImage]}
-                  alt="SecondaryImages"
+                  alt='SecondaryImages'
                 />
                 <figcaption>SecondaryImages</figcaption>
               </figure>
@@ -215,14 +255,20 @@ const ArticlePage = () => {
                 <div>
                   <IoIosArrowDropleftCircle
                     onClick={previousImage}
-                    size={"40px"}
-                    color={"#1768AC"}
+                    size={'40px'}
+                    color={'#1768AC'}
                   />
 
                   <IoIosArrowDroprightCircle
+<<<<<<< HEAD
+                    onClick={previousImage}
+                    size={'40px'}
+                    color={'#1768AC'}
+=======
                     onClick={nextImage}
                     size={"40px"}
                     color={"#1768AC"}
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
                   />
                 </div>
               )}
@@ -231,32 +277,54 @@ const ArticlePage = () => {
 
           <FontContainer>
             <span>
-              Fonte:{" "}
+              Fonte:{' '}
               <span>
                 {currentPost.font
                   ? currentPost.font
-                  : "Conteúdo sem fonte confiável!"}
+                  : 'Conteúdo sem fonte confiável!'}
               </span>
             </span>
           </FontContainer>
           <UserVoteContainer>
             <div>
               <span>Avalie este artigo!</span>
-              <div>
-                {stars.map((value, index) => {
+              <RatingContainer>
+                {/*stars.map((value, index) => {
                   return (
                     <span key={index} onClick={() => registerVote(index)}>
                       {value}
                     </span>
-                  );
-                })}
-              </div>
+                  )
+                })*/}
+                <div>
+                  <AiFillStar
+                    onClick={() => handleStarClick(0)}
+                    className={clicked[0] ? 'clickedstar' : null}
+                  />
+                  <AiFillStar
+                    onClick={() => handleStarClick(1)}
+                    className={clicked[1] ? 'clickedstar' : null}
+                  />
+                  <AiFillStar
+                    onClick={() => handleStarClick(2)}
+                    className={clicked[2] ? 'clickedstar' : null}
+                  />
+                  <AiFillStar
+                    onClick={() => handleStarClick(3)}
+                    className={clicked[3] ? 'clickedstar' : null}
+                  />
+                  <AiFillStar
+                    onClick={() => handleStarClick(4)}
+                    className={clicked[4] ? 'clickedstar' : null}
+                  />
+                </div>
+              </RatingContainer>
             </div>
           </UserVoteContainer>
         </div>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default ArticlePage;
+export default ArticlePage

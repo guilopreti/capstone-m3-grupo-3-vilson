@@ -57,6 +57,7 @@ export const TitleContainer = styled.div`
     font-size: 25px;
     font-weight: 500;
     border-left: 4px solid var(--primary-color);
+    padding: 0 0 0 4px;
   }
 
   p {

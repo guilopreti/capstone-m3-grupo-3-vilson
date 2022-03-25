@@ -9,6 +9,7 @@ import {
 import { useContext } from 'react'
 import { UserContext } from '../../Providers/users'
 import { useHistory } from 'react-router-dom'
+import { NoteContainer } from '../CardNews/BigCard/styled'
 
 const CardsRevision = ({ post }) => {
   const { listUsers } = useContext(UserContext)
@@ -30,7 +31,12 @@ const CardsRevision = ({ post }) => {
       </ImgContainer>
       <TextContainer>
         <UserDateContainer>
-          <span>{findUser.username}</span>
+          <span>
+            {findUser.username}{' '}
+            {findUser.note && (
+              <NoteContainer>{findUser.note.toFixed(2)}</NoteContainer>
+            )}
+          </span>
           <p>{post.date}</p>
         </UserDateContainer>
         <TitleTextContainer>

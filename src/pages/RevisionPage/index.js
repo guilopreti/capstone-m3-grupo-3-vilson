@@ -11,8 +11,12 @@ const RevisionPage = () => {
 
   useEffect(() => {
     const token =
+<<<<<<< HEAD
+      JSON.parse(localStorage.getItem('@CapstoneM3:userLogin')) || ''
+=======
       JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || "";
 
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
     api
       .get("/accept", {
         headers: {
