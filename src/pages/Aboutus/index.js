@@ -13,8 +13,6 @@ const Aboutus = () => {
       <Container>
         <div>
           <h1>Sobre</h1>
-        </div>
-        <div>
           <p>
             Com muita visão do que hoje ocorre no mundo, nosso site pode te trazer varias informações de forma acertiva e segura, do que está acontecendo ao nosso redor, com notícias públicadas pelos membros da nossa comunidade.
           </p>
@@ -120,7 +118,7 @@ const Aboutus = () => {
             </li>
           </ul>
         </div>
-        <div className="sponsorship"><span>Buy-me a coffe <SiPicpay/></span></div>
+        <div className="sponsorship"><span>Buy-me a coffe <SiPicpay /></span></div>
       </Container>
     </>
   )
