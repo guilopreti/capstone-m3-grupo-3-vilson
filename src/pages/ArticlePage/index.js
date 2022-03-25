@@ -110,8 +110,13 @@ const ArticlePage = () => {
         }
       )
       .then((resp) => {
+<<<<<<< HEAD
         const sumVotes = resp.data.votes.reduce((acc, value) => (acc += value))
         console.log()
+=======
+        const sumVotes = resp.data.votes.reduce((acc, value) => (acc += value));
+
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
         api
           .patch(
             `/posts/${currentPost.id}`,
@@ -125,7 +130,11 @@ const ArticlePage = () => {
               },
             }
           )
+<<<<<<< HEAD
           .catch((err) => console.log(err))
+=======
+          .catch((err) => console.log(err));
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
       })
       .catch((err) => console.log(err))
 
@@ -133,9 +142,14 @@ const ArticlePage = () => {
       const userPosts = await api
         .get(`/users/${currentPost.userId}/posts`)
         .then((resp) => {
+<<<<<<< HEAD
           console.log(resp.data.filter(({ media }) => media !== null))
           return resp.data.filter(({ media }) => media !== null)
         })
+=======
+          return resp.data.filter(({ media }) => media !== null);
+        });
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
 
       const userPostsSum = userPosts.reduce((acc, { media }) => {
         return (acc += media)
@@ -152,8 +166,12 @@ const ArticlePage = () => {
           },
         })
         .then((resp) => {
+<<<<<<< HEAD
           console.log(resp.data)
           toast.success('Obrigado por sua avaliação!')
+=======
+          toast.success("Obrigado por sua avaliação!");
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
         })
         .catch((err) => {
           console.log(err)
@@ -242,9 +260,15 @@ const ArticlePage = () => {
                   />
 
                   <IoIosArrowDroprightCircle
+<<<<<<< HEAD
                     onClick={previousImage}
                     size={'40px'}
                     color={'#1768AC'}
+=======
+                    onClick={nextImage}
+                    size={"40px"}
+                    color={"#1768AC"}
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
                   />
                 </div>
               )}

@@ -21,11 +21,6 @@ const HeaderHome = () => {
 
   const { image } = useContext(ChangeImageContext);
 
-  // useEffect(() => {
-  //   const token =
-  //     JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || [];
-  // })
-
   return (
     <>
       <HeaderHomeContainer>

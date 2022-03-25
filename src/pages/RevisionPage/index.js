@@ -1,26 +1,31 @@
-import { Container, TitleContainer } from './style'
-import HeaderHome from '../../components/HeaderHome'
-import MenuNav from '../../components/MenuNav'
-import ListCardsRevision from '../../components/ListCardsRevision'
-import { useContext, useEffect } from 'react'
-import api from '../../services/api'
-import { RevisionPostContext } from '../../Providers/revisionPost'
+import { Container, TitleContainer } from "./style";
+import HeaderHome from "../../components/HeaderHome";
+import MenuNav from "../../components/MenuNav";
+import ListCardsRevision from "../../components/ListCardsRevision";
+import { useContext, useEffect } from "react";
+import api from "../../services/api";
+import { RevisionPostContext } from "../../Providers/revisionPost";
 
 const RevisionPage = () => {
-  const { setRevisionPosts } = useContext(RevisionPostContext)
+  const { setRevisionPosts } = useContext(RevisionPostContext);
 
   useEffect(() => {
     const token =
+<<<<<<< HEAD
       JSON.parse(localStorage.getItem('@CapstoneM3:userLogin')) || ''
+=======
+      JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || "";
+
+>>>>>>> 4218ffa50a9565bb55f071ec742b09a4f2770c4d
     api
-      .get('/accept', {
+      .get("/accept", {
         headers: {
           Authorization: `Bearer ${token.accessToken}`,
         },
       })
       .then((response) => setRevisionPosts(response.data))
-      .catch((err) => console.log(err))
-  }, [])
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>
@@ -35,7 +40,7 @@ const RevisionPage = () => {
         </div>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default RevisionPage
+export default RevisionPage;
