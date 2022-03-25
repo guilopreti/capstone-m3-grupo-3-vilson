@@ -12,10 +12,17 @@ import {
   TitleContainer,
   UserVoteContainer,
   CarouselContent,
+  RatingContainer,
 } from "./style";
-import { useContext, useEffect, useState } from "react";
-import { CurrentPostContext } from "../../Providers/currentPost";
+import { useEffect, useState } from "react";
 import api from "../../services/api";
+import { toast } from "react-toastify";
+import {
+  IoIosArrowDroprightCircle,
+  IoIosArrowDropleftCircle,
+} from "react-icons/io";
+import { AiFillStar } from "react-icons/ai";
+import { NoteContainer } from "../../components/CardNews/BigCard/styled";
 
 const ArticlePage = () => {
   const [postUser, setPostUser] = useState({});
@@ -34,17 +41,26 @@ const ArticlePage = () => {
     "Nov",
     "Dez",
   ]);
-
-  const { currentPost } = useContext(CurrentPostContext);
+  const [textParagraphs, setTextParagraphs] = useState("");
+  const [idCurrentPost] = useState(
+    JSON.parse(localStorage.getItem("@CapstoneM3:postId"))
+  );
+  const [currentPost, setCurrentPost] = useState("");
+  const [clicked, setClicked] = useState([false, false, false, false, false]);
 
   useEffect(() => {
     api
-      .get(`/users/${currentPost.userId}`)
-      .then((resp) => setPostUser(resp.data))
+      .get(`/posts/${idCurrentPost}`)
+      .then((response) => {
+        setCurrentPost(response.data);
+        setTextParagraphs(response.data.text.split("\n"));
+        api
+          .get(`/users/${response.data.userId}`)
+          .then((resp) => setPostUser(resp.data))
+          .catch((err) => console.log(err));
+      })
       .catch((err) => console.log(err));
-  }, [currentPost]);
-
-  const textParagraphs = currentPost.text.split("\n");
+  }, []);
 
   const nextImage = () => {
     if (currentImage < currentPost.secondaryImages.length - 1) {
@@ -65,6 +81,15 @@ const ArticlePage = () => {
   const stars = [1, 2, 3, 4, 5];
 
   const registerVote = async (index) => {
+    if (!JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))) {
+      return toast.error("Logue para avaliar um post!");
+    } else if (
+      JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")).user.id ===
+      postUser.id
+    ) {
+      return toast.error("Você não pode avaliar o próprio post!");
+    }
+
     const currentValue = await api
       .get(`/posts/${currentPost.id}`)
       .then((resp) => resp.data);
@@ -86,7 +111,7 @@ const ArticlePage = () => {
       )
       .then((resp) => {
         const sumVotes = resp.data.votes.reduce((acc, value) => (acc += value));
-        console.log();
+
         api
           .patch(
             `/posts/${currentPost.id}`,
@@ -100,32 +125,53 @@ const ArticlePage = () => {
               },
             }
           )
-          .then((resp) => console.log(resp.data))
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
 
-    const userPosts = await api
-      .get(`/users/${currentPost.userId}/posts`)
-      .then((resp) => resp.data);
+    setTimeout(async () => {
+      const userPosts = await api
+        .get(`/users/${currentPost.userId}/posts`)
+        .then((resp) => {
+          return resp.data.filter(({ media }) => media !== null);
+        });
 
-    const userPostsSum = userPosts.reduce(
-      (acc, { media }) => (acc += media),
-      0
-    );
-    const userNote = { note: parseInt(userPostsSum / userPosts.length) };
+      const userPostsSum = userPosts.reduce((acc, { media }) => {
+        return (acc += media);
+      }, 0);
+      const userNote = { note: parseInt(userPostsSum / userPosts.length) };
 
-    api
-      .patch(`/users/${currentPost.userId}`, userNote, {
-        headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
-              .accessToken
-          }`,
-        },
-      })
-      .then((resp) => console.log(resp.data))
-      .catch((err) => console.log(err));
+      api
+        .patch(`/users/${currentPost.userId}`, userNote, {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"))
+                .accessToken
+            }`,
+          },
+        })
+        .then((resp) => {
+          toast.success("Obrigado por sua avaliação!");
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Algo deu errado, tente novamente mais tarde!");
+        });
+    }, 1000);
+  };
+
+  const handleStarClick = (index) => {
+    let clickStates = [...clicked];
+
+    for (let i = 0; i < 5; i++) {
+      if (i <= index) {
+        clickStates[i] = true;
+      } else {
+        clickStates[i] = false;
+      }
+    }
+    setClicked(clickStates);
+    registerVote(index);
   };
 
   return (
@@ -133,82 +179,123 @@ const ArticlePage = () => {
       <HeaderHome />
       <MenuNav />
       <Container>
-        <HeaderPost>
-          <DateTemaContainer>
-            {currentPost.theme && (
-              <TemaContainer>
-                <span>{currentPost.theme}</span>
-              </TemaContainer>
+        <div>
+          <HeaderPost>
+            <DateTemaContainer>
+              {currentPost.theme && (
+                <TemaContainer>
+                  <span>{currentPost.theme}</span>
+                </TemaContainer>
+              )}
+              {currentPost && (
+                <span>
+                  {months[Number(currentPost.date.split("/")[1]) - 1]}{" "}
+                  {currentPost.date.split("/")[0]}
+                </span>
+              )}
+            </DateTemaContainer>
+            <TitleContainer>
+              <h3>{currentPost.title}</h3>
+              <p>
+                Sugerido e escrito por {postUser.name}{" "}
+                {postUser.note && (
+                  <NoteContainer>{postUser.note.toFixed(2)}</NoteContainer>
+                )}
+              </p>
+            </TitleContainer>
+          </HeaderPost>
+          <ImgTextContainer>
+            {currentPost.primaryImage && (
+              <ImgContainer>
+                <img
+                  src={currentPost.primaryImage}
+                  alt={`${currentPost.title} primaryImage`}
+                />
+              </ImgContainer>
             )}
+            {textParagraphs && (
+              <TextContainer>
+                {textParagraphs.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </TextContainer>
+            )}
+          </ImgTextContainer>
+          {currentPost && currentPost.secondaryImages.length > 0 && (
+            <CarouselContent>
+              <figure>
+                <img
+                  src={currentPost.secondaryImages[currentImage]}
+                  alt="SecondaryImages"
+                />
+                <figcaption>SecondaryImages</figcaption>
+              </figure>
 
-            <span>
-              {months[Number(currentPost.date.split("/")[1]) - 1]}{" "}
-              {currentPost.date.split("/")[0]}
-            </span>
-          </DateTemaContainer>
-          <TitleContainer>
-            <h3>{currentPost.title}</h3>
-            <p>Sugerido e escrito por {postUser.name}</p>
-          </TitleContainer>
-        </HeaderPost>
-        <ImgTextContainer>
-          {currentPost.primaryImage && (
-            <ImgContainer>
-              <img
-                src={currentPost.primaryImage}
-                alt={`${currentPost.title} primaryImage`}
-              />
-            </ImgContainer>
+              {currentPost.secondaryImages.length > 1 && (
+                <div>
+                  <IoIosArrowDropleftCircle
+                    onClick={previousImage}
+                    size={"40px"}
+                    color={"#1768AC"}
+                  />
+
+                  <IoIosArrowDroprightCircle
+                    onClick={nextImage}
+                    size={"40px"}
+                    color={"#1768AC"}
+                  />
+                </div>
+              )}
+            </CarouselContent>
           )}
-          <TextContainer>
-            {textParagraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </TextContainer>
-        </ImgTextContainer>
-        {currentPost.secondaryImages.length > 0 && (
-          <CarouselContent>
-            <figure>
-              <img
-                src={currentPost.secondaryImages[currentImage]}
-                alt="SecondaryImages"
-              />
-              <figcaption>SecondaryImages</figcaption>
-            </figure>
 
-            {currentPost.secondaryImages.length > 1 && (
-              <div>
-                <button onClick={previousImage}>Voltar</button>
-                <button onClick={nextImage}>Avançar</button>
-              </div>
-            )}
-          </CarouselContent>
-        )}
-
-        <FontContainer>
-          <span>
-            Fonte:{" "}
+          <FontContainer>
             <span>
-              {currentPost.font
-                ? currentPost.font
-                : "Conteúdo sem fonte confiável!"}
+              Fonte:{" "}
+              <span>
+                {currentPost.font
+                  ? currentPost.font
+                  : "Conteúdo sem fonte confiável!"}
+              </span>
             </span>
-          </span>
-        </FontContainer>
-        <UserVoteContainer>
-          <div>
-            <span>Avalie este artigo!</span>
+          </FontContainer>
+          <UserVoteContainer>
             <div>
-              {stars.map((value, index) => {
-                return (
-                  <span key={index} onClick={() => registerVote(index)}>
-                    {value}
-                  </span>
-                );
-              })}
+              <span>Avalie este artigo!</span>
+              <RatingContainer>
+                {/*stars.map((value, index) => {
+                  return (
+                    <span key={index} onClick={() => registerVote(index)}>
+                      {value}
+                    </span>
+                  )
+                })*/}
+                <div>
+                  <AiFillStar
+                    onClick={() => handleStarClick(0)}
+                    className={clicked[0] ? "clickedstar" : null}
+                  />
+                  <AiFillStar
+                    onClick={() => handleStarClick(1)}
+                    className={clicked[1] ? "clickedstar" : null}
+                  />
+                  <AiFillStar
+                    onClick={() => handleStarClick(2)}
+                    className={clicked[2] ? "clickedstar" : null}
+                  />
+                  <AiFillStar
+                    onClick={() => handleStarClick(3)}
+                    className={clicked[3] ? "clickedstar" : null}
+                  />
+                  <AiFillStar
+                    onClick={() => handleStarClick(4)}
+                    className={clicked[4] ? "clickedstar" : null}
+                  />
+                </div>
+              </RatingContainer>
             </div>
-          </div>
-        </UserVoteContainer>
+          </UserVoteContainer>
+        </div>
       </Container>
     </>
   );

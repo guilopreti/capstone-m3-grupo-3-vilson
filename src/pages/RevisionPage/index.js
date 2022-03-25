@@ -12,7 +12,7 @@ const RevisionPage = () => {
   useEffect(() => {
     const token =
       JSON.parse(localStorage.getItem("@CapstoneM3:userLogin")) || "";
-    console.log("batata");
+
     api
       .get("/accept", {
         headers: {
@@ -26,7 +26,7 @@ const RevisionPage = () => {
   return (
     <>
       <HeaderHome />
-      <MenuNav />
+      <MenuNav hiddenSearch />
       <Container>
         <div>
           <TitleContainer>

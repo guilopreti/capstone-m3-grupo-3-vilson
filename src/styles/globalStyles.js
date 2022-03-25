@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
 
 body, html {
- font-family: 'Roboto', sans-serif;
+ font-family: 'Roboto', serif;
 }
 
 li {
@@ -35,8 +35,9 @@ li {
     --white-color: #fff;
     --gray-color: #c5c5c5;
     --gray-color-2: #999c9f; 
+    --picpay-color: #21c25e;
   }
 
 
-`;
-export default GlobalStyle;
+`
+export default GlobalStyle

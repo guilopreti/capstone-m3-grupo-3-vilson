@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    position: absolute;
+    position: fixed;
     top: 75px;
     z-index: 10;
     width: 100vw;
@@ -62,6 +62,19 @@ export const Container = styled.div`
         font-family: 'Inter', sans-serif;
         font-weight: 700;
         color: black;
+    }
+    .profile-username {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: black;
+    }
+    .profile-email {
+        font-size: 12px;
+        color: var(--gray-color-2);
     }
     .profile-link-register {
         text-decoration: none;

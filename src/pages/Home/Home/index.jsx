@@ -6,12 +6,12 @@ import HomeList from "../HomeList/index";
 import { useState } from "react";
 
 const Home = () => {
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <>
       <HeaderHome />
-      <MenuNav setInputValue={setInputValue}/>
+      <MenuNav setInputValue={setInputValue} />
       <MainHome>
         <HomeList inputValue={inputValue}></HomeList>
       </MainHome>

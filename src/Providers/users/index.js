@@ -22,7 +22,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     api
       .get('./users')
-      .then((response) => setListUsers(...listUsers, response.data))
+      .then((response) => setListUsers(response.data))
       .catch((err) => console.log(err))
   }, [])
 
