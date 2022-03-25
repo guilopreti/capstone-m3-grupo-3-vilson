@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -15,47 +15,48 @@ export const Container = styled.div`
     flex-direction: column;
     margin-top: 150px;
   }
-`
+`;
 
 export const Title = styled.h2`
   margin: 10px 0px;
-`
+`;
 
 export const Text = styled.p`
   margin-bottom: 15px;
   text-align: left;
-`
+`;
 
 export const CheckboxContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-bottom: 40px;
-`
+`;
 
 export const StrongText = styled.p`
   font-weight: bold;
-`
+`;
 
 export const List = styled.ul`
   margin-bottom: 15px;
-`
+`;
 
 export const Item = styled.li`
   list-style-type: square;
   margin-left: 15px;
-`
+`;
 
 export const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const Button = styled.button`
   margin-top: 10px;
   width: 320px;
+  margin-bottom: 25px;
   @media (min-width: 600px) {
     width: 320px;
   }
@@ -66,7 +67,7 @@ const Button = styled.button`
   color: white;
   font-size: 18px;
   font-weight: bold;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   padding: 5px;
   :hover {
     cursor: pointer;
@@ -75,5 +76,5 @@ const Button = styled.button`
   :disabled {
     background-color: gray;
   }
-`
-export default Button
+`;
+export default Button;

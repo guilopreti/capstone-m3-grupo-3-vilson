@@ -2,7 +2,12 @@ import MediumCard from "../../../components/CardNews/MediumCard";
 import SmallCard from "../../../components/CardNews/SmallCard";
 import BigCard from "../../../components/CardNews/BigCard";
 import HomeListContainer from "./styled";
-import { HomeListPrimaryContainer, HomeListContainerTop } from "./styled";
+import {
+  HomeListPrimaryContainer,
+  HomeListContainerTop,
+  HomeListTitle,
+  HomeListTitleTop,
+} from "./styled";
 import { PostsContext } from "../../../Providers/posts/index.js";
 import { useContext } from "react";
 
@@ -16,15 +21,23 @@ const HomeList = ({ inputValue }) => {
   return (
     <>
       {postsDbFiltered.length > 0 ? (
-        <HomeListContainerTop>
-          <ul>
-            {postsDbFiltered.map((current) => {
-              return <MediumCard key={current.id} current={current} />;
-            })}
-          </ul>
-        </HomeListContainerTop>
+        <>
+          <HomeListTitleTop>
+            <h2>{inputValue}</h2>
+          </HomeListTitleTop>
+          <HomeListContainerTop>
+            <ul>
+              {postsDbFiltered.map((current) => {
+                return <MediumCard key={current.id} current={current} />;
+              })}
+            </ul>
+          </HomeListContainerTop>
+        </>
       ) : (
         <>
+          <HomeListTitleTop>
+            <h2>Tecnologia</h2>
+          </HomeListTitleTop>
           <HomeListContainerTop>
             <ul>
               {posts.map((current) => {
@@ -34,6 +47,9 @@ const HomeList = ({ inputValue }) => {
               })}
             </ul>
           </HomeListContainerTop>
+          <HomeListTitle>
+            <h2>Mundo</h2>
+          </HomeListTitle>
           <HomeListPrimaryContainer>
             <ul className="primary-ul-bigCard">
               {posts.map((current) => {
@@ -50,6 +66,9 @@ const HomeList = ({ inputValue }) => {
               })}
             </ul>
           </HomeListPrimaryContainer>
+          <HomeListTitle>
+            <h2>Artigos</h2>
+          </HomeListTitle>
           <HomeListContainer>
             <ul>
               {posts.map((current) => {
