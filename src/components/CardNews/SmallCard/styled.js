@@ -1,5 +1,5 @@
-import MediumCardContainer from '../MediumCard/styled'
-import styled from 'styled-components'
+import MediumCardContainer from "../MediumCard/styled";
+import styled from "styled-components";
 
 export const SmallCardContainer = styled(MediumCardContainer)`
   cursor: pointer;
@@ -105,10 +105,15 @@ export const SmallCardContainer = styled(MediumCardContainer)`
   }
   .mediumCard-div-user {
     margin-bottom: 5px;
-    > span {
-      font-size: 10.5px;
-      @media (max-width: 400px) {
-        font-size: 9.5px;
+    div {
+      .mediumCard-span-name {
+        font-family: "Roboto", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(25, 25, 25, 1);
+        @media (max-width: 400px) {
+          font-size: 9.5px;
+        }
       }
     }
     .mediumCard-span-data {
@@ -183,4 +188,4 @@ export const SmallCardContainer = styled(MediumCardContainer)`
       }
     }
   }
-`
+`;

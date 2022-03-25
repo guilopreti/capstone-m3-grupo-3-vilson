@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const BigCardContainer = styled.li`
   cursor: pointer;
-  font-family: 'Poppins' sans-serif;
+  font-family: "Poppins" sans-serif;
   margin: 0 12px 24px 12px;
   width: 529px;
   border: 1px solid #dddfe2;
@@ -119,7 +119,7 @@ const BigCardContainer = styled.li`
   }
   h2 {
     margin-bottom: 5px;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     color: rgba(25, 25, 25, 1);
     font-size: 24px;
     line-height: 35px;
@@ -149,8 +149,8 @@ const BigCardContainer = styled.li`
     }
   }
   p {
-    font-family: 'Poppins', serif;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Poppins", serif;
+    font-family: "Times New Roman", Times, serif;
     color: rgba(41, 41, 41, 1);
     font-size: 20px;
     line-height: 30px;
@@ -176,14 +176,14 @@ const BigCardContainer = styled.li`
     div {
       display: flex;
       align-items: center;
-    }
-    > span {
-      font-family: 'Roboto', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(25, 25, 25, 1);
-      @media (max-width: 410px) {
-        font-size: 12px;
+      .bigCard-span-name {
+        font-family: "Roboto", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(25, 25, 25, 1);
+        @media (max-width: 410px) {
+          font-size: 12px;
+        }
       }
     }
     .bigCard-span-data {
@@ -206,14 +206,14 @@ const BigCardContainer = styled.li`
       border-radius: 100%;
     }
   }
-`
-export default BigCardContainer
+`;
+export default BigCardContainer;
 
 export const NoteContainer = styled.span`
-  border: 1px solid blue;
+  margin-top: 1px;
   border-radius: 5px;
-  color: blue;
+  color: #1768ac;
   padding: 1px 5px;
   margin-left: 4px;
-  font-size: 12px;
-`
+  font-size: 11px;
+`;
