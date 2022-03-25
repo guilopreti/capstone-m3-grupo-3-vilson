@@ -1,5 +1,5 @@
-import HeaderHome from '../../components/HeaderHome'
-import MenuNav from '../../components/MenuNav'
+import HeaderHome from "../../components/HeaderHome";
+import MenuNav from "../../components/MenuNav";
 import {
   Button,
   Container,
@@ -12,30 +12,31 @@ import {
   TemaContainer,
   TextContainer,
   TitleContainer,
-} from './style'
-import { useEffect, useState, useContext } from 'react'
-import api from '../../services/api'
-import { UserContext } from '../../Providers/users'
-import { RevisionPostContext } from '../../Providers/revisionPost'
-import { useHistory } from 'react-router-dom'
+} from "./style";
+import { useEffect, useState, useContext } from "react";
+import api from "../../services/api";
+import { UserContext } from "../../Providers/users";
+import { RevisionPostContext } from "../../Providers/revisionPost";
+import { useHistory } from "react-router-dom";
 
 const RevisionPostPage = () => {
   const [idPostRevision] = useState(
-    JSON.parse(localStorage.getItem('@Capstone:postIdRevision'))
-  )
-  const [postRevision, setPostRevision] = useState({})
+    JSON.parse(localStorage.getItem("@Capstone:postIdRevision"))
+  );
+  const [postRevision, setPostRevision] = useState({});
+  const [textParagraphs, setTextParagraphs] = useState([]);
 
-  const token = JSON.parse(localStorage.getItem('@CapstoneM3:userLogin'))
+  const token = JSON.parse(localStorage.getItem("@CapstoneM3:userLogin"));
 
   const { handleDeleteArticleRevision, handleApprovedAticleRevision } =
-    useContext(RevisionPostContext)
+    useContext(RevisionPostContext);
 
-  const { listUsers } = useContext(UserContext)
+  const { listUsers } = useContext(UserContext);
   const findUser = listUsers.find((user) => {
-    return user.id === postRevision.userId
-  })
+    return user.id === postRevision.userId;
+  });
 
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     api
@@ -44,8 +45,11 @@ const RevisionPostPage = () => {
           Authorization: `Bearer ${token.accessToken}`,
         },
       })
-      .then((response) => setPostRevision(response.data))
-  }, [])
+      .then((response) => {
+        setPostRevision(response.data);
+        setTextParagraphs(response.data.text.split("\n"));
+      });
+  }, []);
 
   return (
     <>
@@ -70,7 +74,9 @@ const RevisionPostPage = () => {
               <img src={postRevision.primaryImage} alt={postRevision.theme} />
             </ImgContainer>
             <TextContainer>
-              <p>{postRevision.text}</p>
+              {textParagraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </TextContainer>
           </ImgTextContainer>
           <FontContainer>
@@ -80,7 +86,7 @@ const RevisionPostPage = () => {
           </FontContainer>
           <FeedBackContainer>
             <h3>Digite aqui o feedback para o usúario:</h3>
-            <textarea placeholder='Digite seu feedback aqui'></textarea>
+            <textarea placeholder="Digite seu feedback aqui"></textarea>
             <div>
               <Button
                 approved
@@ -102,7 +108,7 @@ const RevisionPostPage = () => {
         </div>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default RevisionPostPage
+export default RevisionPostPage;

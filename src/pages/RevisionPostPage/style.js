@@ -95,9 +95,11 @@ export const TextContainer = styled.div`
   margin-top: 20px;
   text-align: left;
   > p {
+    word-break: break-all;
     font-size: 16px;
-    font-weight: regular;
     line-height: 25px;
+    text-indent: 35px;
+    margin-bottom: 10px;
   }
 `;
 
