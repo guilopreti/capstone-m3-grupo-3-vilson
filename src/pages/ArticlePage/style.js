@@ -5,6 +5,7 @@ export const Container = styled.main`
   height: 100vh;
   display: flex;
   justify-content: center;
+  padding: 10px;
 
   > div {
     margin-top: 150px;
@@ -59,6 +60,7 @@ export const TitleContainer = styled.div`
     font-size: 25px;
     font-weight: 500;
     border-left: 4px solid var(--primary-color);
+    padding: 0 0 0 4px;
   }
 
   p {
@@ -186,6 +188,39 @@ export const CarouselContent = styled.div`
 
     > svg {
       cursor: pointer;
+    }
+  }
+`
+
+/*export const RatingContainer = styled.div`
+   > div {
+    width: 120px;
+    > svg {
+    color: #c7c7c7;
+    cursor: pointer;
+    }
+    
+    :hover {
+      color: rgb(212, 180, 0);
+    }
+
+  }
+
+`*/
+
+export const RatingContainer = styled.div`
+  div {
+    width: 120px;
+    svg {
+      color: #c7c7c7;
+      cursor: pointer;
+
+      :hover {
+        color: rgb(212, 180, 0);
+      }
+    }
+    .clickedstar {
+      color: rgb(212, 180, 0);
     }
   }
 `

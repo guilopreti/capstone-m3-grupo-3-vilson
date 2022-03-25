@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const MediumCardContainer = styled.li`
   cursor: pointer;
-  font-family: "Poppins" sans-serif;
+  font-family: 'Poppins' sans-serif;
   margin: 0 12px 24px 12px;
   width: 343px;
   border: 1px solid #dddfe2;
@@ -123,7 +123,7 @@ const MediumCardContainer = styled.li`
   }
   h2 {
     margin-bottom: 5px;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: rgba(25, 25, 25, 1);
     font-size: 18px;
     line-height: 25px;
@@ -157,8 +157,8 @@ const MediumCardContainer = styled.li`
     }
   }
   p {
-    font-family: "Poppins", serif;
-    font-family: "Times New Roman", Times, serif;
+    font-family: 'Poppins', serif;
+    font-family: 'Times New Roman', Times, serif;
     color: rgba(41, 41, 41, 1);
     font-size: 15px;
     line-height: 22px;
@@ -189,8 +189,8 @@ const MediumCardContainer = styled.li`
       display: flex;
       align-items: center;
     }
-    span {
-      font-family: "Roboto", sans-serif;
+    > span {
+      font-family: 'Roboto', sans-serif;
       font-size: 13px;
       font-weight: 500;
       color: rgba(25, 25, 25, 1);
@@ -218,6 +218,6 @@ const MediumCardContainer = styled.li`
       border-radius: 100%;
     }
   }
-`;
+`
 
-export default MediumCardContainer;
+export default MediumCardContainer
