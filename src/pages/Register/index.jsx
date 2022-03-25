@@ -136,16 +136,3 @@ const Register = () => {
 };
 
 export default Register;
-
-// const onSubmit = ({ name, lastname, username, email, password }) => {
-//   const userData = { name, lastname, username, email, password };
-//   api
-//     .post("/users", userData)
-//     .then((_) => {
-//       toast.success("Cadastro realizado com sucesso");
-//       history.push("/login");
-//     })
-//     .catch((_) => {
-//       toast.error("Falha ao tentar realizar o cadastro");
-//     });
-// };

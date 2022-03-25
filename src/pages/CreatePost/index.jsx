@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
-import { useContext, useState } from "react";
-import { UserContext } from "../../Providers/users";
+import { useState } from "react";
 import { Container, DivContent, SectionImages, SectionTexts } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
