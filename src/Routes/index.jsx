@@ -3,7 +3,6 @@ import Register from "../pages/Register/index";
 import Login from "../pages/Login/index";
 import ArticlePage from "../pages/ArticlePage";
 import Home from "../pages/Home/Home/index";
-import User from "../pages/User";
 import TermsArticlePage from "../pages/TermsArticlePage";
 import CreatePost from "../pages/CreatePost";
 import Aboutus from "../pages/Aboutus";
@@ -28,7 +27,7 @@ const Routes = () => {
         exact
         path="/postRevision"
       />
-      <Route isPrivate component={User} exact path="/user" />
+
       <Route isPrivate component={TermsArticlePage} exact path="/terms" />
       <Route isPrivate component={CreatePost} exact path="/create" />
     </Switch>

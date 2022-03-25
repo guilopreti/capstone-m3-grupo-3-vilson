@@ -12,7 +12,8 @@ export const Container = styled.div`
         color: var(--primary-color);
     }
     div {
-        width: 40%;
+        padding: 0px 10px;
+        max-width: 795px;
         display: flex;
         flex-direction: column;
         gap: 10px;

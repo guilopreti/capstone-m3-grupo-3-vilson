@@ -1,17 +1,17 @@
-import { createContext, useEffect, useState } from 'react'
-import api from '../../services/api'
+import { createContext, useEffect, useState } from "react";
+import api from "../../services/api";
 
-export const PostsContext = createContext([])
+export const PostsContext = createContext([]);
 
 export const PostsProvider = ({ children }) => {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     api
-      .get('/posts')
+      .get("/posts")
       .then((resp) => setPosts(resp.data))
-      .catch((err) => console.log(err))
-  }, [])
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <PostsContext.Provider value={{ posts }}>{children}</PostsContext.Provider>
-  )
-}
+  );
+};

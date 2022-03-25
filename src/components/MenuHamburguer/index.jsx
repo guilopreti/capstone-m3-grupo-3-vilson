@@ -22,7 +22,7 @@ const MenuHamburguer = ({ setMenuHamb }) => {
   };
 
   const goCreateArticle = () => {
-    history.push("/create");
+    history.push("/terms");
     setMenuHamb(false);
   };
 
