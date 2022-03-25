@@ -212,7 +212,7 @@ export default BigCardContainer;
 export const NoteContainer = styled.span`
   border: 1px solid #1768ac;
   border-radius: 5px;
-  color: blue;
+  color: #1768ac;
   padding: 1px 5px;
   margin-left: 4px;
   font-size: 12px;

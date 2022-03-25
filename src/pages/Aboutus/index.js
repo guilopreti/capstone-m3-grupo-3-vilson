@@ -13,8 +13,6 @@ const Aboutus = () => {
       <Container>
         <div>
           <h1>Sobre</h1>
-        </div>
-        <div>
           <p>
             Com muita visão do que hoje ocorre no mundo, nosso site pode te
             trazer varias informações de forma acertiva e segura, do que está
